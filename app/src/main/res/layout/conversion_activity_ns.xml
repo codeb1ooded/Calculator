@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/margin"
+    android:layout_marginRight="@dimen/margin"
+    android:layout_marginLeft="@dimen/margin"
+    android:layout_marginBottom="@dimen/margin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:textSize="@dimen/text_view_title_size"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:text="@string/title_conversion_ns"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/binary"
+        android:textSize="@dimen/button_text_size"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/buttonBinary1"
+        android:onClick="fromBinary"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/octal"
+        android:textSize="@dimen/button_text_size"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/buttonOctal1"
+        android:onClick="fromOctal"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/decimal"
+        android:textSize="@dimen/button_text_size"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/buttonDecimal1"
+        android:onClick="fromDecimal"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:text="@string/hexadecimal"
+        android:textSize="@dimen/button_text_size"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/buttonHexadecimal1"
+        android:onClick="fromHexadecimal"/>
+
+</LinearLayout>

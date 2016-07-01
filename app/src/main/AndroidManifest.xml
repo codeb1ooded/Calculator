@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.megha.scientificcalculator">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".conversion_number_system.ConversionActivityNS">
+        </activity>
+        <activity android:name=".conversion_number_system.ConversionFromBinary">
+        </activity>
+        <activity android:name=".conversion_number_system.ConversionFromOctal">
+        </activity>
+        <activity android:name=".conversion_number_system.ConversionFromDecimal">
+        </activity>
+        <activity android:name=".conversion_number_system.ConversionFromHexadecimal">
+        </activity>
+    </application>
+
+</manifest>

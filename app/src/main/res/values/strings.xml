@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">Scientific Calculator</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_conversion_number_system">Covert Number System</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="convert_button">Convert</string>
+
+    <string name="title_conversion_ns">Select Number System to convert from</string>
+    <string name="binary">Binary</string>
+    <string name="octal">Octal</string>
+    <string name="decimal">Decimal</string>
+    <string name="hexadecimal">Hexadecimal</string>
+    <string name="binary_text">Enter Binary Number</string>
+    <string name="octal_text">Enter Octal Number</string>
+    <string name="decimal_text">Enter Decimal Number</string>
+    <string name="hexadecimal_text">Enter Hexadecimal Number</string>
+
+    <string name="clear">Clear</string>
+    <string name="one">1</string>
+    <string name="two">2</string>
+    <string name="three">3</string>
+    <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="eight">8</string>
+    <string name="nine">9</string>
+    <string name="ten">A</string>
+    <string name="eleven">B</string>
+    <string name="twelve">C</string>
+    <string name="thirteen">D</string>
+    <string name="fourteen">E</string>
+    <string name="fifteen">F</string>
+    <string name="zero">0</string>
+
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="multiply">*</string>
+    <string name="divide">/</string>
+    <string name="equal">=</string>
+
+    <string name="period">.</string>
+
+    <string name="sine">sin</string>
+    <string name="cosine">cos</string>
+    <string name="tansane">tan</string>
+    <string name="logarithm_base10">log</string>
+    <string name="natural_logarithm">ln</string>
+    <string name="exponential">e</string>
+    <string name="square_root">^0.5</string>
+    <string name="power">^</string>
+    <string name="square">^2</string>
+    <string name="bracket_open">(</string>
+    <string name="bracket_close">)</string>
+    <string name="factorial">!</string>
+
+    <string name="sin_inverse">sin<sup>-1</sup></string>
+    <string name="cos_inverse">cos<sup>-1</sup></string>
+    <string name="tan_inverse">tan<sup>-1</sup></string>
+    <string name="floor_function">floor</string>
+    <string name="ceiling_function">ceil</string>
+    <string name="pi_constant">pi</string>
+    <string name="maximum">max</string>
+    <string name="minimum">min</string>
+    <string name="comma">,</string>
+    <string name="to_degrees">toDegrees</string>
+    <string name="to_radians">toRadians</string>
+</resources>

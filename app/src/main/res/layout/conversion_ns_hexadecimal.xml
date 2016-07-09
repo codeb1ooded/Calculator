@@ -7,7 +7,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/text_view_height"
+        android:layout_height="60dp"
         android:text="@string/hexadecimal_text"
         android:textSize="25dp"
         android:textAlignment="center"
@@ -31,9 +31,48 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
+        android:id="@+id/hexadecimalClearButton"
+        android:layout_below="@id/hexadecimalInputTextView">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/period"
+            android:textSize="@dimen/button_text_size"
+            android:id="@+id/periodButtonHexadecimal"
+            android:layout_marginRight="@dimen/margin"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/clear"
+            android:textSize="@dimen/button_text_size"
+            android:id="@+id/clearRightButtonHexadecimal"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/clearAll"
+            android:textSize="@dimen/button_text_size"
+            android:id="@+id/clearAllButtonHexadecimal"
+            android:layout_marginLeft="@dimen/margin"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/hexadecimalButtons1"
-        android:layout_below="@+id/hexadecimalInputTextView">
+        android:layout_below="@+id/hexadecimalClearButton">
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -72,7 +111,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/hexadecimalButtons2"
         android:layout_below="@+id/hexadecimalButtons1">
 
@@ -117,7 +157,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/hexadecimalButtons3"
         android:layout_below="@+id/hexadecimalButtons2">
         <Button
@@ -159,7 +200,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/hexadecimalButtons4"
         android:layout_below="@+id/hexadecimalButtons3">
         <Button

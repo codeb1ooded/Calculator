@@ -31,9 +31,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
+        android:id="@+id/decimalClearButton"
+        android:layout_below="@id/decimalInputTextView">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/period"
+            android:textSize="@dimen/button_text_size"
+            android:id="@+id/periodButtonDecimal"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/clear"
+            android:textSize="@dimen/button_text_size"
+            android:id="@+id/clearRightButtonDecimal"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/clearAll"
+            android:textSize="@dimen/button_text_size"
+            android:id="@+id/clearAllButtonDecimal"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/decimalButtons1"
-        android:layout_below="@+id/decimalInputTextView">
+        android:layout_below="@+id/decimalClearButton">
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -41,7 +83,8 @@
             android:text="@string/one"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/decimal1"/>
         <Button
             android:layout_width="0dp"
@@ -50,7 +93,8 @@
             android:text="@string/two"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/decimal2"/>
         <Button
             android:layout_width="0dp"
@@ -59,7 +103,8 @@
             android:text="@string/three"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/decimal3"/>
     </LinearLayout>
 
@@ -67,7 +112,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/decimalButtons2"
         android:layout_below="@+id/decimalButtons1">
 
@@ -78,7 +124,8 @@
             android:text="@string/four"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/decimal4"/>
         <Button
             android:layout_width="0dp"
@@ -87,7 +134,8 @@
             android:text="@string/five"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/decimal5"/>
         <Button
             android:layout_width="0dp"
@@ -96,7 +144,8 @@
             android:text="@string/six"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/decimal6"/>
 
     </LinearLayout>
@@ -106,7 +155,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/decimalButtons3"
         android:layout_below="@+id/decimalButtons2">
 
@@ -117,7 +167,8 @@
             android:text="@string/seven"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/decimal7"/>
         <Button
             android:layout_width="0dp"
@@ -126,7 +177,8 @@
             android:text="@string/eight"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/decimal8"/>
         <Button
             android:layout_width="0dp"
@@ -135,7 +187,8 @@
             android:text="@string/nine"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/decimal9"/>
     </LinearLayout>
 
@@ -144,14 +197,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/decimalButtons4"
         android:layout_below="@+id/decimalButtons3">
         <Button
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:text="@string/zero"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
             android:id="@+id/decimal0"

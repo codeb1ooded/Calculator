@@ -27,16 +27,43 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <HorizontalScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/text_view_height"
             android:layout_marginTop="@dimen/text_view_top_margin"
             android:layout_marginLeft="@dimen/text_view_left_margin"
             android:layout_marginRight="@dimen/text_view_right_margin" />
-    </HorizontalScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="7dp">
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:text="@string/clear"
+                android:textSize="@dimen/button_text_size"
+                android:id="@+id/clearRightButton"
+                android:textAllCaps="false"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/clearAll"
+                android:textSize="@dimen/button_text_size"
+                android:id="@+id/clearAllButton"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_marginRight="@dimen/margin"
+                android:textAllCaps="false"/>
+        </LinearLayout>
+    </LinearLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"

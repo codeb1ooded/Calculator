@@ -16,7 +16,7 @@
     <string name="decimal_text">Enter Decimal Number</string>
     <string name="hexadecimal_text">Enter Hexadecimal Number</string>
 
-    <string name="clear">Clear</string>
+    <string name="clear">&lt;-</string>
     <string name="one">1</string>
     <string name="two">2</string>
     <string name="three">3</string>
@@ -39,8 +39,8 @@
     <string name="multiply">*</string>
     <string name="divide">/</string>
     <string name="equal">=</string>
-
     <string name="period">.</string>
+    <string name="clearAll">Clear</string>
 
     <string name="sine">sin</string>
     <string name="cosine">cos</string>

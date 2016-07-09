@@ -31,17 +31,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
+        android:id="@+id/octalClearButton"
+        android:layout_below="@id/octalInputTextView">
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/period"
+            android:textSize="@dimen/button_text_size"
+            android:id="@+id/periodButtonOctal"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/clear"
+            android:textSize="@dimen/button_text_size"
+            android:id="@+id/clearRightButtonOctal"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:textAllCaps="false"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/clearAll"
+            android:textSize="@dimen/button_text_size"
+            android:id="@+id/clearAllButtonOctal"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/octalButtons1"
-        android:layout_below="@+id/octalInputTextView">
+        android:layout_below="@+id/octalClearButton">
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
             android:text="@string/zero"
             android:textSize="@dimen/button_text_size"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
             android:id="@+id/octal0"/>
         <Button
             android:layout_width="0dp"
@@ -50,7 +92,8 @@
             android:text="@string/one"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/octal1"/>
         <Button
             android:layout_width="0dp"
@@ -59,7 +102,8 @@
             android:text="@string/two"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/octal2"/>
     </LinearLayout>
 
@@ -67,7 +111,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/octalButtons2"
         android:layout_below="@+id/octalButtons1">
         <Button
@@ -77,7 +122,8 @@
             android:text="@string/three"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/octal3"/>
         <Button
             android:layout_width="0dp"
@@ -86,7 +132,8 @@
             android:text="@string/four"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/octal4"/>
         <Button
             android:layout_width="0dp"
@@ -95,7 +142,8 @@
             android:text="@string/five"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/octal5"/>
 
     </LinearLayout>
@@ -105,17 +153,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_margin="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginLeft="@dimen/margin"
         android:id="@+id/octalButtons3"
         android:layout_below="@+id/octalButtons2">
         <Button
             android:layout_width="100dp"
-
             android:layout_height="50dp"
             android:text="@string/six"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/octal6"/>
         <Button
             android:layout_width="100dp"
@@ -123,7 +172,8 @@
             android:text="@string/seven"
             android:textSize="@dimen/button_text_size"
             android:textAlignment="center"
-            android:layout_margin="@dimen/margin"
+            android:layout_marginRight="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
             android:id="@+id/octal7"/>
     </LinearLayout>
 

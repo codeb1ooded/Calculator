@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".conversion_number_system.ConversionFromHexadecimal">
         </activity>
+        <activity android:name=".conversion_number_system.ConvertTo">
+        </activity>
     </application>
 
 </manifest>

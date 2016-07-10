@@ -223,6 +223,7 @@
         android:textSize="@dimen/button_text_size"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:textAllCaps="false" />
+        android:textAllCaps="false"
+        android:onClick="convertClicked" />
 
 </RelativeLayout>

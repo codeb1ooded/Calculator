@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:text="@string/one"
             android:id="@+id/button1"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="oneClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -31,7 +32,8 @@
             android:layout_alignBottom="@+id/button1"
             android:layout_toRightOf="@+id/button1"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="twoClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -43,7 +45,8 @@
             android:layout_alignBottom="@+id/button1"
             android:layout_toRightOf="@+id/button2"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="threeClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -55,7 +58,8 @@
             android:layout_alignBottom="@+id/button1"
             android:layout_toRightOf="@+id/button3"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="plusClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -72,7 +76,8 @@
             android:layout_below="@+id/button1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="fourClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -84,7 +89,8 @@
             android:layout_alignBottom="@+id/button4"
             android:layout_toRightOf="@+id/button4"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="fiveClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -96,7 +102,8 @@
             android:layout_alignBottom="@+id/button4"
             android:layout_toRightOf="@+id/button5"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="sixClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -108,7 +115,8 @@
             android:layout_alignBottom="@+id/button4"
             android:layout_toRightOf="@+id/button6"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="minusClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -125,7 +133,8 @@
             android:layout_below="@+id/button4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="sevenClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -137,7 +146,8 @@
             android:layout_alignBottom="@+id/button7"
             android:layout_toRightOf="@+id/button7"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="eightClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -149,7 +159,8 @@
             android:layout_alignBottom="@+id/button7"
             android:layout_toRightOf="@+id/button8"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="nineClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -161,7 +172,8 @@
             android:layout_alignBottom="@+id/button7"
             android:layout_toRightOf="@+id/button9"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="multiplyClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -178,7 +190,8 @@
             android:layout_below="@+id/button4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="periodClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -190,7 +203,8 @@
             android:layout_alignBottom="@+id/buttonPeriod"
             android:layout_toRightOf="@+id/buttonPeriod"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="zeroClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -202,7 +216,8 @@
             android:layout_alignBottom="@+id/buttonPeriod"
             android:layout_toRightOf="@+id/button0"
             android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"/>
+            android:textSize="@dimen/button_text_size"
+            android:onClick="divideClicked"/>
 
         <Button
             android:layout_width="0dp"

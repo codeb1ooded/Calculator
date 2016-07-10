@@ -20,7 +20,8 @@
             android:text="@string/sine"
             android:id="@+id/button1s"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="sinClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -33,7 +34,8 @@
             android:layout_toRightOf="@+id/button1s"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="cosClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -46,7 +48,8 @@
             android:layout_toRightOf="@+id/button2s"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="tanClicked"/>
 
     </LinearLayout>
 
@@ -65,7 +68,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="logClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -78,7 +82,8 @@
             android:layout_toRightOf="@+id/button4s"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="expClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -91,7 +96,8 @@
             android:layout_toRightOf="@+id/button5s"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="lnClicked"/>
 
     </LinearLayout>
 
@@ -110,7 +116,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="srClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -123,7 +130,8 @@
             android:layout_toRightOf="@+id/button7s"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="powerClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -136,7 +144,8 @@
             android:layout_toRightOf="@+id/button8s"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="squareClicked" />
     </LinearLayout>
 
 
@@ -155,7 +164,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="bracketOpenClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -168,7 +178,8 @@
             android:layout_toRightOf="@+id/button10s"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="bracketClosedClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -181,7 +192,8 @@
             android:layout_toRightOf="@+id/button11s"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="factorialClicked"/>
 
     </LinearLayout>
 

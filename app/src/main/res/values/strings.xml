@@ -48,7 +48,7 @@
     <string name="logarithm_base10">log</string>
     <string name="natural_logarithm">ln</string>
     <string name="exponential">e</string>
-    <string name="square_root">^0.5</string>
+    <string name="square_root">√</string>
     <string name="power">^</string>
     <string name="square">^2</string>
     <string name="bracket_open">(</string>

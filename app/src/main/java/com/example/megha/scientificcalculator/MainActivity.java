@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     Button bPlus, bMinus, bMultiply, bDivide, bEqual, bPeriod;
     Button bSin, bCos, bTan, bLog10, bNaturalLog, bExp, bSquareRoot, bPower, bSquare, bOpenBracket, bCloseBracket, bFactorial;
     Button bSinInv, bCosInv, bTanIv, bFloor, bCeil, bPi, bMax, bMin, bComma, bToDegrees, bToRadians;
+    TextView textView;
+    StringBuffer screenText;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -138,6 +140,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initialise(){
+        screenText = new StringBuffer();
+        textView = (TextView) findViewById(R.id.mainActivityTextView);
+
         b0 = (Button) findViewById(R.id.button0);
         b1 = (Button) findViewById(R.id.button1);
         b2 = (Button) findViewById(R.id.button2);
@@ -181,5 +186,179 @@ public class MainActivity extends AppCompatActivity {
         bToDegrees = (Button) findViewById(R.id.button10a);
         bToRadians = (Button) findViewById(R.id.button11a);
 
+    }
+
+    // 1
+    public void oneClicked(View v){
+        screenText = screenText.append('1');
+        textView.setText(textView.getText() + "1");
+    }
+
+    // 2
+    public void twoClicked(View v){
+        screenText = screenText.append('2');
+        textView.setText(textView.getText() + "2");
+    }
+
+    // 3
+    public void threeClicked(View v){
+        screenText = screenText.append('3');
+        textView.setText(textView.getText() + "3");
+    }
+
+    // 4
+    public void fourClicked(View v){
+        screenText = screenText.append('4');
+        textView.setText(textView.getText() + "4");
+    }
+
+    // 5
+    public void fiveClicked(View v){
+        screenText = screenText.append('5');
+        textView.setText(textView.getText() + "5");
+    }
+
+    // 6
+    public void sixClicked(View v){
+        screenText = screenText.append('6');
+        textView.setText(textView.getText() + "6");
+    }
+
+    // 7
+    public void sevenClicked(View v){
+        screenText = screenText.append('7');
+        textView.setText(textView.getText() + "7");
+    }
+
+    // 8
+    public void eightClicked(View v){
+        screenText = screenText.append('8');
+        textView.setText(textView.getText() + "8");
+    }
+
+    // 9
+    public void nineClicked(View v){
+        screenText = screenText.append('9');
+        textView.setText(textView.getText() + "9");
+    }
+
+    // 0
+    public void zeroClicked(View v){
+        screenText = screenText.append('0');
+        textView.setText(textView.getText() + "0");
+    }
+
+    // +
+    public void plusClicked(View v){
+        screenText = screenText.append('+');
+        textView.setText(textView.getText() + "+");
+    }
+
+    // -
+    public void minusClicked(View v){
+        screenText = screenText.append('-');
+        textView.setText(textView.getText() + "-");
+    }
+
+    // *
+    public void multiplyClicked(View v){
+        screenText = screenText.append('*');
+        textView.setText(textView.getText() + "*");
+    }
+
+    // /
+    public void divideClicked(View v){
+        screenText = screenText.append('/');
+        textView.setText(textView.getText() + "/");
+    }
+
+    // .
+    public void periodClicked(View v){
+        screenText = screenText.append('.');
+        textView.setText(textView.getText() + ".");
+    }
+
+    // sin
+    public void sinClicked(View v){
+        screenText = screenText.append('s');
+        screenText = screenText.append('i');
+        screenText = screenText.append('n');
+        textView.setText(textView.getText() + "sin");
+    }
+
+    // cos
+    public void cosClicked(View v){
+        screenText = screenText.append('c');
+        screenText = screenText.append('o');
+        screenText = screenText.append('s');
+        textView.setText(textView.getText() + "cos");
+    }
+
+    // tan
+    public void tanClicked(View v){
+        screenText = screenText.append('t');
+        screenText = screenText.append('a');
+        screenText = screenText.append('n');
+        textView.setText(textView.getText() + "tan");
+    }
+
+    // log
+    public void logClicked(View v){
+        screenText = screenText.append('l');
+        screenText = screenText.append('o');
+        screenText = screenText.append('g');
+        textView.setText(textView.getText() + "log");
+    }
+
+    // e
+    public void expClicked(View v){
+        screenText = screenText.append('e');
+        textView.setText(textView.getText() + "e");
+    }
+
+    // ln
+    public void lnClicked(View v){
+        screenText = screenText.append('l');
+        screenText = screenText.append('n');
+        textView.setText(textView.getText() + "ln");
+    }
+
+    // square root
+    public void srClicked(View v){
+        screenText = screenText.append('s');
+        textView.setText(textView.getText() + "√");
+    }
+
+    // power
+    public void powerClicked(View v){
+        /* TO DO
+        screenText = screenText.append('l');
+        textView.setText(textView.getText() + "");*/
+    }
+
+    // square
+    public void squareClicked(View v){
+        /* TO DO
+        screenText = screenText.append('l');
+        screenText = screenText.append('n');
+        textView.setText(textView.getText() + "ln");*/
+    }
+
+    // bracket open
+    public void bracketOpenClicked(View v){
+        screenText = screenText.append('(');
+        textView.setText(textView.getText() + "(");
+    }
+
+    // bracket Closed
+    public void bracketClosedClicked(View v){
+        screenText = screenText.append(')');
+        textView.setText(textView.getText() + ")");
+    }
+
+    // factorial
+    public void factorialClicked(View v){
+        screenText = screenText.append('!');
+        textView.setText(textView.getText() + "!");
     }
 }

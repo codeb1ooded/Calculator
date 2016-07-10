@@ -36,7 +36,9 @@
             android:layout_height="@dimen/text_view_height"
             android:layout_marginTop="@dimen/text_view_top_margin"
             android:layout_marginLeft="@dimen/text_view_left_margin"
-            android:layout_marginRight="@dimen/text_view_right_margin" />
+            android:layout_marginRight="@dimen/text_view_right_margin"
+            android:textSize="@dimen/text_view_title_size"
+            android:id="@+id/mainActivityTextView"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

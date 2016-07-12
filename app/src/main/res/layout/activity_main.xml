@@ -53,7 +53,8 @@
                 android:text="@string/clear"
                 android:textSize="@dimen/button_text_size"
                 android:id="@+id/clearRightButton"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false"
+                android:onClick="clearClicked"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -63,7 +64,8 @@
                 android:id="@+id/clearAllButton"
                 android:layout_marginLeft="@dimen/margin"
                 android:layout_marginRight="@dimen/margin"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false"
+                android:onClick="clearAllClicked"/>
         </LinearLayout>
     </LinearLayout>
 

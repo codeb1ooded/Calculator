@@ -55,7 +55,8 @@
             android:id="@+id/clearRightButtonDecimal"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:onClick="clearClicked"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -65,7 +66,8 @@
             android:id="@+id/clearAllButtonDecimal"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:onClick="clearAllClicked"/>
     </LinearLayout>
 
 

@@ -188,6 +188,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // CLEAR ALL
+    public void clearAllClicked(View v){
+        screenText = new StringBuffer();
+        textView.setText("");
+    }
+
+    // CLEAR LAST
+    public void clearClicked(View v){
+        if(screenText.length() > 1) {
+            screenText = screenText.delete(screenText.length() - 1, screenText.length());
+            textView.setText(screenText);
+        }
+    }
+
     // 1
     public void oneClicked(View v){
         screenText = screenText.append('1');

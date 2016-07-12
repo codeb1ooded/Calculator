@@ -6,8 +6,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.megha.scientificcalculator.Constants;
 import com.example.megha.scientificcalculator.R;
+
+import java.io.Serializable;
 
 /**
  * Created by megha on 24/6/16.
@@ -24,10 +28,32 @@ public class ConversionFromOctal extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.octalInputTextView);
     }
 
+    boolean isValid(){
+        boolean firstPeriod = false;
+        for(int i=0; i<screenText.length(); i++){
+            if(screenText.charAt(i) == '.'){
+                if(firstPeriod)
+                    return false;
+                firstPeriod = true;
+            }if(screenText.charAt(i) == '.' && i==0){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void convertClicked(View v){
-        Intent intent = new Intent();
-        intent.setClass(ConversionFromOctal.this, ConvertTo.class);
-        startActivity(intent);
+        if(screenText.length() == 0){
+            Toast.makeText(ConversionFromOctal.this, "Please enter valid octal number to proceed", Toast.LENGTH_SHORT).show();
+        } else if(isValid()){
+            Intent intent = new Intent();
+            intent.setClass(ConversionFromOctal.this, ConvertTo.class);
+            intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
+            intent.putExtra(Constants.conversionNumberSystem, Constants.convertDecimal);
+            startActivity(intent);
+        } else {
+            Toast.makeText(ConversionFromOctal.this, "Please enter valid octal number to proceed", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // CLEAR ALL

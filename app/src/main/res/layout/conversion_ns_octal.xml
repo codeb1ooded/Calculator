@@ -44,7 +44,8 @@
             android:id="@+id/periodButtonOctal"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:textAllCaps="false"/>
+            android:textAllCaps="false"
+            android:onClick="periodClicked"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -84,7 +85,8 @@
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
             android:textAlignment="center"
-            android:id="@+id/octal0"/>
+            android:id="@+id/octal0"
+            android:onClick="zeroClicked"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -94,7 +96,8 @@
             android:textAlignment="center"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:id="@+id/octal1"/>
+            android:id="@+id/octal1"
+            android:onClick="oneClicked"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -104,7 +107,8 @@
             android:textAlignment="center"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:id="@+id/octal2"/>
+            android:id="@+id/octal2"
+            android:onClick="twoClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -124,7 +128,8 @@
             android:textAlignment="center"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:id="@+id/octal3"/>
+            android:id="@+id/octal3"
+            android:onClick="threeClicked"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -134,7 +139,8 @@
             android:textAlignment="center"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:id="@+id/octal4"/>
+            android:id="@+id/octal4"
+            android:onClick="fourClicked"/>
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -144,7 +150,8 @@
             android:textAlignment="center"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:id="@+id/octal5"/>
+            android:id="@+id/octal5"
+            android:onClick="fiveClicked"/>
 
     </LinearLayout>
 
@@ -165,7 +172,8 @@
             android:textAlignment="center"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:id="@+id/octal6"/>
+            android:id="@+id/octal6"
+            android:onClick="sixClicked"/>
         <Button
             android:layout_width="100dp"
             android:layout_height="50dp"
@@ -174,7 +182,8 @@
             android:textAlignment="center"
             android:layout_marginRight="@dimen/margin"
             android:layout_marginLeft="@dimen/margin"
-            android:id="@+id/octal7"/>
+            android:id="@+id/octal7"
+            android:onClick="sevenClicked"/>
     </LinearLayout>
 
     <Button

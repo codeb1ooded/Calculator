@@ -49,7 +49,7 @@ public class ConversionFromOctal extends AppCompatActivity {
             Intent intent = new Intent();
             intent.setClass(ConversionFromOctal.this, ConvertTo.class);
             intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
-            intent.putExtra(Constants.conversionNumberSystem, Constants.convertDecimal);
+            intent.putExtra(Constants.conversionNumberSystem, Constants.convertOctal);
             startActivity(intent);
         } else {
             Toast.makeText(ConversionFromOctal.this, "Please enter valid octal number to proceed", Toast.LENGTH_SHORT).show();

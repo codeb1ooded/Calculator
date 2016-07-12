@@ -48,7 +48,7 @@ public class ConversionFromHexadecimal extends AppCompatActivity {
             Intent intent = new Intent();
             intent.setClass(ConversionFromHexadecimal.this, ConvertTo.class);
             intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
-            intent.putExtra(Constants.conversionNumberSystem, Constants.convertDecimal);
+            intent.putExtra(Constants.conversionNumberSystem, Constants.convertHexadecimal);
             startActivity(intent);
         } else {
             Toast.makeText(ConversionFromHexadecimal.this, "Please enter valid hexadecimal number to proceed", Toast.LENGTH_SHORT).show();

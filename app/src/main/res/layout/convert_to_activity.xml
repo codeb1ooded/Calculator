@@ -25,7 +25,8 @@
         android:layout_margin="@dimen/margin"
         android:textSize="@dimen/button_text_size"
         android:text="@string/binary"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="binaryClicked"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -33,7 +34,8 @@
         android:layout_margin="@dimen/margin"
         android:textSize="@dimen/button_text_size"
         android:text="@string/octal"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="octalClicked"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -41,7 +43,8 @@
         android:layout_margin="@dimen/margin"
         android:textSize="@dimen/button_text_size"
         android:text="@string/decimal"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="decimalClicked"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -49,5 +52,6 @@
         android:layout_margin="@dimen/margin"
         android:textSize="@dimen/button_text_size"
         android:text="@string/hexadecimal"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:onClick="hexadecimalClicked"/>
 </LinearLayout>

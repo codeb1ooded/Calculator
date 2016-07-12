@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.megha.scientificcalculator.Constants;
 import com.example.megha.scientificcalculator.R;
+
+import java.io.Serializable;
 
 /**
  * Created by megha on 24/6/16.
@@ -45,6 +48,8 @@ public class ConversionFromBinary extends AppCompatActivity {
         } else if(isValid()){
             Intent intent = new Intent();
             intent.setClass(ConversionFromBinary.this, ConvertTo.class);
+            intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
+            intent.putExtra(Constants.conversionNumberSystem, Constants.convertBinary);
             startActivity(intent);
         } else {
             Toast.makeText(ConversionFromBinary.this, "Please enter valid binary number to proceed", Toast.LENGTH_SHORT).show();

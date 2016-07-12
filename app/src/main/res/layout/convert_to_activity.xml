@@ -16,6 +16,7 @@
         android:layout_height="0dp"
         android:layout_weight="3"
         android:layout_margin="@dimen/margin"
+        android:id="@+id/convertedTextView"
         android:textSize="@dimen/text_view_size"/>
     <Button
         android:layout_width="match_parent"

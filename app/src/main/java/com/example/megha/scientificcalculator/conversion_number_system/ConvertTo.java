@@ -367,18 +367,117 @@ public class ConvertTo extends AppCompatActivity {
     }
 
     private StringBuffer decimalToBinary(StringBuffer num){
-        /* TODO */
         StringBuffer stringBuffer = new StringBuffer();
+        int i=0, a =0, j=1;
+        while(num.charAt(i) != '.' && i<num.length()){
+            a =a*10 + (((int) num.charAt(i)) -48);
+            i++;
+        }
+        while (a != 0){
+            int b = a % 2;
+            a = a / 2;
+            stringBuffer = new StringBuffer( b + stringBuffer.toString());
+        }
+        i++;
+        double c =0;
+        if(i < num.length())
+            stringBuffer = stringBuffer.append('.');
+        while (i < num.length()){
+            c = c + Math.pow(0.1 , j) * (double)(((int) num.charAt(i)) -48);
+            j++; i++;
+        }
+        j=0;
+        while(j <=3 && c != 0){
+            c = c * 2;
+            stringBuffer = stringBuffer.append((int)c);
+            c = c - (int) c;
+            j++;
+        }
         return stringBuffer;
     }
     private StringBuffer decimalToOctal(StringBuffer num){
-        /* TODO */
         StringBuffer stringBuffer = new StringBuffer();
+        int i=0, a =0, j=1;
+        while(num.charAt(i) != '.' && i<num.length()){
+            a =a*10 + (((int) num.charAt(i)) -48);
+            i++;
+        }
+        while (a != 0){
+            int b = a % 8;
+            a = a / 8;
+            stringBuffer = new StringBuffer( b + stringBuffer.toString());
+        }
+        i++;
+        double c =0;
+        if(i < num.length())
+            stringBuffer = stringBuffer.append('.');
+        while (i < num.length()){
+            c = c + Math.pow(0.1 , j) * (double)(((int) num.charAt(i)) -48);
+            j++; i++;
+        }
+        j=0;
+        while(j <=3 && c != 0){
+            c = c * 8;
+            stringBuffer = stringBuffer.append((int)c);
+            c = c - (int) c;
+            j++;
+        }
         return stringBuffer;
     }
     private StringBuffer decimalToHexadecimal(StringBuffer num){
-        /* TODO */
         StringBuffer stringBuffer = new StringBuffer();
+        int i=0, a =0, j=1;
+        while(num.charAt(i) != '.' && i<num.length()){
+            a =a*10 + (((int) num.charAt(i)) -48);
+            i++;
+        }
+        while (a != 0){
+            int b = a % 16;
+            a = a / 16;
+            if(b == 10)
+                stringBuffer = new StringBuffer( 'A' + stringBuffer.toString());
+            else if(b == 11)
+                stringBuffer = new StringBuffer( 'B' + stringBuffer.toString());
+            else if(b == 12)
+                stringBuffer = new StringBuffer( 'C' + stringBuffer.toString());
+            else if(b == 13)
+                stringBuffer = new StringBuffer( 'D' + stringBuffer.toString());
+            else if(b == 14)
+                stringBuffer = new StringBuffer( 'E' + stringBuffer.toString());
+            else if(b == 15)
+                stringBuffer = new StringBuffer( 'F' + stringBuffer.toString());
+            else
+                stringBuffer = new StringBuffer( b + stringBuffer.toString());
+        }
+        i++;
+        double c =0;
+        if(i < num.length())
+            stringBuffer = stringBuffer.append('.');
+        while (i < num.length()){
+            c = c + Math.pow(0.1 , j) * (double)(((int) num.charAt(i)) -48);
+            j++; i++;
+        }
+        j=0;
+        while(j <=3 && c != 0){
+            c = c * 16;
+
+            if(c == 10)
+                stringBuffer = stringBuffer.append('A');
+            else if(c == 11)
+                stringBuffer = stringBuffer.append('B');
+            else if(c == 12)
+                stringBuffer = stringBuffer.append('C');
+            else if(c == 13)
+                stringBuffer = stringBuffer.append('D');
+            else if(c == 14)
+                stringBuffer = stringBuffer.append('E');
+            else if(c == 15)
+                stringBuffer = stringBuffer.append('F');
+            else
+                stringBuffer = stringBuffer.append((int)c);
+            c = c - (int) c;
+            j++;
+        }
         return stringBuffer;
     }
 

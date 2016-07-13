@@ -31,13 +31,13 @@ public class ConvertTo extends AppCompatActivity {
         convertFrom = intent.getStringExtra(Constants.conversionNumberSystem);
         number1 = intent.getStringExtra(Constants.digitToConvert);
         textView = (TextView) findViewById(R.id.convertedTextView);
-        if(convertFrom == Constants.convertBinary)
+        if(convertFrom.equals(Constants.convertBinary))
             numberSystem = 0;
-        if(convertFrom == Constants.convertOctal)
+        if(convertFrom.equals(Constants.convertOctal))
             numberSystem = 1;
-        if(convertFrom == Constants.convertDecimal)
+        if(convertFrom.equals(Constants.convertDecimal))
             numberSystem = 2;
-        if(convertFrom == Constants.convertHexadecimal)
+        if(convertFrom.equals(Constants.convertHexadecimal))
             numberSystem = 3;
         number = new StringBuffer(number1);
         binary = new StringBuffer();
@@ -63,55 +63,56 @@ public class ConvertTo extends AppCompatActivity {
         textView.setText(hexadecimal);
     }
 
-    public void toBinary(){
+    private void toBinary(){
         if(numberSystem == 0){
             binary = number;
         } else if(numberSystem == 1){
-            octalToBinary();
+            binary = octalToBinary(number);
         } else if(numberSystem == 2){
-            decimalToBinary();
+            binary = decimalToBinary(number);
         } else if(numberSystem == 3){
-            hexadecimalToBinary();
+            binary = hexadecimalToBinary(number);
         }
     }
-    public void toOctal(){
+    private void toOctal(){
         if(numberSystem == 0){
-            binaryToOctal();
+            octal = binaryToOctal(number);
         } else if(numberSystem == 1){
             octal = number;
         } else if(numberSystem == 2){
-            decimalToOctal();
+            octal = decimalToOctal(number);
         } else if(numberSystem == 3){
-            hexadecimalToOctal();
+            octal = hexadecimalToOctal(number);
         }
     }
-    public void toDecimal(){
+    private void toDecimal(){
         if(numberSystem == 0){
-            binaryToDecimal();
+            decimal = binaryToDecimal(number);
         } else if(numberSystem == 1){
-            octalToDecimal();
+            decimal = octalToDecimal(number);
         } else if(numberSystem == 2){
             decimal = number;
         } else if(numberSystem == 3){
-            hexadecimalToDecimal();
+            decimal = hexadecimalToDecimal(number);
         }
     }
-    public void toHexadecimal(){
+    private void toHexadecimal(){
         if(numberSystem == 0){
-            binaryToHexadecimal();
+            hexadecimal = binaryToHexadecimal(number);
         } else if(numberSystem == 1){
-            octalToHexadecimal();
+            hexadecimal = octalToHexadecimal(number);
         } else if(numberSystem == 2){
-            decimalToHexadecimal();
+            hexadecimal = decimalToHexadecimal(number);
         } else if(numberSystem == 3){
             hexadecimal = number;
         }
     }
 
-    public void binaryToOctal(){
-        int locPer = number.length();
-        for(int i=0; i<number.length(); i++){
-            if ( number.charAt(i) == '.'){
+    private StringBuffer binaryToOctal( StringBuffer num){
+        StringBuffer stringBuffer = new StringBuffer();
+        int locPer = num.length();
+        for(int i=0; i<num.length(); i++){
+            if ( num.charAt(i) == '.'){
                 locPer = i;
                 break;
             }
@@ -119,46 +120,47 @@ public class ConvertTo extends AppCompatActivity {
         for(int i= locPer-1; i>=0;){
             int n;
             if(i>=2){
-                int first = (int) (number.charAt(i--)) -48;
-                int second = (int) (number.charAt(i--)) -48;
-                int third = (int) (number.charAt(i--)) -48;
+                int first = (int) (num.charAt(i--)) -48;
+                int second = (int) (num.charAt(i--)) -48;
+                int third = (int) (num.charAt(i--)) -48;
                 n = first*1 +second*2 + third*4;
             }else if(i==1){
-                int first = (int) (number.charAt(i--)) -48;
-                int second = (int) (number.charAt(i--)) -48;
+                int first = (int) (num.charAt(i--)) -48;
+                int second = (int) (num.charAt(i--)) -48;
                 n = first*1 +second*2;
             }else {
-                int first = (int) (number.charAt(i--)) -48;
+                int first = (int) (num.charAt(i--)) -48;
                 n = first*1;
             }
-            octal = new StringBuffer(n + octal.toString());
+            stringBuffer = new StringBuffer(n + stringBuffer.toString());
         }
-        if(locPer != number.length())
-            octal = octal.append('.');
-        int len = number.length();
+        if(locPer != num.length())
+            stringBuffer = stringBuffer.append('.');
+        int len = num.length();
         for(int i= locPer+1; i<len;){
             int n;
             if(len-i >= 3){
-                int first = (int) (number.charAt(i++)) -48;
-                int second = (int) (number.charAt(i++)) -48;
-                int third = (int) (number.charAt(i++)) -48;
+                int first = (int) (num.charAt(i++)) -48;
+                int second = (int) (num.charAt(i++)) -48;
+                int third = (int) (num.charAt(i++)) -48;
                 n = first*4 +second*2 + third*1;
             }else if(len-i == 2){
-                int first = (int) (number.charAt(i++)) -48;
-                int second = (int) (number.charAt(i++)) -48;
+                int first = (int) (num.charAt(i++)) -48;
+                int second = (int) (num.charAt(i++)) -48;
                 n = first*4 +second*2;
             }else {
-                int first = (int) (number.charAt(i++)) -48;
+                int first = (int) (num.charAt(i++)) -48;
                 n = first*4;
             }
-            octal = octal.append(n);
+            stringBuffer = stringBuffer.append(n);
         }
-        Log.i("tagws", " Octal: "+ octal);
+        return stringBuffer;
     }
-    public void binaryToHexadecimal(){
-        int locPer = number.length();
-        for(int i=0; i<number.length(); i++){
-            if ( number.charAt(i) == '.'){
+    private StringBuffer binaryToHexadecimal(StringBuffer num){
+        StringBuffer stringBuffer = new StringBuffer();
+        int locPer = num.length();
+        for(int i=0; i<num.length(); i++){
+            if ( num.charAt(i) == '.'){
                 locPer = i;
                 break;
             }
@@ -166,84 +168,85 @@ public class ConvertTo extends AppCompatActivity {
         for(int i= locPer-1; i>=0;){
             int n;
             if(i >= 3){
-                int first = (int) (number.charAt(i--)) -48;
-                int second = (int) (number.charAt(i--)) -48;
-                int third = (int) (number.charAt(i--)) -48;
-                int fourth = (int) (number.charAt(i--)) -48;
+                int first = (int) (num.charAt(i--)) -48;
+                int second = (int) (num.charAt(i--)) -48;
+                int third = (int) (num.charAt(i--)) -48;
+                int fourth = (int) (num.charAt(i--)) -48;
                 n = first*1 +second*2 + third*4 + fourth*8;
             } else if(i >= 2){
-                int first = (int) (number.charAt(i--)) -48;
-                int second = (int) (number.charAt(i--)) -48;
-                int third = (int) (number.charAt(i--)) -48;
+                int first = (int) (num.charAt(i--)) -48;
+                int second = (int) (num.charAt(i--)) -48;
+                int third = (int) (num.charAt(i--)) -48;
                 n = first*1 +second*2 + third*4;
             } else if(i == 1){
-                int first = (int) (number.charAt(i--)) -48;
-                int second = (int) (number.charAt(i--)) -48;
+                int first = (int) (num.charAt(i--)) -48;
+                int second = (int) (num.charAt(i--)) -48;
                 n = first*1 +second*2;
             }else {
-                int first = (int) (number.charAt(i--)) -48;
+                int first = (int) (num.charAt(i--)) -48;
                 n = first*1;
             }
             if(n == 10)
-                hexadecimal = new StringBuffer('A' + hexadecimal.toString());
+                stringBuffer = new StringBuffer('A' + stringBuffer.toString());
             else if(n == 11)
-                hexadecimal = new StringBuffer('B' + hexadecimal.toString());
+                stringBuffer = new StringBuffer('B' + stringBuffer.toString());
             else if(n == 12)
-                hexadecimal = new StringBuffer('C' + hexadecimal.toString());
+                stringBuffer = new StringBuffer('C' + stringBuffer.toString());
             else if(n == 13)
-                hexadecimal = new StringBuffer('D' + hexadecimal.toString());
+                stringBuffer = new StringBuffer('D' + stringBuffer.toString());
             else if(n == 14)
-                hexadecimal = new StringBuffer('E' + hexadecimal.toString());
+                stringBuffer = new StringBuffer('E' + stringBuffer.toString());
             else if(n == 15)
-                hexadecimal = new StringBuffer('F' + hexadecimal.toString());
+                stringBuffer = new StringBuffer('F' + stringBuffer.toString());
             else
-                hexadecimal = new StringBuffer(n + hexadecimal.toString());
+                stringBuffer = new StringBuffer(n + stringBuffer.toString());
         }
-        if(locPer != number.length())
-            hexadecimal = hexadecimal.append('.');
-        int len = number.length();
+        if(locPer != num.length())
+            stringBuffer = stringBuffer.append('.');
+        int len = num.length();
         for(int i= locPer+1; i<len;){
             int n;
             if(len-i >= 4){
-                int first = (int) (number.charAt(i++)) -48;
-                int second = (int) (number.charAt(i++)) -48;
-                int third = (int) (number.charAt(i++)) -48;
-                int fourth = (int) (number.charAt(i++)) -48;
+                int first = (int) (num.charAt(i++)) -48;
+                int second = (int) (num.charAt(i++)) -48;
+                int third = (int) (num.charAt(i++)) -48;
+                int fourth = (int) (num.charAt(i++)) -48;
                 n = first*8 +second*4 + third*2 + fourth*1;
             } else if(len-i >= 3){
-                int first = (int) (number.charAt(i++)) -48;
-                int second = (int) (number.charAt(i++)) -48;
-                int third = (int) (number.charAt(i++)) -48;
+                int first = (int) (num.charAt(i++)) -48;
+                int second = (int) (num.charAt(i++)) -48;
+                int third = (int) (num.charAt(i++)) -48;
                 n = first*8 +second*4 + third*2;
             } else if(len-i == 2){
-                int first = (int) (number.charAt(i++)) -48;
-                int second = (int) (number.charAt(i++)) -48;
+                int first = (int) (num.charAt(i++)) -48;
+                int second = (int) (num.charAt(i++)) -48;
                 n = first*8 +second*4;
             } else {
-                int first = (int) (number.charAt(i++)) -48;
+                int first = (int) (num.charAt(i++)) -48;
                 n = first*8;
             }
             if(n == 10)
-                hexadecimal = hexadecimal.append('A');
+                stringBuffer = stringBuffer.append('A');
             else if(n == 11)
-                hexadecimal = hexadecimal.append('B');
+                stringBuffer = stringBuffer.append('B');
             else if(n == 12)
-                hexadecimal = hexadecimal.append('C');
+                stringBuffer = stringBuffer.append('C');
             else if(n == 13)
-                hexadecimal = hexadecimal.append('D');
+                stringBuffer = stringBuffer.append('D');
             else if(n == 14)
-                hexadecimal = hexadecimal.append('E');
+                stringBuffer = stringBuffer.append('E');
             else if(n == 15)
-                hexadecimal = hexadecimal.append('F');
+                stringBuffer = stringBuffer.append('F');
             else
-                hexadecimal = hexadecimal.append(n);
+                stringBuffer = stringBuffer.append(n);
         }
-        Log.i("tag", " Hexa: "+ hexadecimal);
+        return stringBuffer;
     }
-    public void binaryToDecimal(){
-        int locPer = number.length();
-        for(int i=0; i<number.length(); i++){
-            if ( number.charAt(i) == '.'){
+    private StringBuffer binaryToDecimal(StringBuffer num){
+        StringBuffer stringBuffer = new StringBuffer();
+        int locPer = num.length();
+        for(int i=0; i<num.length(); i++){
+            if ( num.charAt(i) == '.'){
                 locPer = i;
                 break;
             }
@@ -251,25 +254,36 @@ public class ConvertTo extends AppCompatActivity {
         double n =0;
         int c=0;
         for(int i= locPer-1; i>=0; i--){
-            int v = (int) number.charAt(i) -48;
+            int v = (int) num.charAt(i) -48;
             n = n +  v*Math.pow(2, c);
             c++;
         }
         c = -1;
-        for(int i= locPer+1; i<number.length(); i++){
-            int v = (int) number.charAt(i) -48;
+        for(int i= locPer+1; i<num.length(); i++){
+            int v = (int) num.charAt(i) -48;
             n = n +  v*Math.pow(2, c);
             c--;
         }
-        decimal = decimal.append(n);
-        Log.i("tag", decimal.toString());
+        stringBuffer = stringBuffer.append(n);
+        return stringBuffer;
     }
 
-    public void octalToBinary(){ /* TODO */}
-    public void octalToDecimal(){
-        int locPer = number.length();
-        for(int i=0; i<number.length(); i++){
-            if ( number.charAt(i) == '.'){
+    private StringBuffer octalToBinary(StringBuffer num){
+        StringBuffer stringBuffer = new StringBuffer();
+        for(int i=0; i<num.length(); i++){
+            if(num.charAt(i) != '.'){
+                String abc = octalInBinary(num.charAt(i));
+                stringBuffer = stringBuffer.append(abc);
+            } else
+                stringBuffer = stringBuffer.append('.');
+        }
+        return stringBuffer;
+    }
+    private StringBuffer octalToDecimal(StringBuffer num){
+        StringBuffer stringBuffer = new StringBuffer();
+        int locPer = num.length();
+        for(int i=0; i<num.length(); i++){
+            if ( num.charAt(i) == '.'){
                 locPer = i;
                 break;
             }
@@ -277,26 +291,46 @@ public class ConvertTo extends AppCompatActivity {
         double n =0;
         int c=0;
         for(int i= locPer-1; i>=0; i--){
-            int v = (int) number.charAt(i) -48;
+            int v = (int) num.charAt(i) -48;
             n = n +  v*Math.pow(8, c);
             c++;
         }
         c = -1;
-        for(int i= locPer+1; i<number.length(); i++){
-            int v = (int) number.charAt(i) -48;
+        for(int i= locPer+1; i<num.length(); i++){
+            int v = (int) num.charAt(i) -48;
             n = n +  v*Math.pow(8, c);
             c--;
         }
-        octal = octal.append(n);
+        stringBuffer = stringBuffer.append(n);
+        return stringBuffer;
     }
-    public void octalToHexadecimal(){ /* TODO */}
+    private StringBuffer octalToHexadecimal(StringBuffer num){
+        StringBuffer stringBuffer = octalToBinary(num);
+        stringBuffer = binaryToHexadecimal(stringBuffer);
+        return stringBuffer;
+    }
 
-    public void hexadecimalToBinary(){ /* TODO */}
-    public void hexadecimalToOctal(){ /* TODO */}
-    public void hexadecimalToDecimal(){
-        int locPer = number.length();
-        for(int i=0; i<number.length(); i++){
-            if ( number.charAt(i) == '.'){
+    private StringBuffer hexadecimalToBinary(StringBuffer num){
+        StringBuffer stringBuffer = new StringBuffer();
+        for(int i=0; i<num.length(); i++){
+            if(num.charAt(i) != '.'){
+                String abc = hexadecimalInBinary(num.charAt(i));
+                stringBuffer = stringBuffer.append(abc);
+            } else
+                stringBuffer = stringBuffer.append('.');
+        }
+        return stringBuffer;
+    }
+    private StringBuffer hexadecimalToOctal(StringBuffer num){
+        StringBuffer stringBuffer = hexadecimalToBinary(num);
+        stringBuffer = binaryToOctal(stringBuffer);
+        return stringBuffer;
+    }
+    private StringBuffer hexadecimalToDecimal(StringBuffer num){
+        StringBuffer stringBuffer = new StringBuffer();
+        int locPer = num.length();
+        for(int i=0; i<num.length(); i++){
+            if ( num.charAt(i) == '.'){
                 locPer = i;
                 break;
             }
@@ -305,33 +339,99 @@ public class ConvertTo extends AppCompatActivity {
         int c=0;
         for(int i= locPer-1; i>=0; i--){
             int v;
-            if(number.charAt(i) == 'A')    v = 10;
-            else if(number.charAt(i) == 'B')    v = 11;
-            else if(number.charAt(i) == 'C')    v = 12;
-            else if(number.charAt(i) == 'D')    v = 13;
-            else if(number.charAt(i) == 'E')    v = 14;
-            else if(number.charAt(i) == 'F')    v = 15;
-            else    v = (int) number.charAt(i) -48;
-            n = n +  v*Math.pow(2, c);
+            if(num.charAt(i) == 'A')    v = 10;
+            else if(num.charAt(i) == 'B')    v = 11;
+            else if(num.charAt(i) == 'C')    v = 12;
+            else if(num.charAt(i) == 'D')    v = 13;
+            else if(num.charAt(i) == 'E')    v = 14;
+            else if(num.charAt(i) == 'F')    v = 15;
+            else    v = (int) num.charAt(i) -48;
+            n = n +  v*Math.pow(16, c);
             c++;
         }
         c = -1;
-        for(int i= locPer+1; i<number.length(); i++){
+        for(int i= locPer+1; i<num.length(); i++){
             int v;
-            if(number.charAt(i) == 'A')    v = 10;
-            else if(number.charAt(i) == 'B')    v = 11;
-            else if(number.charAt(i) == 'C')    v = 12;
-            else if(number.charAt(i) == 'D')    v = 13;
-            else if(number.charAt(i) == 'E')    v = 14;
-            else if(number.charAt(i) == 'F')    v = 15;
-            else    v = (int) number.charAt(i) -48;
-            n = n +  v*Math.pow(2, c);
+            if(num.charAt(i) == 'A')    v = 10;
+            else if(num.charAt(i) == 'B')    v = 11;
+            else if(num.charAt(i) == 'C')    v = 12;
+            else if(num.charAt(i) == 'D')    v = 13;
+            else if(num.charAt(i) == 'E')    v = 14;
+            else if(num.charAt(i) == 'F')    v = 15;
+            else    v = (int) num.charAt(i) -48;
+            n = n +  v*Math.pow(16, c);
             c--;
         }
-        hexadecimal = hexadecimal.append(n);
+        stringBuffer = stringBuffer.append(n);
+        return stringBuffer;
     }
 
-    public void decimalToBinary(){ /* TODO */}
-    public void decimalToOctal(){ /* TODO */}
-    public void decimalToHexadecimal(){ /* TODO */}
+    private StringBuffer decimalToBinary(StringBuffer num){
+        /* TODO */
+        StringBuffer stringBuffer = new StringBuffer();
+        return stringBuffer;
+    }
+    private StringBuffer decimalToOctal(StringBuffer num){
+        /* TODO */
+        StringBuffer stringBuffer = new StringBuffer();
+        return stringBuffer;
+    }
+    private StringBuffer decimalToHexadecimal(StringBuffer num){
+        /* TODO */
+        StringBuffer stringBuffer = new StringBuffer();
+        return stringBuffer;
+    }
+
+    private String octalInBinary(char num){
+        if(num == '0')
+            return "000";
+        else if(num == '1')
+            return "001";
+        else if(num == '2')
+            return "010";
+        else if(num == '3')
+            return "011";
+        else if(num == '4')
+            return "100";
+        else if(num == '5')
+            return "101";
+        else if(num == '6')
+            return "110";
+        else
+            return "111";
+    }
+    private String hexadecimalInBinary(char num){
+        if(num == '0')
+            return "0000";
+        else if(num == '1')
+            return "0001";
+        else if(num == '2')
+            return "0010";
+        else if(num == '3')
+            return "0011";
+        else if(num == '4')
+            return "=100";
+        else if(num == '5')
+            return "0101";
+        else if(num == '6')
+            return "0110";
+        else if(num == '7')
+            return "0111";
+        else if(num == '8')
+            return "1000";
+        else if(num == '9')
+            return "1001";
+        else if(num == 'A')
+            return "1010";
+        else if(num == 'B')
+            return "1011";
+        else if(num == 'C')
+            return "1100";
+        else if(num == 'D')
+            return "1101";
+        else if(num == 'E')
+            return "1110";
+        else
+            return "1111";
+    }
 }

@@ -60,7 +60,7 @@
     <string name="tan_inverse">tan<sup>-1</sup></string>
     <string name="floor_function">floor</string>
     <string name="ceiling_function">ceil</string>
-    <string name="pi_constant">pi</string>
+    <string name="pi_constant">\u03c0</string>
     <string name="maximum">max</string>
     <string name="minimum">min</string>
     <string name="comma">,</string>

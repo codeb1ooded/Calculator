@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.megha.scientificcalculator.Fragments.AdvancedOperations;
 import com.example.megha.scientificcalculator.Fragments.BasicOperations;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     Button bSinInv, bCosInv, bTanIv, bFloor, bCeil, bPi, bMax, bMin, bComma, bToDegrees, bToRadians;
     TextView textView;
     StringBuffer screenText;
+    Stack stackScreen;
+    Boolean numberInput, periodDone, numAfterPeriod;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -142,6 +145,10 @@ public class MainActivity extends AppCompatActivity {
     public void initialise(){
         screenText = new StringBuffer();
         textView = (TextView) findViewById(R.id.mainActivityTextView);
+        stackScreen = new Stack();
+        numberInput = false;
+        periodDone = false;
+        numAfterPeriod = false;
 
         b0 = (Button) findViewById(R.id.button0);
         b1 = (Button) findViewById(R.id.button1);
@@ -191,160 +198,298 @@ public class MainActivity extends AppCompatActivity {
     // CLEAR ALL
     public void clearAllClicked(View v){
         screenText = new StringBuffer();
+        numAfterPeriod = false;
+        numberInput = false;
+        periodDone = false;
+        stackScreen.emptyStack();
         textView.setText("");
     }
 
     // CLEAR LAST
     public void clearClicked(View v){
-        if(screenText.length() > 1) {
+        if(screenText.length() > 0) {
+            if(screenText.length() == 1)
+                numberInput = false;
+            else if(screenText.charAt(screenText.length()-1) == '.')
+                periodDone = false;
+            else if (screenText.length() >= 2 && screenText.charAt(screenText.length()-2) == '.')
+                numAfterPeriod = false;
             screenText = screenText.delete(screenText.length() - 1, screenText.length());
-            textView.setText(screenText);
+            String newText = textView.getText().subSequence(0, textView.getText().length()-screenText.length()-1).toString() + screenText;
+            textView.setText(newText);
+        }else if( !stackScreen.isEmpty() ){
+            String fromStack = stackScreen.viewLast();
+            char lastChar = fromStack.charAt(fromStack.length()-1);
+            if(((int)lastChar >= 48 && (int)lastChar <= 57)){
+                screenText = new StringBuffer(stackScreen.pop());
+                clearClicked(v);
+            } else {
+                String abc = stackScreen.pop();
+                String newText = textView.getText().subSequence(0, textView.getText().length()-abc.length()).toString();
+                textView.setText(newText);
+            }
         }
     }
 
     // 1
     public void oneClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('1');
         textView.setText(textView.getText() + "1");
     }
 
     // 2
     public void twoClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('2');
         textView.setText(textView.getText() + "2");
     }
 
     // 3
     public void threeClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('3');
         textView.setText(textView.getText() + "3");
     }
 
     // 4
     public void fourClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('4');
         textView.setText(textView.getText() + "4");
     }
 
     // 5
     public void fiveClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('5');
         textView.setText(textView.getText() + "5");
     }
 
     // 6
     public void sixClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('6');
         textView.setText(textView.getText() + "6");
     }
 
     // 7
     public void sevenClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('7');
         textView.setText(textView.getText() + "7");
     }
 
     // 8
     public void eightClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('8');
         textView.setText(textView.getText() + "8");
     }
 
     // 9
     public void nineClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('9');
         textView.setText(textView.getText() + "9");
     }
 
     // 0
     public void zeroClicked(View v){
+        numberInput = true;
+        if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('0');
         textView.setText(textView.getText() + "0");
     }
 
+    // .
+    public void periodClicked(View v){
+        if(!numberInput || periodDone)
+            Toast.makeText(MainActivity.this, "Enter a valid number", Toast.LENGTH_SHORT).show();
+        else{
+            periodDone = true;
+            screenText = screenText.append('.');
+            textView.setText(textView.getText() + ".");
+        }
+    }
+
     // +
     public void plusClicked(View v){
-        screenText = screenText.append('+');
-        textView.setText(textView.getText() + "+");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "+");
+            stackScreen.push("+");
+        }
     }
 
     // -
     public void minusClicked(View v){
-        screenText = screenText.append('-');
-        textView.setText(textView.getText() + "-");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "-");
+            stackScreen.push("-");
+        }
     }
 
     // *
     public void multiplyClicked(View v){
-        screenText = screenText.append('*');
-        textView.setText(textView.getText() + "*");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "*");
+            stackScreen.push("*");
+        }
     }
 
     // /
     public void divideClicked(View v){
-        screenText = screenText.append('/');
-        textView.setText(textView.getText() + "/");
-    }
-
-    // .
-    public void periodClicked(View v){
-        screenText = screenText.append('.');
-        textView.setText(textView.getText() + ".");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "/");
+            stackScreen.push("/");
+        }
     }
 
     // sin
     public void sinClicked(View v){
-        screenText = screenText.append('s');
-        screenText = screenText.append('i');
-        screenText = screenText.append('n');
-        textView.setText(textView.getText() + "sin");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "sin");
+            stackScreen.push("sin");
+        }
     }
 
     // cos
     public void cosClicked(View v){
-        screenText = screenText.append('c');
-        screenText = screenText.append('o');
-        screenText = screenText.append('s');
-        textView.setText(textView.getText() + "cos");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "cos");
+            stackScreen.push("cos");
+        }
     }
 
     // tan
     public void tanClicked(View v){
-        screenText = screenText.append('t');
-        screenText = screenText.append('a');
-        screenText = screenText.append('n');
-        textView.setText(textView.getText() + "tan");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "tan");
+            stackScreen.push("tan");
+        }
     }
 
     // log
     public void logClicked(View v){
-        screenText = screenText.append('l');
-        screenText = screenText.append('o');
-        screenText = screenText.append('g');
-        textView.setText(textView.getText() + "log");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "log");
+            stackScreen.push("log");
+        }
     }
 
     // e
     public void expClicked(View v){
-        screenText = screenText.append('e');
-        textView.setText(textView.getText() + "e");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "e");
+            stackScreen.push("e");
+        }
     }
 
     // ln
     public void lnClicked(View v){
-        screenText = screenText.append('l');
-        screenText = screenText.append('n');
-        textView.setText(textView.getText() + "ln");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "ln");
+            stackScreen.push("ln");
+        }
     }
 
     // square root
     public void srClicked(View v){
-        screenText = screenText.append('s');
-        textView.setText(textView.getText() + "√");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "√");
+            stackScreen.push("√");
+        }
     }
 
     // power
     public void powerClicked(View v){
+        numberInput = false;
         /* TO DO
         screenText = screenText.append('l');
         textView.setText(textView.getText() + "");*/
@@ -352,6 +497,7 @@ public class MainActivity extends AppCompatActivity {
 
     // square
     public void squareClicked(View v){
+        numberInput = false;
         /* TO DO
         screenText = screenText.append('l');
         screenText = screenText.append('n');
@@ -360,19 +506,209 @@ public class MainActivity extends AppCompatActivity {
 
     // bracket open
     public void bracketOpenClicked(View v){
-        screenText = screenText.append('(');
-        textView.setText(textView.getText() + "(");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "(");
+            stackScreen.push("(");
+        }
     }
 
     // bracket Closed
     public void bracketClosedClicked(View v){
-        screenText = screenText.append(')');
-        textView.setText(textView.getText() + ")");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + ")");
+            stackScreen.push(")");
+        }
     }
 
     // factorial
     public void factorialClicked(View v){
-        screenText = screenText.append('!');
-        textView.setText(textView.getText() + "!");
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "!");
+            stackScreen.push("!");
+        }
+    }
+
+    // sin-1
+    public void sinInvClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "sin"+'\u207B'+'\u00B9');
+            stackScreen.push("sinI");
+        }
+    }
+
+    // cos-1
+    public void cosInvClicked(View v){if(numAfterPeriod || !periodDone){
+        if (numberInput){
+            periodDone = false;
+            numAfterPeriod = false;
+            stackScreen.push(screenText.toString());
+            numberInput = false;
+            screenText = new StringBuffer();
+        }
+        textView.setText(textView.getText() + "cos"+'\u207B'+'\u00B9');
+        stackScreen.push("cosI");
+    }
+    }
+
+    // tan-1
+    public void tanInvClicked(View v){if(numAfterPeriod || !periodDone){
+        if (numberInput){
+            periodDone = false;
+            numAfterPeriod = false;
+            stackScreen.push(screenText.toString());
+            numberInput = false;
+            screenText = new StringBuffer();
+        }
+        textView.setText(textView.getText() + "tan"+'\u207B'+'\u00B9');
+        stackScreen.push("tanI");
+    }
+    }
+
+    // floor
+    public void floorClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "floor");
+            stackScreen.push("floor");
+        }
+    }
+
+    // ceil
+    public void ceilClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "ceil");
+            stackScreen.push("ceil");
+        }
+    }
+
+    // pi
+    public void piClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "\u03c0");
+            stackScreen.push("\u03c0");
+        }
+    }
+
+    // max
+    public void maxClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "max");
+            stackScreen.push("max");
+        }
+    }
+
+    // min
+    public void minClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "min");
+            stackScreen.push("min");
+        }
+    }
+
+    // ,
+    public void commaClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + ",");
+            stackScreen.push(",");
+        }
+    }
+
+    // toDegrees
+    public void toDegreesClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "toDegrees");
+            stackScreen.push("toDegrees");
+        }
+    }
+
+    // toRadians
+    public void toRadiansClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + "toRadians");
+            stackScreen.push("toRadians");
+        }
     }
 }

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -123,14 +122,13 @@ public class ConvertTo extends AppCompatActivity {
                 int first = (int) (num.charAt(i--)) -48;
                 int second = (int) (num.charAt(i--)) -48;
                 int third = (int) (num.charAt(i--)) -48;
-                n = first*1 +second*2 + third*4;
+                n = first +second*2 + third*4;
             }else if(i==1){
                 int first = (int) (num.charAt(i--)) -48;
                 int second = (int) (num.charAt(i--)) -48;
-                n = first*1 +second*2;
+                n = first +second*2;
             }else {
-                int first = (int) (num.charAt(i--)) -48;
-                n = first*1;
+                n = (int) (num.charAt(i--)) -48;
             }
             stringBuffer = new StringBuffer(n + stringBuffer.toString());
         }
@@ -143,7 +141,7 @@ public class ConvertTo extends AppCompatActivity {
                 int first = (int) (num.charAt(i++)) -48;
                 int second = (int) (num.charAt(i++)) -48;
                 int third = (int) (num.charAt(i++)) -48;
-                n = first*4 +second*2 + third*1;
+                n = first*4 +second*2 + third;
             }else if(len-i == 2){
                 int first = (int) (num.charAt(i++)) -48;
                 int second = (int) (num.charAt(i++)) -48;
@@ -172,19 +170,18 @@ public class ConvertTo extends AppCompatActivity {
                 int second = (int) (num.charAt(i--)) -48;
                 int third = (int) (num.charAt(i--)) -48;
                 int fourth = (int) (num.charAt(i--)) -48;
-                n = first*1 +second*2 + third*4 + fourth*8;
+                n = first +second*2 + third*4 + fourth*8;
             } else if(i >= 2){
                 int first = (int) (num.charAt(i--)) -48;
                 int second = (int) (num.charAt(i--)) -48;
                 int third = (int) (num.charAt(i--)) -48;
-                n = first*1 +second*2 + third*4;
+                n = first +second*2 + third*4;
             } else if(i == 1){
                 int first = (int) (num.charAt(i--)) -48;
                 int second = (int) (num.charAt(i--)) -48;
-                n = first*1 +second*2;
+                n = first +second*2;
             }else {
-                int first = (int) (num.charAt(i--)) -48;
-                n = first*1;
+                n = (int) (num.charAt(i--)) -48;
             }
             if(n == 10)
                 stringBuffer = new StringBuffer('A' + stringBuffer.toString());
@@ -211,7 +208,7 @@ public class ConvertTo extends AppCompatActivity {
                 int second = (int) (num.charAt(i++)) -48;
                 int third = (int) (num.charAt(i++)) -48;
                 int fourth = (int) (num.charAt(i++)) -48;
-                n = first*8 +second*4 + third*2 + fourth*1;
+                n = first*8 +second*4 + third*2 + fourth;
             } else if(len-i >= 3){
                 int first = (int) (num.charAt(i++)) -48;
                 int second = (int) (num.charAt(i++)) -48;

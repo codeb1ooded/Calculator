@@ -12,4 +12,5 @@ public class Constants {
     public static String convertDecimal = "CONVERT_DECIMAL_NUMBER";
     public static String convertHexadecimal = "CONVERT_HEXADECIMAL_NUMBER";
 
+    public static String nothing = "NOTHING";
 }

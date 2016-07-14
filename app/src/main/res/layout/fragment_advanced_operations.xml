@@ -20,7 +20,8 @@
             android:text="@string/sin_inverse"
             android:id="@+id/button1a"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="sinInvClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -33,7 +34,8 @@
             android:layout_toRightOf="@+id/button1a"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="cosInvClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -46,7 +48,8 @@
             android:layout_toRightOf="@+id/button2a"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="tanInvClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +67,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="floorClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -77,7 +81,8 @@
             android:layout_toRightOf="@+id/button4a"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="ceilClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -90,7 +95,8 @@
             android:layout_toRightOf="@+id/button5a"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="piClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -108,7 +114,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="maxClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -121,7 +128,8 @@
             android:layout_toRightOf="@+id/button7a"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="minClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -134,7 +142,8 @@
             android:layout_toRightOf="@+id/button8a"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="commaClicked"/>
 
     </LinearLayout>
 
@@ -153,7 +162,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="toDegreesClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -166,7 +176,8 @@
             android:layout_toRightOf="@+id/button10a"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:onClick="toRadiansClicked"/>
 
     </LinearLayout>
 

@@ -90,10 +90,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -560,7 +556,7 @@ public class MainActivity extends AppCompatActivity {
                 screenText = new StringBuffer();
             }
             textView.setText(textView.getText() + "sin"+'\u207B'+'\u00B9');
-            stackScreen.push("sinI");
+            stackScreen.push("sinIn");
         }
     }
 
@@ -574,7 +570,7 @@ public class MainActivity extends AppCompatActivity {
             screenText = new StringBuffer();
         }
         textView.setText(textView.getText() + "cos"+'\u207B'+'\u00B9');
-        stackScreen.push("cosI");
+        stackScreen.push("cosIn");
     }
     }
 
@@ -588,7 +584,7 @@ public class MainActivity extends AppCompatActivity {
             screenText = new StringBuffer();
         }
         textView.setText(textView.getText() + "tan"+'\u207B'+'\u00B9');
-        stackScreen.push("tanI");
+        stackScreen.push("tanIn");
     }
     }
 
@@ -710,5 +706,10 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(textView.getText() + "toRadians");
             stackScreen.push("toRadians");
         }
+    }
+
+    // equal to =
+    public void equalToClicked(View v){
+        Result.calculateResult(stackScreen);
     }
 }

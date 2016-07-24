@@ -755,12 +755,61 @@ public class MainActivity extends AppCompatActivity {
     public void equalToClicked(View v){
         Result.calculateResult(stackScreen);
         infix.append(")");
-        infixToPostfix();
+        infixToPostfix(infix.toString());
     }
 
-    public void infixToPostfix(){
-        Stack postfixStack = new Stack();
-        String thisString = grabString(0);
+    public String infixToPostfix(String infixLocal){
+        Stack infixStack = new Stack();
+        StringBuffer postfix = new StringBuffer();
+        int i = 0;
+        while(i < infixLocal.length()) {
+            GrabString obj = grabString(i);
+            i = obj.val;
+            String s = obj.s;
+            if(s == null){
+                // I think it's not possible but will see
+            }
+            else if(((int)s.charAt(0) >=48 && (int)s.charAt(0) <= 57) || s.charAt(0) == '.' || s.charAt(0) == 'π' ){
+                postfix.append(s);
+            }
+            else if(s.charAt(0) == '('){
+                infixStack.push("(");
+            }
+            else if(s.charAt(0) == ')'){
+                String st = infixStack.pop();
+                while(st != ")"){
+                    postfix.append(st);
+                    st = infixStack.pop();
+                }
+            }
+            else if(s.charAt(0) == '+' || s.charAt(0) == '-' || s.charAt(0) == '*' || s.charAt(0) == '/'){
+                // Number
+            }
+            else {
+                if(s.charAt(0) == 'e' || s.charAt(0) == '√'){
+
+                }
+                else if(s.charAt(0) == ','){
+                    //error of expression
+                }
+                else if(s.equals(OperatorParameters.max) || s.equals(OperatorParameters.min)){
+                    if( i >= infixLocal.length()){
+                        // expression error
+                    }
+                    else if( infix.charAt(i) == '('){
+                        while(i >= infix.length() || infix.charAt(i) == ')'){
+
+                        }
+                    }
+                    else{
+                        GrabString ob = grabString(i);
+                        postfix.append(ob.s);
+                        i = ob.val;
+                    }
+                }
+            }
+        }
+        return postfix.toString();
     }
 
     public int priority(String param){
@@ -778,18 +827,73 @@ public class MainActivity extends AppCompatActivity {
         return  5;
     }
 
-    public String grabString( int i){
+    public GrabString grabString( int i){
         String s = infix.substring(i, i+1);
         char c = infix.charAt(i);
-        if((int)c >=48 && (int)c <= 57) {
-            int j=i;
-            for(;((int)infix.charAt(j) >=48 && (int)infix.charAt(j) <= 57) || infix.charAt(j) == '.' ; j++){}
-            return infix.substring(i, j);
+        if (c=='.' || c=='+' || c=='-' || c=='/' || c=='*' || c=='e' || c=='√' || c=='!' || c=='(' || c==')' || c==',' || c=='π'){
+            return new GrabString(i+1, infix.substring(i, i+1));
         }
-        return null;
+        else if (c == 'l' && infix.charAt(i) == 'n'){
+            return new GrabString(i+2, infix.substring(i, i+2));
+        }
+
+        else{
+            char d = infix.charAt(i+1);
+            char e = infix.charAt(i+2);
+            if ((c=='s'&&d=='i'&&e=='n') || (c=='c'&&d=='o'&&e=='s') || (c=='t'&&d=='a'&&e=='n')){
+                return new GrabString(i+3, infix.substring(i, i+3));
+            }
+            else if ((c=='l'&&d=='o'&&e=='g') || (c=='m'&&d=='a'&&e=='x') || (c=='m'&&d=='i'&&e=='n')){
+                return new GrabString(i+3, infix.substring(i, i+3));
+            }
+            else if (c=='c' && d=='e' && e=='i' && infix.charAt(i+3)=='l'){
+                return new GrabString(i+4, infix.substring(i, i+4));
+            }
+            else {
+                if((infix.substring(i, i+5).equals(OperatorParameters.floor)) || (infix.substring(i, i+5).equals(OperatorParameters.sinInv)) ||
+                        (infix.substring(i, i+5).equals(OperatorParameters.cosInv)) || (infix.substring(i, i+5).equals(OperatorParameters.tanInv))){
+                    return new GrabString(i+5, infix.substring(i, i+5));
+                }
+                else if((infix.substring(i, i+9).equals(OperatorParameters.toDegrees)) || (infix.substring(i, i+9).equals(OperatorParameters.toRadians))){
+                    return new GrabString(i+9, infix.substring(i, i+9));
+                }
+                else if((int)c >=48 && (int)c <= 57) {
+                    int j=i;
+                    for(;((int)infix.charAt(j) >=48 && (int)infix.charAt(j) <= 57) || infix.charAt(j) == '.' ; j++){}
+                    return new GrabString(j, infix.substring(i, j));
+                }
+                return null;
+            }
+        }
     }
 
     public Double stringToDecimal(String num){
-        return 0.0;
+        Double n = 0.0;
+        boolean periodEnc = false;
+        int j = 1;
+        for(int i=0; i<num.length(); i++){
+            if(num.charAt(i) == '.') {
+                if (periodEnc) {
+                    //Invalid number
+                    Toast.makeText(MainActivity.this, "You entered an invalid number", Toast.LENGTH_SHORT);
+                    // TO DO: Clear everything
+                }
+                    periodEnc = true;
+            }
+            else if (periodEnc)
+                n = n + ((int) num.charAt(i) -48) *(j++);
+            else
+                n = n * 10 + ((int) num.charAt(i) -48);
+        }
+        return n;
+    }
+
+    class GrabString{
+        public int val;
+        public String s;
+        public GrabString(int val, String s){
+            this.val = val;
+            this.s = s;
+        }
     }
 }

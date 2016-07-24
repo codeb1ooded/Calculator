@@ -7,9 +7,11 @@ import java.util.ArrayList;
  */
 public class Stack {
     private ArrayList<String> stack;
+    private ArrayList<String> postfix;
     private int top;
     Stack(){
         stack = new ArrayList<>();
+        push("(");
         top = -1;
     }
     public void push(String element){

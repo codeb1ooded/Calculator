@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     StringBuffer screenText;
     Stack stackScreen;
     Boolean numberInput, periodDone, numAfterPeriod;
+    StringBuffer infix;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -145,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         numberInput = false;
         periodDone = false;
         numAfterPeriod = false;
+        infix = new StringBuffer("(");
 
         b0 = (Button) findViewById(R.id.button0);
         b1 = (Button) findViewById(R.id.button1);
@@ -199,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         periodDone = false;
         stackScreen.emptyStack();
         textView.setText("");
+        infix = new StringBuffer("(");
     }
 
     // CLEAR LAST
@@ -213,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
             screenText = screenText.delete(screenText.length() - 1, screenText.length());
             String newText = textView.getText().subSequence(0, textView.getText().length()-screenText.length()-1).toString() + screenText;
             textView.setText(newText);
+            infix =new StringBuffer( "("+ newText);
         }else if( !stackScreen.isEmpty() ){
             String fromStack = stackScreen.viewLast();
             char lastChar = fromStack.charAt(fromStack.length()-1);
@@ -223,6 +228,7 @@ public class MainActivity extends AppCompatActivity {
                 String abc = stackScreen.pop();
                 String newText = textView.getText().subSequence(0, textView.getText().length()-abc.length()).toString();
                 textView.setText(newText);
+                infix =new StringBuffer( "("+ newText);
             }
         }
     }
@@ -232,7 +238,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('1');
-        textView.setText(textView.getText() + "1");
+        textView.setText(textView.getText() + OperatorParameters.one);
+        infix.append(OperatorParameters.one);
     }
 
     // 2
@@ -240,7 +247,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('2');
-        textView.setText(textView.getText() + "2");
+        textView.setText(textView.getText() + OperatorParameters.two);
+        infix.append(OperatorParameters.two);
     }
 
     // 3
@@ -248,7 +256,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('3');
-        textView.setText(textView.getText() + "3");
+        textView.setText(textView.getText() + OperatorParameters.three);
+        infix.append(OperatorParameters.three);
     }
 
     // 4
@@ -256,7 +265,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('4');
-        textView.setText(textView.getText() + "4");
+        textView.setText(textView.getText() + OperatorParameters.four);
+        infix.append(OperatorParameters.four);
     }
 
     // 5
@@ -264,7 +274,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('5');
-        textView.setText(textView.getText() + "5");
+        textView.setText(textView.getText() + OperatorParameters.five);
+        infix.append(OperatorParameters.five);
     }
 
     // 6
@@ -272,7 +283,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('6');
-        textView.setText(textView.getText() + "6");
+        textView.setText(textView.getText() + OperatorParameters.six);
+        infix.append(OperatorParameters.six);
     }
 
     // 7
@@ -280,7 +292,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('7');
-        textView.setText(textView.getText() + "7");
+        textView.setText(textView.getText() + OperatorParameters.seven);
+        infix.append(OperatorParameters.seven);
     }
 
     // 8
@@ -288,7 +301,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('8');
-        textView.setText(textView.getText() + "8");
+        textView.setText(textView.getText() + OperatorParameters.eight);
+        infix.append(OperatorParameters.eight);
     }
 
     // 9
@@ -296,7 +310,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('9');
-        textView.setText(textView.getText() + "9");
+        textView.setText(textView.getText() + OperatorParameters.nine);
+        infix.append(OperatorParameters.nine);
     }
 
     // 0
@@ -304,7 +319,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('0');
-        textView.setText(textView.getText() + "0");
+        textView.setText(textView.getText() + OperatorParameters.zero);
+        infix.append(OperatorParameters.zero);
     }
 
     // .
@@ -314,7 +330,8 @@ public class MainActivity extends AppCompatActivity {
         else{
             periodDone = true;
             screenText = screenText.append('.');
-            textView.setText(textView.getText() + ".");
+            textView.setText(textView.getText() + OperatorParameters.period);
+            infix.append(OperatorParameters.period);
         }
     }
 
@@ -328,8 +345,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "+");
-            stackScreen.push("+");
+            textView.setText(textView.getText() + OperatorParameters.plus);
+            stackScreen.push(OperatorParameters.plus);
+            infix.append(OperatorParameters.plus);
         }
     }
 
@@ -343,8 +361,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "-");
-            stackScreen.push("-");
+            textView.setText(textView.getText() + OperatorParameters.minus);
+            stackScreen.push(OperatorParameters.minus);
+            infix.append(OperatorParameters.minus);
         }
     }
 
@@ -358,8 +377,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "*");
-            stackScreen.push("*");
+            textView.setText(textView.getText() + OperatorParameters.multiply);
+            stackScreen.push(OperatorParameters.multiply);
+            infix.append(OperatorParameters.multiply);
         }
     }
 
@@ -373,8 +393,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "/");
-            stackScreen.push("/");
+            textView.setText(textView.getText() + OperatorParameters.divide);
+            stackScreen.push(OperatorParameters.divide);
+            infix.append(OperatorParameters.divide);
         }
     }
 
@@ -388,8 +409,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "sin");
-            stackScreen.push("sin");
+            textView.setText(textView.getText() + OperatorParameters.sin);
+            stackScreen.push(OperatorParameters.sin);
+            infix.append(OperatorParameters.sin);
         }
     }
 
@@ -403,8 +425,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "cos");
-            stackScreen.push("cos");
+            textView.setText(textView.getText() + OperatorParameters.cos);
+            stackScreen.push(OperatorParameters.cos);
+            infix.append(OperatorParameters.cos);
         }
     }
 
@@ -418,8 +441,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "tan");
-            stackScreen.push("tan");
+            textView.setText(textView.getText() + OperatorParameters.tan);
+            stackScreen.push(OperatorParameters.tan);
+            infix.append(OperatorParameters.tan);
         }
     }
 
@@ -433,8 +457,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "log");
-            stackScreen.push("log");
+            textView.setText(textView.getText() + OperatorParameters.log);
+            stackScreen.push(OperatorParameters.log);
+            infix.append(OperatorParameters.log);
         }
     }
 
@@ -448,8 +473,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "e");
-            stackScreen.push("e");
+            textView.setText(textView.getText() + OperatorParameters.exp);
+            stackScreen.push(OperatorParameters.exp);
+            infix.append(OperatorParameters.exp);
         }
     }
 
@@ -463,8 +489,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "ln");
-            stackScreen.push("ln");
+            textView.setText(textView.getText() + OperatorParameters.ln);
+            stackScreen.push(OperatorParameters.ln);
+            infix.append(OperatorParameters.ln);
         }
     }
 
@@ -478,8 +505,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "√");
-            stackScreen.push("√");
+            textView.setText(textView.getText() + OperatorParameters.squareroot);
+            stackScreen.push(OperatorParameters.squareroot);
+            infix.append(OperatorParameters.squareroot);
         }
     }
 
@@ -510,8 +538,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "(");
-            stackScreen.push("(");
+            textView.setText(textView.getText() + OperatorParameters.bracketopen);
+            stackScreen.push(OperatorParameters.bracketopen);
+            infix.append(OperatorParameters.bracketopen);
         }
     }
 
@@ -525,8 +554,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + ")");
-            stackScreen.push(")");
+            textView.setText(textView.getText() + OperatorParameters.bracketclose);
+            stackScreen.push(OperatorParameters.bracketclose);
+            infix.append(OperatorParameters.bracketclose);
         }
     }
 
@@ -540,8 +570,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "!");
-            stackScreen.push("!");
+            textView.setText(textView.getText() + OperatorParameters.factorial);
+            stackScreen.push(OperatorParameters.factorial);
+            infix.append(OperatorParameters.factorial);
         }
     }
 
@@ -555,23 +586,26 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "sin"+'\u207B'+'\u00B9');
-            stackScreen.push("sinIn");
+            textView.setText(textView.getText() + OperatorParameters.sinInv);
+            stackScreen.push(OperatorParameters.sinInv);
+            infix.append(OperatorParameters.sinInv);
         }
     }
 
     // cos-1
-    public void cosInvClicked(View v){if(numAfterPeriod || !periodDone){
-        if (numberInput){
-            periodDone = false;
-            numAfterPeriod = false;
-            stackScreen.push(screenText.toString());
-            numberInput = false;
-            screenText = new StringBuffer();
+    public void cosInvClicked(View v){
+        if(numAfterPeriod || !periodDone){
+            if (numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+            textView.setText(textView.getText() + OperatorParameters.cosInv);
+            stackScreen.push(OperatorParameters.cosInv);
+            infix.append(OperatorParameters.cosInv);
         }
-        textView.setText(textView.getText() + "cos"+'\u207B'+'\u00B9');
-        stackScreen.push("cosIn");
-    }
     }
 
     // tan-1
@@ -583,8 +617,9 @@ public class MainActivity extends AppCompatActivity {
             numberInput = false;
             screenText = new StringBuffer();
         }
-        textView.setText(textView.getText() + "tan"+'\u207B'+'\u00B9');
-        stackScreen.push("tanIn");
+        textView.setText(textView.getText() + OperatorParameters.tanInv);
+        stackScreen.push(OperatorParameters.tanInv);
+        infix.append(OperatorParameters.tanInv);
     }
     }
 
@@ -598,8 +633,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "floor");
-            stackScreen.push("floor");
+            textView.setText(textView.getText() + OperatorParameters.floor);
+            stackScreen.push(OperatorParameters.floor);
+            infix.append(OperatorParameters.floor);
         }
     }
 
@@ -613,8 +649,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "ceil");
-            stackScreen.push("ceil");
+            textView.setText(textView.getText() + OperatorParameters.ceil);
+            stackScreen.push(OperatorParameters.ceil);
+            infix.append(OperatorParameters.ceil);
         }
     }
 
@@ -628,8 +665,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "\u03c0");
-            stackScreen.push("\u03c0");
+            textView.setText(textView.getText() + OperatorParameters.pi);
+            stackScreen.push(OperatorParameters.pi);
+            infix.append(OperatorParameters.pi);
         }
     }
 
@@ -643,8 +681,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "max");
-            stackScreen.push("max");
+            textView.setText(textView.getText() + OperatorParameters.max);
+            stackScreen.push(OperatorParameters.max);
+            infix.append(OperatorParameters.max);
         }
     }
 
@@ -658,8 +697,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "min");
-            stackScreen.push("min");
+            textView.setText(textView.getText() + OperatorParameters.min);
+            stackScreen.push(OperatorParameters.min);
+            infix.append(OperatorParameters.min);
         }
     }
 
@@ -673,8 +713,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + ",");
-            stackScreen.push(",");
+            textView.setText(textView.getText() + OperatorParameters.comma);
+            stackScreen.push(OperatorParameters.comma);
+            infix.append(OperatorParameters.comma);
         }
     }
 
@@ -688,8 +729,9 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "toDegrees");
-            stackScreen.push("toDegrees");
+            textView.setText(textView.getText() + OperatorParameters.toDegrees);
+            stackScreen.push(OperatorParameters.toDegrees);
+            infix.append(OperatorParameters.toDegrees);
         }
     }
 
@@ -703,13 +745,51 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
-            textView.setText(textView.getText() + "toRadians");
-            stackScreen.push("toRadians");
+            textView.setText(textView.getText() + OperatorParameters.toRadians);
+            stackScreen.push(OperatorParameters.toRadians);
+            infix.append(OperatorParameters.toRadians);
         }
     }
 
     // equal to =
     public void equalToClicked(View v){
         Result.calculateResult(stackScreen);
+        infix.append(")");
+        infixToPostfix();
+    }
+
+    public void infixToPostfix(){
+        Stack postfixStack = new Stack();
+        String thisString = grabString(0);
+    }
+
+    public int priority(String param){
+        if (OperatorParameters.bracketopen.equals(param))
+            return 1;
+        else if (OperatorParameters.sin.equals(param) || OperatorParameters.cos.equals(param) || OperatorParameters.tan.equals(param) ||
+                OperatorParameters.sinInv.equals(param) || OperatorParameters.cosInv.equals(param) || OperatorParameters.tanInv.equals(param) ||
+                OperatorParameters.log.equals(param) || OperatorParameters.ln.equals(param) || OperatorParameters.exp.equals(param) ||
+                OperatorParameters.squareroot.equals(param) || OperatorParameters.floor.equals(param) || OperatorParameters.ceil.equals(param))
+            return 2;
+        else if (OperatorParameters.multiply.equals(param) || OperatorParameters.divide.equals(param))
+            return 3;
+        else if (OperatorParameters.plus.equals(param) || OperatorParameters.minus.equals(param))
+            return 4;
+        return  5;
+    }
+
+    public String grabString( int i){
+        String s = infix.substring(i, i+1);
+        char c = infix.charAt(i);
+        if((int)c >=48 && (int)c <= 57) {
+            int j=i;
+            for(;((int)infix.charAt(j) >=48 && (int)infix.charAt(j) <= 57) || infix.charAt(j) == '.' ; j++){}
+            return infix.substring(i, j);
+        }
+        return null;
+    }
+
+    public Double stringToDecimal(String num){
+        return 0.0;
     }
 }

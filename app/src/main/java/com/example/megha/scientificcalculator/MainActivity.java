@@ -27,6 +27,8 @@ import com.example.megha.scientificcalculator.Fragments.BasicOperations;
 import com.example.megha.scientificcalculator.Fragments.ScientificOperations;
 import com.example.megha.scientificcalculator.conversion_number_system.ConversionActivityNS;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0;
@@ -782,24 +784,53 @@ public class MainActivity extends AppCompatActivity {
                     st = infixStack.pop();
                 }
             }
-            else if(s.charAt(0) == '+' || s.charAt(0) == '-' || s.charAt(0) == '*' || s.charAt(0) == '/'){
-                // Number
+            else if(s.charAt(0) == '+' || s.charAt(0) == '-'){
+                String st = infixStack.viewLast();
+                while(st.equals(OperatorParameters.plus) || st.equals(OperatorParameters.minus) ||
+                        st.equals(OperatorParameters.multiply) || st.equals(OperatorParameters.divide)){
+                    postfix.append(infixStack.pop());
+                    st = infixStack.viewLast();
+                }
+                infixStack.push(s);
+            }
+            else if(s.charAt(0) == '*' || s.charAt(0) == '/'){
+                infixStack.push(s);
             }
             else {
-                if(s.charAt(0) == 'e' || s.charAt(0) == '√'){
-
-                }
-                else if(s.charAt(0) == ','){
+                if(s.charAt(0) == ','){
                     //error of expression
                 }
                 else if(s.equals(OperatorParameters.max) || s.equals(OperatorParameters.min)){
                     if( i >= infixLocal.length()){
                         // expression error
                     }
-                    else if( infix.charAt(i) == '('){
-                        while(i >= infix.length() || infix.charAt(i) == ')'){
-
+                    else if( infixLocal.charAt(i) == '('){
+                        int j = i;
+                        ArrayList<Double> values = new ArrayList<>();
+                        while( infixLocal.charAt(j) != ',') {
+                            j++;
+                            while (j >= infixLocal.length() && infixLocal.charAt(j) != ')') {
+                                if(infixLocal.charAt(j) == ',') break;
+                                j++;
+                            }
+                            String exp = infixToPostfix("(" + infixLocal.substring(i, j) + ")");
+                            exp = postfixEvaluation(exp);
+                            values.add(stringToDecimal(exp));
                         }
+                        if(s.equals(OperatorParameters.max)){
+                            double myval = values.get(0);
+                            for(int m =1; m<values.size(); m++){
+                                myval = Math.max(myval, values.get(m));
+                            }
+                            postfix.append(myval);
+                        }else {
+                            double myval = values.get(0);
+                            for(int m =1; m<values.size(); m++){
+                                myval = Math.min(myval, values.get(m));
+                            }
+                            postfix.append(myval);
+                        }
+                        i = j;
                     }
                     else{
                         GrabString ob = grabString(i);
@@ -807,9 +838,90 @@ public class MainActivity extends AppCompatActivity {
                         i = ob.val;
                     }
                 }
+                else if( OperatorParameters.exp.equals(s) || OperatorParameters.squareroot.equals(s) ||
+                        OperatorParameters.sin.equals(s) || OperatorParameters.cos.equals(s) || OperatorParameters.tan.equals(s) ||
+                        OperatorParameters.log.equals(s) ||OperatorParameters.ceil.equals(s) ||
+                        OperatorParameters.sinInv.equals(s) || OperatorParameters.cosInv.equals(s) || OperatorParameters.tanInv.equals(s) ||
+                        OperatorParameters.floor.equals(s) || OperatorParameters.toDegrees.equals(s) || OperatorParameters.toRadians.equals(s)){
+                    if( i >= infixLocal.length()){
+                        // expression error
+                    }
+                    else if( infixLocal.charAt(i) == '(') {
+                        int j = i+1;
+                        while(infixLocal.length() >= j && infixLocal.charAt(j) != ')'){ j++; }
+                        String exp = infixToPostfix("(" + infixLocal.substring(i, j) + ")");
+                        exp = postfixEvaluation(exp);
+                        Double val = stringToDecimal(exp);
+                        if(OperatorParameters.exp.equals(s)){
+                            val = Math.exp(val);
+                        }else if(OperatorParameters.squareroot.equals(s)){
+                            val = Math.sqrt(val);
+                        }else if(OperatorParameters.sin.equals(s)){
+                            val = Math.sin(val);
+                        }else if (OperatorParameters.cos.equals(s)){
+                            val = Math.cos(val);
+                        }else if (OperatorParameters.tan.equals(s)){
+                            val = Math.tan(val);
+                        }else if(OperatorParameters.log.equals(s)){
+                            val = Math.log(val);
+                        }else if(OperatorParameters.ceil.equals(s)){
+                            val = Math.ceil(val);
+                        } else if(OperatorParameters.sinInv.equals(s)){
+                            val = Math.asin(val);
+                        }else if (OperatorParameters.cosInv.equals(s)){
+                            val = Math.acos(val);
+                        }else if (OperatorParameters.tanInv.equals(s)){
+                            val = Math.atan(val);
+                        }else if (OperatorParameters.floor.equals(s)){
+                            val = Math.floor(val);
+                        }else if (OperatorParameters.toDegrees.equals(s)){
+                            val = Math.toDegrees(val);
+                        }else{
+                            val = Math.toRadians(val);
+                        }
+                        postfix.append(val);
+                    }
+                    else{
+                        GrabString ob = grabString(i);
+                        Double val = stringToDecimal(ob.s);
+                        if(OperatorParameters.exp.equals(s)){
+                            val = Math.exp(val);
+                        }else if(OperatorParameters.squareroot.equals(s)){
+                            val = Math.sqrt(val);
+                        }else if(OperatorParameters.sin.equals(s)){
+                            val = Math.sin(val);
+                        }else if (OperatorParameters.cos.equals(s)){
+                            val = Math.cos(val);
+                        }else if (OperatorParameters.tan.equals(s)){
+                            val = Math.tan(val);
+                        }else if(OperatorParameters.log.equals(s)){
+                            val = Math.log(val);
+                        }else if(OperatorParameters.ceil.equals(s)){
+                            val = Math.ceil(val);
+                        } else if(OperatorParameters.sinInv.equals(s)){
+                            val = Math.asin(val);
+                        }else if (OperatorParameters.cosInv.equals(s)){
+                            val = Math.acos(val);
+                        }else if (OperatorParameters.tanInv.equals(s)){
+                            val = Math.atan(val);
+                        }else if (OperatorParameters.floor.equals(s)){
+                            val = Math.floor(val);
+                        }else if (OperatorParameters.toDegrees.equals(s)){
+                            val = Math.toDegrees(val);
+                        }else{
+                            val = Math.toRadians(val);
+                        }
+                        postfix.append(val);
+                        i = ob.val;
+                    }
+                }
             }
         }
         return postfix.toString();
+    }
+
+    public String postfixEvaluation(String postfixLocal){
+        return null;
     }
 
     public int priority(String param){

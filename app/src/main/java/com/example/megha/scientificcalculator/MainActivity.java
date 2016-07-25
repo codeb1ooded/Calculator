@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     StringBuffer screenText;
     Stack stackScreen;
     Boolean numberInput, periodDone, numAfterPeriod;
-    StringBuffer infix;
+    ArrayList<String> infix;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -149,7 +149,8 @@ public class MainActivity extends AppCompatActivity {
         numberInput = false;
         periodDone = false;
         numAfterPeriod = false;
-        infix = new StringBuffer("(");
+        infix = new ArrayList<>();
+        infix.add("(");
 
         b0 = (Button) findViewById(R.id.button0);
         b1 = (Button) findViewById(R.id.button1);
@@ -204,7 +205,8 @@ public class MainActivity extends AppCompatActivity {
         periodDone = false;
         stackScreen.emptyStack();
         textView.setText("");
-        infix = new StringBuffer("(");
+        infix = new ArrayList<>();
+        infix.add("(");
     }
 
     // CLEAR LAST
@@ -219,7 +221,8 @@ public class MainActivity extends AppCompatActivity {
             screenText = screenText.delete(screenText.length() - 1, screenText.length());
             String newText = textView.getText().subSequence(0, textView.getText().length()-screenText.length()-1).toString() + screenText;
             textView.setText(newText);
-            infix =new StringBuffer( "("+ newText);
+            if(screenText.length() >= 1)
+                infix.set(infix.size()-1, screenText.toString());
         }else if( !stackScreen.isEmpty() ){
             String fromStack = stackScreen.viewLast();
             char lastChar = fromStack.charAt(fromStack.length()-1);
@@ -230,99 +233,129 @@ public class MainActivity extends AppCompatActivity {
                 String abc = stackScreen.pop();
                 String newText = textView.getText().subSequence(0, textView.getText().length()-abc.length()).toString();
                 textView.setText(newText);
-                infix =new StringBuffer( "("+ newText);
+                infix.remove(infix.size()-1);
             }
         }
     }
 
     // 1
     public void oneClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.one);
+        else
+            infix.add(OperatorParameters.one);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('1');
         textView.setText(textView.getText() + OperatorParameters.one);
-        infix.append(OperatorParameters.one);
     }
 
     // 2
     public void twoClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.two);
+        else
+            infix.add(OperatorParameters.two);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('2');
         textView.setText(textView.getText() + OperatorParameters.two);
-        infix.append(OperatorParameters.two);
     }
 
     // 3
     public void threeClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.three);
+        else
+            infix.add(OperatorParameters.three);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('3');
         textView.setText(textView.getText() + OperatorParameters.three);
-        infix.append(OperatorParameters.three);
     }
 
     // 4
     public void fourClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.four);
+        else
+            infix.add(OperatorParameters.four);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('4');
         textView.setText(textView.getText() + OperatorParameters.four);
-        infix.append(OperatorParameters.four);
     }
 
     // 5
     public void fiveClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.five);
+        else
+            infix.add(OperatorParameters.five);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('5');
         textView.setText(textView.getText() + OperatorParameters.five);
-        infix.append(OperatorParameters.five);
     }
 
     // 6
     public void sixClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.six);
+        else
+            infix.add(OperatorParameters.six);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('6');
         textView.setText(textView.getText() + OperatorParameters.six);
-        infix.append(OperatorParameters.six);
     }
 
     // 7
     public void sevenClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.seven);
+        else
+            infix.add(OperatorParameters.seven);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('7');
         textView.setText(textView.getText() + OperatorParameters.seven);
-        infix.append(OperatorParameters.seven);
     }
 
     // 8
     public void eightClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.eight);
+        else
+            infix.add(OperatorParameters.eight);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('8');
         textView.setText(textView.getText() + OperatorParameters.eight);
-        infix.append(OperatorParameters.eight);
     }
 
     // 9
     public void nineClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.nine);
+        else
+            infix.add(OperatorParameters.nine);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('9');
         textView.setText(textView.getText() + OperatorParameters.nine);
-        infix.append(OperatorParameters.nine);
     }
 
     // 0
     public void zeroClicked(View v){
+        if(numberInput)
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.zero);
+        else
+            infix.add(OperatorParameters.zero);
         numberInput = true;
         if(periodDone) numAfterPeriod = true;
         screenText = screenText.append('0');
         textView.setText(textView.getText() + OperatorParameters.zero);
-        infix.append(OperatorParameters.zero);
     }
 
     // .
@@ -333,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
             periodDone = true;
             screenText = screenText.append('.');
             textView.setText(textView.getText() + OperatorParameters.period);
-            infix.append(OperatorParameters.period);
+            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.period);
         }
     }
 
@@ -349,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.plus);
             stackScreen.push(OperatorParameters.plus);
-            infix.append(OperatorParameters.plus);
+            infix.add(OperatorParameters.plus);
         }
     }
 
@@ -365,7 +398,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.minus);
             stackScreen.push(OperatorParameters.minus);
-            infix.append(OperatorParameters.minus);
+            infix.add(OperatorParameters.minus);
         }
     }
 
@@ -381,7 +414,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.multiply);
             stackScreen.push(OperatorParameters.multiply);
-            infix.append(OperatorParameters.multiply);
+            infix.add(OperatorParameters.multiply);
         }
     }
 
@@ -397,7 +430,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.divide);
             stackScreen.push(OperatorParameters.divide);
-            infix.append(OperatorParameters.divide);
+            infix.add(OperatorParameters.divide);
         }
     }
 
@@ -413,7 +446,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.sin);
             stackScreen.push(OperatorParameters.sin);
-            infix.append(OperatorParameters.sin);
+            infix.add(OperatorParameters.sin);
         }
     }
 
@@ -429,7 +462,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.cos);
             stackScreen.push(OperatorParameters.cos);
-            infix.append(OperatorParameters.cos);
+            infix.add(OperatorParameters.cos);
         }
     }
 
@@ -445,7 +478,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.tan);
             stackScreen.push(OperatorParameters.tan);
-            infix.append(OperatorParameters.tan);
+            infix.add(OperatorParameters.tan);
         }
     }
 
@@ -461,7 +494,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.log);
             stackScreen.push(OperatorParameters.log);
-            infix.append(OperatorParameters.log);
+            infix.add(OperatorParameters.log);
         }
     }
 
@@ -477,7 +510,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.exp);
             stackScreen.push(OperatorParameters.exp);
-            infix.append(OperatorParameters.exp);
+            infix.add(OperatorParameters.exp);
         }
     }
 
@@ -493,7 +526,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.ln);
             stackScreen.push(OperatorParameters.ln);
-            infix.append(OperatorParameters.ln);
+            infix.add(OperatorParameters.ln);
         }
     }
 
@@ -509,7 +542,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.squareroot);
             stackScreen.push(OperatorParameters.squareroot);
-            infix.append(OperatorParameters.squareroot);
+            infix.add(OperatorParameters.squareroot);
         }
     }
 
@@ -542,7 +575,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.bracketopen);
             stackScreen.push(OperatorParameters.bracketopen);
-            infix.append(OperatorParameters.bracketopen);
+            infix.add(OperatorParameters.bracketopen);
         }
     }
 
@@ -558,7 +591,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.bracketclose);
             stackScreen.push(OperatorParameters.bracketclose);
-            infix.append(OperatorParameters.bracketclose);
+            infix.add(OperatorParameters.bracketclose);
         }
     }
 
@@ -574,7 +607,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.factorial);
             stackScreen.push(OperatorParameters.factorial);
-            infix.append(OperatorParameters.factorial);
+            infix.add(OperatorParameters.factorial);
         }
     }
 
@@ -590,7 +623,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.sinInv);
             stackScreen.push(OperatorParameters.sinInv);
-            infix.append(OperatorParameters.sinInv);
+            infix.add(OperatorParameters.sinInv);
         }
     }
 
@@ -606,7 +639,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.cosInv);
             stackScreen.push(OperatorParameters.cosInv);
-            infix.append(OperatorParameters.cosInv);
+            infix.add(OperatorParameters.cosInv);
         }
     }
 
@@ -621,7 +654,7 @@ public class MainActivity extends AppCompatActivity {
         }
         textView.setText(textView.getText() + OperatorParameters.tanInv);
         stackScreen.push(OperatorParameters.tanInv);
-        infix.append(OperatorParameters.tanInv);
+        infix.add(OperatorParameters.tanInv);
     }
     }
 
@@ -637,7 +670,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.floor);
             stackScreen.push(OperatorParameters.floor);
-            infix.append(OperatorParameters.floor);
+            infix.add(OperatorParameters.floor);
         }
     }
 
@@ -653,7 +686,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.ceil);
             stackScreen.push(OperatorParameters.ceil);
-            infix.append(OperatorParameters.ceil);
+            infix.add(OperatorParameters.ceil);
         }
     }
 
@@ -669,7 +702,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.pi);
             stackScreen.push(OperatorParameters.pi);
-            infix.append(OperatorParameters.pi);
+            infix.add(OperatorParameters.pi);
         }
     }
 
@@ -685,7 +718,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.max);
             stackScreen.push(OperatorParameters.max);
-            infix.append(OperatorParameters.max);
+            infix.add(OperatorParameters.max);
         }
     }
 
@@ -701,7 +734,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.min);
             stackScreen.push(OperatorParameters.min);
-            infix.append(OperatorParameters.min);
+            infix.add(OperatorParameters.min);
         }
     }
 
@@ -717,7 +750,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.comma);
             stackScreen.push(OperatorParameters.comma);
-            infix.append(OperatorParameters.comma);
+            infix.add(OperatorParameters.comma);
         }
     }
 
@@ -733,7 +766,7 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.toDegrees);
             stackScreen.push(OperatorParameters.toDegrees);
-            infix.append(OperatorParameters.toDegrees);
+            infix.add(OperatorParameters.toDegrees);
         }
     }
 
@@ -749,93 +782,99 @@ public class MainActivity extends AppCompatActivity {
             }
             textView.setText(textView.getText() + OperatorParameters.toRadians);
             stackScreen.push(OperatorParameters.toRadians);
-            infix.append(OperatorParameters.toRadians);
+            infix.add(OperatorParameters.toRadians);
         }
     }
 
     // equal to =
     public void equalToClicked(View v){
         Result.calculateResult(stackScreen);
-        infix.append(")");
-        infixToPostfix(infix.toString());
+        infix.add(OperatorParameters.bracketclose);
+        infixToPostfix(infix);
     }
 
-    public String infixToPostfix(String infixLocal){
+    public ArrayList<String> infixToPostfix(ArrayList<String> infixLocal){
         Stack infixStack = new Stack();
-        StringBuffer postfix = new StringBuffer();
+        ArrayList<String > postfix = new ArrayList<>();
         int i = 0;
-        while(i < infixLocal.length()) {
-            GrabString obj = grabString(i);
-            i = obj.val;
-            String s = obj.s;
-            if(s == null){
-                // I think it's not possible but will see
+        while(i < infixLocal.size()) {
+            String s = infixLocal.get(i);
+            if(((int)s.charAt(0) >=48 && (int)s.charAt(0) <= 57) || s.charAt(0) == '.' || s.equals(OperatorParameters.pi)){
+                postfix.add(s);
+                i++;
             }
-            else if(((int)s.charAt(0) >=48 && (int)s.charAt(0) <= 57) || s.charAt(0) == '.' || s.charAt(0) == 'π' ){
-                postfix.append(s);
-            }
-            else if(s.charAt(0) == '('){
+            else if(s.equals(OperatorParameters.bracketopen)){
                 infixStack.push("(");
+                i++;
             }
-            else if(s.charAt(0) == ')'){
+            else if(s.equals(OperatorParameters.bracketclose)){
                 String st = infixStack.pop();
                 while(st != ")"){
-                    postfix.append(st);
+                    postfix.add(st);
                     st = infixStack.pop();
                 }
+                i++;
             }
-            else if(s.charAt(0) == '+' || s.charAt(0) == '-'){
+            else if(s.equals(OperatorParameters.plus) || s.equals(OperatorParameters.minus)){
                 String st = infixStack.viewLast();
                 while(st.equals(OperatorParameters.plus) || st.equals(OperatorParameters.minus) ||
                         st.equals(OperatorParameters.multiply) || st.equals(OperatorParameters.divide)){
-                    postfix.append(infixStack.pop());
+                    postfix.add(infixStack.pop());
                     st = infixStack.viewLast();
                 }
                 infixStack.push(s);
+                i++;
             }
-            else if(s.charAt(0) == '*' || s.charAt(0) == '/'){
+            else if(s.equals(OperatorParameters.multiply) || s.equals(OperatorParameters.divide)){
                 infixStack.push(s);
+                i++;
+            }
+            else if(s.equals(OperatorParameters.comma)){
+                // Issue Expression
             }
             else {
-                if(s.charAt(0) == ','){
-                    //error of expression
-                }
-                else if(s.equals(OperatorParameters.max) || s.equals(OperatorParameters.min)){
-                    if( i >= infixLocal.length()){
+                if(s.equals(OperatorParameters.max) || s.equals(OperatorParameters.min)){
+                    if( i >= infixLocal.size()){
                         // expression error
                     }
-                    else if( infixLocal.charAt(i) == '('){
-                        int j = i;
+                    else if( infixLocal.get(i+1).equals(OperatorParameters.bracketopen)){
+                        int j = i+1;
                         ArrayList<Double> values = new ArrayList<>();
-                        while( infixLocal.charAt(j) != ',') {
+                        while( infixLocal.get(j).equals(OperatorParameters.comma) || infixLocal.get(j).equals(OperatorParameters.bracketopen) ) {
                             j++;
-                            while (j >= infixLocal.length() && infixLocal.charAt(j) != ')') {
-                                if(infixLocal.charAt(j) == ',') break;
+                            ArrayList<String> exp = new ArrayList<>();
+                            exp.add(OperatorParameters.bracketopen);
+                            while (j < infixLocal.size() &&  !infixLocal.get(j).equals(OperatorParameters.bracketclose)) {
+                                if( infixLocal.get(j).equals(OperatorParameters.comma) ) break;
                                 j++;
+                                exp.add(infixLocal.get(j));
                             }
-                            String exp = infixToPostfix("(" + infixLocal.substring(i, j) + ")");
-                            exp = postfixEvaluation(exp);
-                            values.add(stringToDecimal(exp));
+                            exp.add(OperatorParameters.bracketclose);
+                            exp = infixToPostfix(exp);
+                            String val = postfixEvaluation(exp);
+                            values.add(stringToDecimal(val));
                         }
                         if(s.equals(OperatorParameters.max)){
                             double myval = values.get(0);
                             for(int m =1; m<values.size(); m++){
                                 myval = Math.max(myval, values.get(m));
                             }
-                            postfix.append(myval);
+                            postfix.add(myval+"");
                         }else {
                             double myval = values.get(0);
                             for(int m =1; m<values.size(); m++){
                                 myval = Math.min(myval, values.get(m));
                             }
-                            postfix.append(myval);
+                            postfix.add(myval+"");
                         }
-                        i = j;
+                        // a doubt bracketclose will be counted or not
+                        i = j+1;
                     }
                     else{
-                        GrabString ob = grabString(i);
-                        postfix.append(ob.s);
-                        i = ob.val;
+                        if(infixLocal.size() >= i){
+                            // Expession error
+                        }
+                        postfix.add(infixLocal.get(++i));
                     }
                 }
                 else if( OperatorParameters.exp.equals(s) || OperatorParameters.squareroot.equals(s) ||
@@ -843,14 +882,20 @@ public class MainActivity extends AppCompatActivity {
                         OperatorParameters.log.equals(s) ||OperatorParameters.ceil.equals(s) ||
                         OperatorParameters.sinInv.equals(s) || OperatorParameters.cosInv.equals(s) || OperatorParameters.tanInv.equals(s) ||
                         OperatorParameters.floor.equals(s) || OperatorParameters.toDegrees.equals(s) || OperatorParameters.toRadians.equals(s)){
-                    if( i >= infixLocal.length()){
+                    if( i >= infixLocal.size()){
                         // expression error
                     }
-                    else if( infixLocal.charAt(i) == '(') {
-                        int j = i+1;
-                        while(infixLocal.length() >= j && infixLocal.charAt(j) != ')'){ j++; }
-                        String exp = infixToPostfix("(" + infixLocal.substring(i, j) + ")");
-                        exp = postfixEvaluation(exp);
+                    else if( infixLocal.get(i+1).equals(OperatorParameters.bracketopen)) {
+                        int j = i+2;
+                        ArrayList<String> value = new ArrayList<>();
+                        value.add(OperatorParameters.bracketopen);
+                        while(infixLocal.size() < j && !infixLocal.equals(OperatorParameters.bracketclose)){
+                            j++;
+                            value.add(infixLocal.get(j));
+                        }
+                        value.add(OperatorParameters.bracketclose);
+                        value = infixToPostfix(value);
+                        String exp = postfixEvaluation(value);
                         Double val = stringToDecimal(exp);
                         if(OperatorParameters.exp.equals(s)){
                             val = Math.exp(val);
@@ -879,11 +924,11 @@ public class MainActivity extends AppCompatActivity {
                         }else{
                             val = Math.toRadians(val);
                         }
-                        postfix.append(val);
+                        postfix.add(val+"");
+                        i = j + 1;
                     }
                     else{
-                        GrabString ob = grabString(i);
-                        Double val = stringToDecimal(ob.s);
+                        Double val = stringToDecimal(infixLocal.get(++i));
                         if(OperatorParameters.exp.equals(s)){
                             val = Math.exp(val);
                         }else if(OperatorParameters.squareroot.equals(s)){
@@ -911,72 +956,17 @@ public class MainActivity extends AppCompatActivity {
                         }else{
                             val = Math.toRadians(val);
                         }
-                        postfix.append(val);
-                        i = ob.val;
+                        postfix.add(val+"");
+                        i++;
                     }
                 }
             }
         }
-        return postfix.toString();
+        return postfix;
     }
 
-    public String postfixEvaluation(String postfixLocal){
+    public String postfixEvaluation(ArrayList<String> postfixLocal){
         return null;
-    }
-
-    public int priority(String param){
-        if (OperatorParameters.bracketopen.equals(param))
-            return 1;
-        else if (OperatorParameters.sin.equals(param) || OperatorParameters.cos.equals(param) || OperatorParameters.tan.equals(param) ||
-                OperatorParameters.sinInv.equals(param) || OperatorParameters.cosInv.equals(param) || OperatorParameters.tanInv.equals(param) ||
-                OperatorParameters.log.equals(param) || OperatorParameters.ln.equals(param) || OperatorParameters.exp.equals(param) ||
-                OperatorParameters.squareroot.equals(param) || OperatorParameters.floor.equals(param) || OperatorParameters.ceil.equals(param))
-            return 2;
-        else if (OperatorParameters.multiply.equals(param) || OperatorParameters.divide.equals(param))
-            return 3;
-        else if (OperatorParameters.plus.equals(param) || OperatorParameters.minus.equals(param))
-            return 4;
-        return  5;
-    }
-
-    public GrabString grabString( int i){
-        String s = infix.substring(i, i+1);
-        char c = infix.charAt(i);
-        if (c=='.' || c=='+' || c=='-' || c=='/' || c=='*' || c=='e' || c=='√' || c=='!' || c=='(' || c==')' || c==',' || c=='π'){
-            return new GrabString(i+1, infix.substring(i, i+1));
-        }
-        else if (c == 'l' && infix.charAt(i) == 'n'){
-            return new GrabString(i+2, infix.substring(i, i+2));
-        }
-
-        else{
-            char d = infix.charAt(i+1);
-            char e = infix.charAt(i+2);
-            if ((c=='s'&&d=='i'&&e=='n') || (c=='c'&&d=='o'&&e=='s') || (c=='t'&&d=='a'&&e=='n')){
-                return new GrabString(i+3, infix.substring(i, i+3));
-            }
-            else if ((c=='l'&&d=='o'&&e=='g') || (c=='m'&&d=='a'&&e=='x') || (c=='m'&&d=='i'&&e=='n')){
-                return new GrabString(i+3, infix.substring(i, i+3));
-            }
-            else if (c=='c' && d=='e' && e=='i' && infix.charAt(i+3)=='l'){
-                return new GrabString(i+4, infix.substring(i, i+4));
-            }
-            else {
-                if((infix.substring(i, i+5).equals(OperatorParameters.floor)) || (infix.substring(i, i+5).equals(OperatorParameters.sinInv)) ||
-                        (infix.substring(i, i+5).equals(OperatorParameters.cosInv)) || (infix.substring(i, i+5).equals(OperatorParameters.tanInv))){
-                    return new GrabString(i+5, infix.substring(i, i+5));
-                }
-                else if((infix.substring(i, i+9).equals(OperatorParameters.toDegrees)) || (infix.substring(i, i+9).equals(OperatorParameters.toRadians))){
-                    return new GrabString(i+9, infix.substring(i, i+9));
-                }
-                else if((int)c >=48 && (int)c <= 57) {
-                    int j=i;
-                    for(;((int)infix.charAt(j) >=48 && (int)infix.charAt(j) <= 57) || infix.charAt(j) == '.' ; j++){}
-                    return new GrabString(j, infix.substring(i, j));
-                }
-                return null;
-            }
-        }
     }
 
     public Double stringToDecimal(String num){
@@ -1000,12 +990,4 @@ public class MainActivity extends AppCompatActivity {
         return n;
     }
 
-    class GrabString{
-        public int val;
-        public String s;
-        public GrabString(int val, String s){
-            this.val = val;
-            this.s = s;
-        }
-    }
 }

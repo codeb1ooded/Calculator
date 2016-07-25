@@ -19,7 +19,7 @@ public class OperatorParameters {
     public static String plus = "+";
     public static String minus = "-";
     public static String multiply = "*";
-    public static String divide = "//";
+    public static String divide = "/";
 
     public static String sin = "sin";
     public static String cos = "cos";

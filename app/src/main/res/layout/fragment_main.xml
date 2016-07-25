@@ -230,7 +230,7 @@
             android:layout_toRightOf="@+id/buttonDivide"
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
-            android:onClick="equalToClicked"/>
+            android:onClick="equalClicked"/>
     </LinearLayout>
 
 </LinearLayout>

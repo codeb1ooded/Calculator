@@ -7,11 +7,9 @@ import java.util.ArrayList;
  */
 public class Stack {
     private ArrayList<String> stack;
-    private ArrayList<String> postfix;
     private int top;
     Stack(){
         stack = new ArrayList<>();
-        push("(");
         top = -1;
     }
     public void push(String element){
@@ -24,6 +22,9 @@ public class Stack {
             element = stack.remove(top--);
         return element;
     }
+    public int size(){
+        return stack.size();
+    }
     public String viewLast(){
         String element = Constants.nothing;
         if(top > -1)
@@ -33,6 +34,10 @@ public class Stack {
     public void emptyStack(){
         stack = new ArrayList<>();
         top = -1;
+    }
+    public boolean isSingleElement(){
+        if(stack.size() == 1) return true;
+        return false;
     }
     public boolean isEmpty(){
         return stack.isEmpty();

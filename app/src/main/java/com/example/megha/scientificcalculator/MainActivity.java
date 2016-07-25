@@ -43,9 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
 
     @Override
@@ -69,19 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         } else if (id == R.id.action_conversion_number_system) {
@@ -150,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         periodDone = false;
         numAfterPeriod = false;
         infix = new ArrayList<>();
-        infix.add("(");
+        infix.add(OperatorParameters.bracketopen);
 
         b0 = (Button) findViewById(R.id.button0);
         b1 = (Button) findViewById(R.id.button1);
@@ -206,10 +198,10 @@ public class MainActivity extends AppCompatActivity {
         stackScreen.emptyStack();
         textView.setText("");
         infix = new ArrayList<>();
-        infix.add("(");
+        infix.add(OperatorParameters.bracketopen);
     }
 
-    // CLEAR LAST
+    // BACK
     public void clearClicked(View v){
         if(screenText.length() > 0) {
             if(screenText.length() == 1)
@@ -787,10 +779,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // equal to =
-    public void equalToClicked(View v){
-        Result.calculateResult(stackScreen);
+    public void equalClicked(View v){
         infix.add(OperatorParameters.bracketclose);
-        infixToPostfix(infix);
+        ArrayList<String> postfix = infixToPostfix(infix);
+        String result = postfixEvaluation(postfix);
+        screenText = new StringBuffer();
+        numAfterPeriod = false;
+        numberInput = false;
+        periodDone = false;
+        stackScreen.emptyStack();
+        textView.setText(result);
+        infix = new ArrayList<>();
+        infix.add(OperatorParameters.bracketopen);
+        infix.add(result);
     }
 
     public ArrayList<String> infixToPostfix(ArrayList<String> infixLocal){
@@ -804,12 +805,12 @@ public class MainActivity extends AppCompatActivity {
                 i++;
             }
             else if(s.equals(OperatorParameters.bracketopen)){
-                infixStack.push("(");
+                infixStack.push(OperatorParameters.bracketopen);
                 i++;
             }
             else if(s.equals(OperatorParameters.bracketclose)){
                 String st = infixStack.pop();
-                while(st != ")"){
+                while(st != OperatorParameters.bracketopen){
                     postfix.add(st);
                     st = infixStack.pop();
                 }
@@ -966,11 +967,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public String postfixEvaluation(ArrayList<String> postfixLocal){
-        return null;
+        Stack postfixStack = new Stack();
+        for(int i=0; i<postfixLocal.size(); i++ ){
+            if((int)postfixLocal.get(i).charAt(0) >=48 && (int) postfixLocal.get(i).charAt(0) <= 57){
+                postfixStack.push(postfixLocal.get(i));
+            }
+            else if(postfixStack.size() > 1){
+                double first = stringToDecimal(postfixStack.pop());
+                double second = stringToDecimal(postfixStack.pop());
+                String op = infix.get(i);
+                if(op.equals(OperatorParameters.plus)){
+                    postfixStack.push((second+first)+"");
+                }
+                else if(op.equals(OperatorParameters.minus)){
+                    postfixStack.push((second-first)+"");
+                }
+                else if(op.equals(OperatorParameters.multiply)){
+                    postfixStack.push((second*first)+"");
+                }
+                else if(op.equals(OperatorParameters.divide)){
+                    postfixStack.push((second/first)+"");
+                }
+            }
+        }
+        if(!postfixStack.isSingleElement()){
+            //definetely an error
+        }
+
+        return postfixStack.pop();
     }
 
-    public Double stringToDecimal(String num){
-        Double n = 0.0;
+    public double stringToDecimal(String num){
+        double n = 0.0;
         boolean periodEnc = false;
         int j = 1;
         for(int i=0; i<num.length(); i++){
@@ -983,7 +1011,7 @@ public class MainActivity extends AppCompatActivity {
                     periodEnc = true;
             }
             else if (periodEnc)
-                n = n + ((int) num.charAt(i) -48) *(j++);
+                n = n + ((int) num.charAt(i) -48) *Math.pow(10, -1 * (j++));
             else
                 n = n * 10 + ((int) num.charAt(i) -48);
         }

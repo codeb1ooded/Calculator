@@ -890,9 +890,11 @@ public class MainActivity extends AppCompatActivity {
                         int j = i+2;
                         ArrayList<String> value = new ArrayList<>();
                         value.add(OperatorParameters.bracketopen);
-                        while(infixLocal.size() < j && !infixLocal.equals(OperatorParameters.bracketclose)){
+                        String current = infixLocal.get(j);
+                        while(infixLocal.size() > j && !current.equals(OperatorParameters.bracketclose)){
                             j++;
-                            value.add(infixLocal.get(j));
+                            value.add(current);
+                            current = infixLocal.get(j);
                         }
                         value.add(OperatorParameters.bracketclose);
                         value = infixToPostfix(value);
@@ -969,13 +971,15 @@ public class MainActivity extends AppCompatActivity {
     public String postfixEvaluation(ArrayList<String> postfixLocal){
         Stack postfixStack = new Stack();
         for(int i=0; i<postfixLocal.size(); i++ ){
-            if((int)postfixLocal.get(i).charAt(0) >=48 && (int) postfixLocal.get(i).charAt(0) <= 57){
-                postfixStack.push(postfixLocal.get(i));
+            String current = postfixLocal.get(i);
+            if(((int)current.charAt(0) >=48 && (int) current.charAt(0) <= 57) ||
+                    (current.length()>1 && (int)current.charAt(1) >=48 && (int) current.charAt(1) <= 57)){
+                postfixStack.push(current);
             }
             else if(postfixStack.size() > 1){
                 double first = stringToDecimal(postfixStack.pop());
                 double second = stringToDecimal(postfixStack.pop());
-                String op = infix.get(i);
+                String op = postfixLocal.get(i);
                 if(op.equals(OperatorParameters.plus)){
                     postfixStack.push((second+first)+"");
                 }
@@ -1000,9 +1004,12 @@ public class MainActivity extends AppCompatActivity {
     public double stringToDecimal(String num){
         double n = 0.0;
         boolean periodEnc = false;
-        int j = 1;
+        int j = 1, k = 1;
         for(int i=0; i<num.length(); i++){
-            if(num.charAt(i) == '.') {
+            if(i==0 && num.charAt(i) == '-'){
+                k = -1;
+            }
+            else if(num.charAt(i) == '.') {
                 if (periodEnc) {
                     //Invalid number
                     Toast.makeText(MainActivity.this, "You entered an invalid number", Toast.LENGTH_SHORT);
@@ -1015,7 +1022,7 @@ public class MainActivity extends AppCompatActivity {
             else
                 n = n * 10 + ((int) num.charAt(i) -48);
         }
-        return n;
+        return n * k;
     }
 
 }

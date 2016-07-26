@@ -366,7 +366,7 @@ public class ConvertTo extends AppCompatActivity {
     private StringBuffer decimalToBinary(StringBuffer num){
         StringBuffer stringBuffer = new StringBuffer();
         int i=0, a =0, j=1;
-        while(num.charAt(i) != '.' && i<num.length()){
+        while(i<num.length() && num.charAt(i) != '.' ){
             a =a*10 + (((int) num.charAt(i)) -48);
             i++;
         }
@@ -395,7 +395,7 @@ public class ConvertTo extends AppCompatActivity {
     private StringBuffer decimalToOctal(StringBuffer num){
         StringBuffer stringBuffer = new StringBuffer();
         int i=0, a =0, j=1;
-        while(num.charAt(i) != '.' && i<num.length()){
+        while(i<num.length() && num.charAt(i) != '.'){
             a =a*10 + (((int) num.charAt(i)) -48);
             i++;
         }
@@ -424,7 +424,7 @@ public class ConvertTo extends AppCompatActivity {
     private StringBuffer decimalToHexadecimal(StringBuffer num){
         StringBuffer stringBuffer = new StringBuffer();
         int i=0, a =0, j=1;
-        while(num.charAt(i) != '.' && i<num.length()){
+        while(i<num.length() && num.charAt(i) != '.' ){
             a =a*10 + (((int) num.charAt(i)) -48);
             i++;
         }
@@ -506,7 +506,7 @@ public class ConvertTo extends AppCompatActivity {
         else if(num == '3')
             return "0011";
         else if(num == '4')
-            return "=100";
+            return "0100";
         else if(num == '5')
             return "0101";
         else if(num == '6')

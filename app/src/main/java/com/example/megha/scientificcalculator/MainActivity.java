@@ -880,92 +880,95 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if( OperatorParameters.exp.equals(s) || OperatorParameters.squareroot.equals(s) ||
                         OperatorParameters.sin.equals(s) || OperatorParameters.cos.equals(s) || OperatorParameters.tan.equals(s) ||
-                        OperatorParameters.log.equals(s) ||OperatorParameters.ceil.equals(s) ||
+                        OperatorParameters.log.equals(s) ||OperatorParameters.ceil.equals(s) || OperatorParameters.ln.equals(s) ||
                         OperatorParameters.sinInv.equals(s) || OperatorParameters.cosInv.equals(s) || OperatorParameters.tanInv.equals(s) ||
                         OperatorParameters.floor.equals(s) || OperatorParameters.toDegrees.equals(s) || OperatorParameters.toRadians.equals(s)){
                     if( i >= infixLocal.size()){
                         // expression error
                     }
-                    else if( infixLocal.get(i+1).equals(OperatorParameters.bracketopen)) {
+                    /*else if( infixLocal.get(i+1).equals(OperatorParameters.bracketopen)) {
                         int j = i+2;
+                        int brackOpen = 1, brackClose = 0;
                         ArrayList<String> value = new ArrayList<>();
                         value.add(OperatorParameters.bracketopen);
                         String current = infixLocal.get(j);
-                        while(infixLocal.size() > j && !current.equals(OperatorParameters.bracketclose)){
-                            j++;
+                        while(infixLocal.size() > j && brackOpen > brackClose){
+                            if(current.equals(OperatorParameters.bracketopen))    brackOpen++;
+                            else if(current.equals(OperatorParameters.bracketclose))    brackClose++;
                             value.add(current);
                             current = infixLocal.get(j);
+                            j++;
                         }
-                        value.add(OperatorParameters.bracketclose);
                         value = infixToPostfix(value);
                         String exp = postfixEvaluation(value);
                         Double val = stringToDecimal(exp);
-                        if(OperatorParameters.exp.equals(s)){
-                            val = Math.exp(val);
-                        }else if(OperatorParameters.squareroot.equals(s)){
-                            val = Math.sqrt(val);
-                        }else if(OperatorParameters.sin.equals(s)){
-                            val = Math.sin(val);
-                        }else if (OperatorParameters.cos.equals(s)){
-                            val = Math.cos(val);
-                        }else if (OperatorParameters.tan.equals(s)){
-                            val = Math.tan(val);
-                        }else if(OperatorParameters.log.equals(s)){
-                            val = Math.log(val);
-                        }else if(OperatorParameters.ceil.equals(s)){
-                            val = Math.ceil(val);
-                        } else if(OperatorParameters.sinInv.equals(s)){
-                            val = Math.asin(val);
-                        }else if (OperatorParameters.cosInv.equals(s)){
-                            val = Math.acos(val);
-                        }else if (OperatorParameters.tanInv.equals(s)){
-                            val = Math.atan(val);
-                        }else if (OperatorParameters.floor.equals(s)){
-                            val = Math.floor(val);
-                        }else if (OperatorParameters.toDegrees.equals(s)){
-                            val = Math.toDegrees(val);
-                        }else{
-                            val = Math.toRadians(val);
-                        }
+                        val = calculate(s, val);
                         postfix.add(val+"");
                         i = j + 1;
-                    }
-                    else{
+                    }*/
+                    else if((int)infixLocal.get(i+1).charAt(0) >= 48 && infixLocal.get(i+1).charAt(0)<=57){
                         Double val = stringToDecimal(infixLocal.get(++i));
-                        if(OperatorParameters.exp.equals(s)){
-                            val = Math.exp(val);
-                        }else if(OperatorParameters.squareroot.equals(s)){
-                            val = Math.sqrt(val);
-                        }else if(OperatorParameters.sin.equals(s)){
-                            val = Math.sin(val);
-                        }else if (OperatorParameters.cos.equals(s)){
-                            val = Math.cos(val);
-                        }else if (OperatorParameters.tan.equals(s)){
-                            val = Math.tan(val);
-                        }else if(OperatorParameters.log.equals(s)){
-                            val = Math.log(val);
-                        }else if(OperatorParameters.ceil.equals(s)){
-                            val = Math.ceil(val);
-                        } else if(OperatorParameters.sinInv.equals(s)){
-                            val = Math.asin(val);
-                        }else if (OperatorParameters.cosInv.equals(s)){
-                            val = Math.acos(val);
-                        }else if (OperatorParameters.tanInv.equals(s)){
-                            val = Math.atan(val);
-                        }else if (OperatorParameters.floor.equals(s)){
-                            val = Math.floor(val);
-                        }else if (OperatorParameters.toDegrees.equals(s)){
-                            val = Math.toDegrees(val);
-                        }else{
-                            val = Math.toRadians(val);
-                        }
+                        val = calculate(s, val);
                         postfix.add(val+"");
                         i++;
+                    }
+                    else{
+                        int j = i+2;
+                        int brackOpen = 1, brackClose = 0;
+                        ArrayList<String> value = new ArrayList<>();
+                        value.add(OperatorParameters.bracketopen);
+                        String current = infixLocal.get(j);
+                        while(infixLocal.size() > j && brackOpen > brackClose){
+                            if(current.equals(OperatorParameters.bracketopen))    brackOpen++;
+                            else if(current.equals(OperatorParameters.bracketclose))    brackClose++;
+                            value.add(current);
+                            current = infixLocal.get(j);
+                            j++;
+                        }
+                        value = infixToPostfix(value);
+                        String exp = postfixEvaluation(value);
+                        Double val = stringToDecimal(exp);
+                        val = calculate(s, val);
+                        postfix.add(val+"");
+                        i = j;
                     }
                 }
             }
         }
         return postfix;
+    }
+
+    private double calculate(String expression, double val){
+        if(OperatorParameters.exp.equals(expression)){
+            val = Math.exp(val);
+        }else if(OperatorParameters.squareroot.equals(expression)){
+            val = Math.sqrt(val);
+        }else if(OperatorParameters.sin.equals(expression)){
+            val = Math.sin(val);
+        }else if (OperatorParameters.cos.equals(expression)){
+            val = Math.cos(val);
+        }else if (OperatorParameters.tan.equals(expression)){
+            val = Math.tan(val);
+        }else if(OperatorParameters.log.equals(expression)){
+            val = Math.log10(val);
+        }else if(OperatorParameters.ceil.equals(expression)){
+            val = Math.ceil(val);
+        } else if(OperatorParameters.sinInv.equals(expression)){
+            val = Math.asin(val);
+        }else if (OperatorParameters.cosInv.equals(expression)){
+            val = Math.acos(val);
+        }else if (OperatorParameters.tanInv.equals(expression)){
+            val = Math.atan(val);
+        }else if (OperatorParameters.floor.equals(expression)){
+            val = Math.floor(val);
+        }else if (OperatorParameters.ln.equals(expression)){
+            val = Math.log(val);
+        }else if (OperatorParameters.toDegrees.equals(expression)){
+            val = Math.toDegrees(val);
+        }else{
+            val = Math.toRadians(val);
+        }
+        return val;
     }
 
     public String postfixEvaluation(ArrayList<String> postfixLocal){

@@ -886,7 +886,13 @@ public class MainActivity extends AppCompatActivity {
                     if( i >= infixLocal.size()){
                         // expression error
                     }
-                    /*else if( infixLocal.get(i+1).equals(OperatorParameters.bracketopen)) {
+                    else if((int)infixLocal.get(i+1).charAt(0) >= 48 && infixLocal.get(i+1).charAt(0)<=57){
+                        Double val = stringToDecimal(infixLocal.get(++i));
+                        val = calculate(s, val);
+                        postfix.add(val+"");
+                        i++;
+                    }
+                    else if(infixLocal.get(i+1).equals(OperatorParameters.bracketclose)){
                         int j = i+2;
                         int brackOpen = 1, brackClose = 0;
                         ArrayList<String> value = new ArrayList<>();
@@ -899,31 +905,28 @@ public class MainActivity extends AppCompatActivity {
                             current = infixLocal.get(j);
                             j++;
                         }
+                        value.add(OperatorParameters.bracketclose);
                         value = infixToPostfix(value);
                         String exp = postfixEvaluation(value);
                         Double val = stringToDecimal(exp);
                         val = calculate(s, val);
                         postfix.add(val+"");
-                        i = j + 1;
-                    }*/
-                    else if((int)infixLocal.get(i+1).charAt(0) >= 48 && infixLocal.get(i+1).charAt(0)<=57){
-                        Double val = stringToDecimal(infixLocal.get(++i));
-                        val = calculate(s, val);
-                        postfix.add(val+"");
-                        i++;
+                        i = j;
                     }
                     else{
-                        int j = i+2;
-                        int brackOpen = 1, brackClose = 0;
+                        int j = i+1;
+                        int brackOpen = 0, brackClose = 0;
                         ArrayList<String> value = new ArrayList<>();
                         value.add(OperatorParameters.bracketopen);
                         String current = infixLocal.get(j);
-                        while(infixLocal.size() > j && brackOpen > brackClose){
+                        while(infixLocal.size() > j && ((brackOpen > 0 && brackOpen > brackClose) || (brackOpen == 0 && brackOpen == brackClose))){
                             if(current.equals(OperatorParameters.bracketopen))    brackOpen++;
                             else if(current.equals(OperatorParameters.bracketclose))    brackClose++;
                             value.add(current);
-                            current = infixLocal.get(j);
-                            j++;
+                            if(infixLocal.size() > j+1)
+                                current = infixLocal.get(++j);
+                            else
+                                j++;
                         }
                         value = infixToPostfix(value);
                         String exp = postfixEvaluation(value);

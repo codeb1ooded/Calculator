@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/margin">
         <Button
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -21,6 +22,8 @@
             android:id="@+id/button1a"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="sinInvClicked"/>
 
         <Button
@@ -35,6 +38,8 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="cosInvClicked"/>
 
         <Button
@@ -49,6 +54,8 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="tanInvClicked"/>
     </LinearLayout>
 
@@ -66,6 +73,8 @@
             android:layout_below="@+id/button1a"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
             android:onClick="floorClicked"/>
@@ -82,6 +91,8 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="ceilClicked"/>
 
         <Button
@@ -96,6 +107,8 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="piClicked"/>
     </LinearLayout>
 
@@ -115,6 +128,8 @@
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="maxClicked"/>
 
         <Button
@@ -129,6 +144,8 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="minClicked"/>
 
         <Button
@@ -143,6 +160,8 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="commaClicked"/>
 
     </LinearLayout>
@@ -163,6 +182,8 @@
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="toDegreesClicked"/>
 
         <Button
@@ -177,6 +198,8 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
+            android:background="@color/colorToolbar"
+            android:textColor="@color/colorButtonText"
             android:onClick="toRadiansClicked"/>
 
     </LinearLayout>

@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("Home");
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -73,17 +74,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == R.id.action_conversion_number_system) {
+        if (id == R.id.action_conversion_number_system) {
             Intent i = new Intent();
             i.setClass(MainActivity.this, ConversionActivityNS.class);
             startActivity(i);
-            return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {

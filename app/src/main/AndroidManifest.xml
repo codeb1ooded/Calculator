@@ -16,17 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".conversion_number_system.ConversionActivityNS">
+        <activity android:name=".conversion_number_system.ConversionActivityNS" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConversionFromBinary">
+        <activity android:name=".conversion_number_system.ConversionFromBinary" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConversionFromOctal">
+        <activity android:name=".conversion_number_system.ConversionFromOctal" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConversionFromDecimal">
+        <activity android:name=".conversion_number_system.ConversionFromDecimal" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConversionFromHexadecimal">
+        <activity android:name=".conversion_number_system.ConversionFromHexadecimal" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConvertTo">
+        <activity android:name=".conversion_number_system.ConvertTo" android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

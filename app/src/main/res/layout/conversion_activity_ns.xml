@@ -1,59 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/margin"
-    android:layout_marginRight="@dimen/margin"
-    android:layout_marginLeft="@dimen/margin"
-    android:layout_marginBottom="@dimen/margin">
+    android:fitsSystemWindows="true"
+    android:background="@color/colorScreen"
+    tools:context="com.example.megha.scientificcalculator.conversion_number_system.ConversionActivityNS">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:textSize="@dimen/text_view_title_size"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:text="@string/title_conversion_ns"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/appbar_padding_top"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="@string/binary"
-        android:textSize="@dimen/button_text_size"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/buttonBinary1"
-        android:onClick="fromBinary"/>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/AppTheme.PopupOverlay">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="@string/octal"
-        android:textSize="@dimen/button_text_size"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/buttonOctal1"
-        android:onClick="fromOctal"/>
+            </android.support.v7.widget.Toolbar>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="@string/decimal"
-        android:textSize="@dimen/button_text_size"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/buttonDecimal1"
-        android:onClick="fromDecimal"/>
+        </android.support.design.widget.AppBarLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:text="@string/hexadecimal"
-        android:textSize="@dimen/button_text_size"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/buttonHexadecimal1"
-        android:onClick="fromHexadecimal"/>
+        <LinearLayout
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:textSize="@dimen/text_view_title_size"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:text="@string/title_conversion_ns"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:text="@string/binary"
+                android:textSize="@dimen/button_text_size"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/buttonBinary1"
+                android:onClick="fromBinary"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:text="@string/octal"
+                android:textSize="@dimen/button_text_size"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/buttonOctal1"
+                android:onClick="fromOctal"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:text="@string/decimal"
+                android:textSize="@dimen/button_text_size"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/buttonDecimal1"
+                android:onClick="fromDecimal"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:text="@string/hexadecimal"
+                android:textSize="@dimen/button_text_size"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/buttonHexadecimal1"
+                android:onClick="fromHexadecimal"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

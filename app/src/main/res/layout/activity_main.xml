@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.megha.scientificcalculator.MainActivity">
+    tools:context="com.example.megha.scientificcalculator.MainActivity"
+    android:background="@color/colorScreen">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -54,6 +55,8 @@
                 android:textSize="@dimen/button_text_size"
                 android:id="@+id/clearRightButton"
                 android:textAllCaps="false"
+                android:background="@color/colorToolbar"
+                android:textColor="@color/colorButtonText"
                 android:onClick="clearClicked"/>
             <Button
                 android:layout_width="0dp"
@@ -65,6 +68,8 @@
                 android:layout_marginLeft="@dimen/margin"
                 android:layout_marginRight="@dimen/margin"
                 android:textAllCaps="false"
+                android:background="@color/colorToolbar"
+                android:textColor="@color/colorButtonText"
                 android:onClick="clearAllClicked"/>
         </LinearLayout>
     </LinearLayout>

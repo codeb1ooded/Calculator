@@ -25,6 +25,11 @@ Got struck with a heavy calculation or can't just hang your mind with maths? Her
 * sin(21+9) = -0.988
 * log(10+90) = 2
 * log(log(100+900)) = 0.477
+* sinsin30*4 = -3.33977
+* -3*2 = -6
+* -3*(-2) = 6
+* 3*(-2) = -6
+* -3-2 = -5
 
 ####Future Feature Inclusions:
 * cursor controls to edit equations and view previous calculations

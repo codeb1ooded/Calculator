@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     StringBuffer screenText;
     Stack stackScreen;
-    Boolean numberInput, periodDone, numAfterPeriod;
+    boolean numberInput, periodDone, numAfterPeriod;
     ArrayList<String> infix;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // BACK
-    public void clearClicked(View v){
+    public void backClicked(View v){
         if(screenText.length() > 0) {
             if(screenText.length() == 1)
                 numberInput = false;
@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
             char lastChar = fromStack.charAt(fromStack.length()-1);
             if(((int)lastChar >= 48 && (int)lastChar <= 57)){
                 screenText = new StringBuffer(stackScreen.pop());
-                clearClicked(v);
+                backClicked(v);
             } else {
                 String abc = stackScreen.pop();
                 String newText = textView.getText().subSequence(0, textView.getText().length()-abc.length()).toString();
@@ -231,16 +231,17 @@ public class MainActivity extends AppCompatActivity {
         String digit;
         char dig;
         switch(v.getId()){
-            case R.id.button0:  digit = OperatorParameters.zero;    dig='0';    break;
-            case R.id.button1:  digit = OperatorParameters.one;     dig='1';    break;
-            case R.id.button2:  digit = OperatorParameters.two;     dig='2';    break;
-            case R.id.button3:  digit = OperatorParameters.three;   dig='3';    break;
-            case R.id.button4:  digit = OperatorParameters.four;    dig='4';    break;
-            case R.id.button5:  digit = OperatorParameters.five;    dig='5';    break;
-            case R.id.button6:  digit = OperatorParameters.six;     dig='6';    break;
-            case R.id.button7:  digit = OperatorParameters.seven;   dig='7';    break;
-            case R.id.button8:  digit = OperatorParameters.eight;   dig='8';    break;
-            case R.id.button9:  digit = OperatorParameters.nine;    dig='9';    break;
+            case R.id.button0:      digit = OperatorParameters.zero;    dig='0';    break;
+            case R.id.button1:      digit = OperatorParameters.one;     dig='1';    break;
+            case R.id.button2:      digit = OperatorParameters.two;     dig='2';    break;
+            case R.id.button3:      digit = OperatorParameters.three;   dig='3';    break;
+            case R.id.button4:      digit = OperatorParameters.four;    dig='4';    break;
+            case R.id.button5:      digit = OperatorParameters.five;    dig='5';    break;
+            case R.id.button6:      digit = OperatorParameters.six;     dig='6';    break;
+            case R.id.button7:      digit = OperatorParameters.seven;   dig='7';    break;
+            case R.id.button8:      digit = OperatorParameters.eight;   dig='8';    break;
+            case R.id.button9:      digit = OperatorParameters.nine;    dig='9';    break;
+            case R.id.buttonMinus:  digit = OperatorParameters.minus;   dig='-';    break;
             default:    return;
         }
         if(numberInput)
@@ -269,7 +270,6 @@ public class MainActivity extends AppCompatActivity {
         String op;
         switch (v.getId()){
             case R.id.buttonPlus:       op = OperatorParameters.plus;               break;
-            case R.id.buttonMinus:      op = OperatorParameters.minus;              break;
             case R.id.buttonMultiply:   op = OperatorParameters.multiply;           break;
             case R.id.buttonDivide:     op = OperatorParameters.divide;             break;
             case R.id.button1s:         op = OperatorParameters.sin;                break;
@@ -289,6 +289,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button9a:         op = OperatorParameters.comma;              break;
             case R.id.button10a:        op = OperatorParameters.toDegrees;          break;
             case R.id.button11a:        op = OperatorParameters.toRadians;          break;
+            case R.id.buttonMinus:
+                if((infix.size() == 0) || (infix.get(infix.size()-1).equals(OperatorParameters.bracketopen))) {
+                    digitClicked(v);
+                    return;
+                }
+                op = OperatorParameters.minus;
+                break;
             default:    return;
         }
         if(numAfterPeriod || !periodDone){
@@ -408,7 +415,7 @@ public class MainActivity extends AppCompatActivity {
         int i = 0;
         while(i < infixLocal.size()) {
             String s = infixLocal.get(i);
-            if(((int)s.charAt(0) >=48 && (int)s.charAt(0) <= 57) || s.charAt(0) == '.' || s.equals(OperatorParameters.pi)){
+            if(((int)s.charAt(0) >=48 && (int)s.charAt(0) <= 57) || s.charAt(0) == '.'|| (s.charAt(0) == '-' && s.length() > 1) || s.equals(OperatorParameters.pi)){
                 postfix.add(s);
                 i++;
             }
@@ -526,11 +533,15 @@ public class MainActivity extends AppCompatActivity {
                         int brackOpen = 0, brackClose = 0;
                         ArrayList<String> value = new ArrayList<>();
                         value.add(OperatorParameters.bracketopen);
+                        boolean digit = false;
                         String current = infixLocal.get(j);
-                        while(infixLocal.size() > j && ((brackOpen > 0 && brackOpen > brackClose) || (brackOpen == 0 && brackOpen == brackClose))){
+                        while(infixLocal.size() > j && ((brackOpen > 0 && brackOpen > brackClose) || (brackOpen == 0 && brackOpen == brackClose && !digit))){
                             if(current.equals(OperatorParameters.bracketopen))    brackOpen++;
                             else if(current.equals(OperatorParameters.bracketclose))    brackClose++;
                             value.add(current);
+                            int lastChar = (int)current.charAt(current.length()-1);
+                            if(lastChar >= 48 && lastChar <= 57)
+                                digit = true;
                             if(infixLocal.size() > j+1)
                                 current = infixLocal.get(++j);
                             else
@@ -629,7 +640,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "You entered an invalid number", Toast.LENGTH_SHORT);
                     // TO DO: Clear everything
                 }
-                    periodEnc = true;
+                periodEnc = true;
             }
             else if (periodEnc)
                 n = n + ((int) num.charAt(i) -48) *Math.pow(10, -1 * (j++));

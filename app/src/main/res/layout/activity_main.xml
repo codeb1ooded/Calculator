@@ -57,7 +57,7 @@
                 android:textAllCaps="false"
                 android:background="@color/colorToolbar"
                 android:textColor="@color/colorButtonText"
-                android:onClick="clearClicked"/>
+                android:onClick="backClicked"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"

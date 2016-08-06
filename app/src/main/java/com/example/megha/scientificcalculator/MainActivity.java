@@ -415,8 +415,16 @@ public class MainActivity extends AppCompatActivity {
         int i = 0;
         while(i < infixLocal.size()) {
             String s = infixLocal.get(i);
-            if(((int)s.charAt(0) >=48 && (int)s.charAt(0) <= 57) || s.charAt(0) == '.'|| (s.charAt(0) == '-' && s.length() > 1) || s.equals(OperatorParameters.pi)){
+            if(((int)s.charAt(0) >=48 && (int)s.charAt(0) <= 57) || s.charAt(0) == '.'|| (s.charAt(0) == '-' && s.length() > 1)){
                 postfix.add(s);
+                i++;
+            }
+            else if(s.equals(OperatorParameters.pi)){
+                postfix.add((22.0/7.0) + "");
+                i++;
+            }
+            else if(s.equals(OperatorParameters.exp)){
+                postfix.add((2.71828182846) + "");
                 i++;
             }
             else if(s.equals(OperatorParameters.bracketopen)){

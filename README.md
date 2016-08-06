@@ -30,6 +30,8 @@ Got struck with a heavy calculation or can't just hang your mind with maths? Her
 * -3*(-2) = 6
 * 3*(-2) = -6
 * -3-2 = -5
+* 2*e = 5.43656365
+* 2*pi = 6.2856
 
 ####Future Feature Inclusions:
 * cursor controls to edit equations and view previous calculations

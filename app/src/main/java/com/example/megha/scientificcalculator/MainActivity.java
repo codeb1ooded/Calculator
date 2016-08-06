@@ -39,10 +39,8 @@ public class MainActivity extends AppCompatActivity {
     StringBuffer screenText;
     Stack stackScreen;
     boolean numberInput, periodDone, numAfterPeriod;
-    boolean powerClicked, periodInPower, numInPower, numPeriodInPower;
     ArrayList<String> infix;
-    ArrayList<String> power;
-    StringBuffer powerText;
+    ArrayList<String> history;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -141,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         numberInput = false;
         periodDone = false;
         numAfterPeriod = false;
-        powerClicked = false;
+        history = new ArrayList<>();
         infix = new ArrayList<>();
         infix.add(OperatorParameters.bracketopen);
 
@@ -336,10 +334,8 @@ public class MainActivity extends AppCompatActivity {
     // power
     public void powerClicked(View v){
         numberInput = false;
-        if(!powerClicked){
 
-        }
-        powerClicked = !powerClicked;
+
     }
 
     // square
@@ -348,7 +344,7 @@ public class MainActivity extends AppCompatActivity {
         int size = screenText.length();
         if(size == 0 && infix.size() < 0){
             Toast.makeText(MainActivity.this, "Empty input", Toast.LENGTH_SHORT).show();
-            return;
+         //   return;
         }
         else if(numberInput && (int) screenText.charAt(screenText.length()-1) >= 48 && (int) screenText.charAt(screenText.length()-1) <= 57){
             double val = stringToDecimal(screenText.toString());
@@ -391,17 +387,54 @@ public class MainActivity extends AppCompatActivity {
 
     // factorial
     public void factorialClicked(View v){
-        if(numAfterPeriod || !periodDone){
-            if (numberInput){
-                periodDone = false;
-                numAfterPeriod = false;
-                stackScreen.push(screenText.toString());
-                numberInput = false;
-                screenText = new StringBuffer();
+        int size = screenText.length();
+        if(size == 0 && infix.size() < 0){
+            Toast.makeText(MainActivity.this, "Empty input", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if(numberInput && (int) screenText.charAt(screenText.length()-1) >= 48 && (int) screenText.charAt(screenText.length()-1) <= 57){
+            int val = (int) stringToDecimal(screenText.toString());
+            int result = 1;
+            for(int i=1; i<=val; i++){
+                result = result * i;
+            }
+            infix.add(result+"");
+            numberInput = false;
+            textView.setText(textView.getText() + OperatorParameters.factorial);
+            stackScreen.push(result+"");
+        }
+        else if(infix.size() > 0 && infix.get(infix.size()-1).equals(OperatorParameters.bracketclose)){
+            int brackOpen = 0, brackClose = 1;
+            int j = infix.size() - 2;
+            ArrayList<String> expression = new ArrayList<>();
+            expression.add(OperatorParameters.bracketclose);
+            while(brackOpen < brackClose){
+                if(j < 0){
+                    Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(infix.get(j).equals(OperatorParameters.bracketclose))    brackClose++;
+                if(infix.get(j).equals(OperatorParameters.bracketopen))     brackOpen++;
+                expression.add(0, infix.get(j));
+                j--;
+            }
+            expression = infixToPostfix(expression);
+            String result = postfixEvaluation(expression);
+            int val = (int) stringToDecimal(result);
+            int res = 1;
+            for(int i=1; i<=val; i++){
+                res = res * i;
+            }
+            for (int k = infix.size()-1; k > j; k--){
+                infix.remove(infix.size()-1);
+                stackScreen.pop();
             }
             textView.setText(textView.getText() + OperatorParameters.factorial);
-            stackScreen.push(OperatorParameters.factorial);
-            infix.add(OperatorParameters.factorial);
+            infix.add(res+"");
+            stackScreen.push(res+"");
+        }
+        else{
+            Toast.makeText(MainActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
         }
     }
 

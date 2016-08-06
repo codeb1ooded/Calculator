@@ -36,6 +36,8 @@ Got struck with a heavy calculation or can't just hang your mind with maths? Her
 * 16^2 = 256
 * 1.4^2 = 1.95999
 * (3+2)^2 = 25
+* 3! = 6
+* (3+2)! = 120
 
 ####Future Feature Inclusions:
 * cursor controls to edit equations and view previous calculations

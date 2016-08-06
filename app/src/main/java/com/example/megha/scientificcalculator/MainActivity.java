@@ -220,6 +220,18 @@ public class MainActivity extends AppCompatActivity {
             if(((int)lastChar >= 48 && (int)lastChar <= 57)){
                 screenText = new StringBuffer(stackScreen.pop());
                 backClicked(v);
+            } else if(fromStack.equals(OperatorParameters.twoPow) || fromStack.equals(OperatorParameters.factorial)){
+                stackScreen.pop();
+                textView.setText(textView.getText().subSequence(0, textView.getText().length()-1));
+                screenText = new StringBuffer(stackScreen.pop());
+                numberInput = true;
+                for(int i=0; i<screenText.length(); i++){
+                    if(screenText.charAt(i) == '.')
+                        periodDone = true;
+                    if(periodDone && (int) screenText.charAt(i) >= 48 && (int) screenText.charAt(i) <= 57)
+                        numAfterPeriod = true;
+                }
+                infix.remove(infix.size()-1);
             } else {
                 String abc = stackScreen.pop();
                 String newText = textView.getText().subSequence(0, textView.getText().length()-abc.length()).toString();

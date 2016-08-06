@@ -164,7 +164,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="squareClicked" />
+            android:onClick="operatorClicked" />
     </LinearLayout>
 
 
@@ -218,7 +218,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="factorialClicked"/>
+            android:onClick="operatorClicked"/>
 
     </LinearLayout>
 

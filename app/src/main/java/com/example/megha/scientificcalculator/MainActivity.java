@@ -280,8 +280,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button4s:         op = OperatorParameters.log;                break;
             case R.id.button5s:         op = OperatorParameters.exp;                break;
             case R.id.button6s:         op = OperatorParameters.ln;                 break;
+            case R.id.button9s:         op = OperatorParameters.twoPow;             break;
             case R.id.button10s:        op = OperatorParameters.bracketopen;        break;
             case R.id.button11s:        op = OperatorParameters.bracketclose;       break;
+            case R.id.button12s:        op = OperatorParameters.factorial;          break;
             case R.id.button1a:         op = OperatorParameters.sinInv;             break;
             case R.id.button2a:         op = OperatorParameters.cosInv;             break;
             case R.id.button3a:         op = OperatorParameters.tanInv;             break;
@@ -338,106 +340,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // square
-    public void squareClicked(View v){
-        numberInput = false;
-        int size = screenText.length();
-        if(size == 0 && infix.size() < 0){
-            Toast.makeText(MainActivity.this, "Empty input", Toast.LENGTH_SHORT).show();
-         //   return;
-        }
-        else if(numberInput && (int) screenText.charAt(screenText.length()-1) >= 48 && (int) screenText.charAt(screenText.length()-1) <= 57){
-            double val = stringToDecimal(screenText.toString());
-            val = Math.pow(val, 2);
-            infix.add(val+"");
-            textView.setText(textView.getText() + OperatorParameters.twoPow);
-            stackScreen.push(val+"");
-        }
-        else if(infix.size() > 0 && infix.get(infix.size()-1).equals(OperatorParameters.bracketclose)){
-            int brackOpen = 0, brackClose = 1;
-            int j = infix.size() - 2;
-            ArrayList<String> expression = new ArrayList<>();
-            expression.add(OperatorParameters.bracketclose);
-            while(brackOpen < brackClose){
-                if(j < 0){
-                    Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(infix.get(j).equals(OperatorParameters.bracketclose))    brackClose++;
-                if(infix.get(j).equals(OperatorParameters.bracketopen))     brackOpen++;
-                expression.add(0, infix.get(j));
-                j--;
-            }
-            expression = infixToPostfix(expression);
-            String result = postfixEvaluation(expression);
-            double val = stringToDecimal(result);
-            val = Math.pow(val, 2);
-            for (int k = infix.size()-1; k > j; k--){
-                infix.remove(infix.size()-1);
-                stackScreen.pop();
-            }
-            textView.setText(textView.getText() + OperatorParameters.twoPow);
-            infix.add(val+"");
-            stackScreen.push(val+"");
-        }
-        else{
-            Toast.makeText(MainActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    // factorial
-    public void factorialClicked(View v){
-        int size = screenText.length();
-        if(size == 0 && infix.size() < 0){
-            Toast.makeText(MainActivity.this, "Empty input", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        else if(numberInput && (int) screenText.charAt(screenText.length()-1) >= 48 && (int) screenText.charAt(screenText.length()-1) <= 57){
-            int val = (int) stringToDecimal(screenText.toString());
-            int result = 1;
-            for(int i=1; i<=val; i++){
-                result = result * i;
-            }
-            infix.add(result+"");
-            numberInput = false;
-            textView.setText(textView.getText() + OperatorParameters.factorial);
-            stackScreen.push(result+"");
-        }
-        else if(infix.size() > 0 && infix.get(infix.size()-1).equals(OperatorParameters.bracketclose)){
-            int brackOpen = 0, brackClose = 1;
-            int j = infix.size() - 2;
-            ArrayList<String> expression = new ArrayList<>();
-            expression.add(OperatorParameters.bracketclose);
-            while(brackOpen < brackClose){
-                if(j < 0){
-                    Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                if(infix.get(j).equals(OperatorParameters.bracketclose))    brackClose++;
-                if(infix.get(j).equals(OperatorParameters.bracketopen))     brackOpen++;
-                expression.add(0, infix.get(j));
-                j--;
-            }
-            expression = infixToPostfix(expression);
-            String result = postfixEvaluation(expression);
-            int val = (int) stringToDecimal(result);
-            int res = 1;
-            for(int i=1; i<=val; i++){
-                res = res * i;
-            }
-            for (int k = infix.size()-1; k > j; k--){
-                infix.remove(infix.size()-1);
-                stackScreen.pop();
-            }
-            textView.setText(textView.getText() + OperatorParameters.factorial);
-            infix.add(res+"");
-            stackScreen.push(res+"");
-        }
-        else{
-            Toast.makeText(MainActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
-        }
-    }
-
     // pi
     public void piClicked(View v){
         if(numAfterPeriod || !periodDone){
@@ -474,6 +376,68 @@ public class MainActivity extends AppCompatActivity {
         Stack infixStack = new Stack();
         ArrayList<String > postfix = new ArrayList<>();
         int i = 0;
+        while(i < infixLocal.size()) {
+            String s = infixLocal.get(i);
+            if(s.equals(OperatorParameters.twoPow) || s.equals(OperatorParameters.factorial)){
+                if(i == 0)
+                    Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                else {
+                    String last = infixLocal.get(i-1);
+                    if((int) last.charAt(last.length()-1) >= 48 && (int) last.charAt(last.length()-1) <= 57){
+                        if(s.equals(OperatorParameters.twoPow)){
+                            double val = stringToDecimal(last.toString());
+                            infixLocal.set(i, Math.pow(val, 2)+"");
+                        }
+                        if(s.equals(OperatorParameters.factorial)){
+                            int val = (int) stringToDecimal(last.toString());
+                            int result = 1;
+                            for(int j=1; j<=val; j++)   result = result * j;
+                            infixLocal.set(i, result+"");
+                        }
+                    }
+                    else if(last.equals(OperatorParameters.bracketclose)){
+                        int brackOpen = 0, brackClose = 1;
+                        int j = i - 2;
+                        ArrayList<String> expression = new ArrayList<>();
+                        expression.add(OperatorParameters.bracketclose);
+                        while(brackOpen < brackClose){
+                            if(j < 0){
+                                Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                            if(infixLocal.get(j).equals(OperatorParameters.bracketclose))    brackClose++;
+                            if(infixLocal.get(j).equals(OperatorParameters.bracketopen))     brackOpen++;
+                            expression.add(0, infixLocal.get(j));
+                            j--;
+                        }
+                        expression = infixToPostfix(expression);
+                        String result = postfixEvaluation(expression);
+                        if(s.equals(OperatorParameters.twoPow)){
+                            double val = stringToDecimal(result);
+                            val = Math.pow(val, 2);
+                            result = val + "";
+                        }
+                        if(s.equals(OperatorParameters.factorial)){
+                            int val = (int) stringToDecimal(result);
+                            int res = 1;
+                            for(int l=1; l<=val; l++)   res = res * l;
+                            result = res + "";
+                        }
+                        for (int k = i; k > j; k--) infixLocal.remove(j+1);
+                        i = j;
+                        if(i+1 < infixLocal.size())
+                            infixLocal.add(i+1, result);
+                        else
+                            infixLocal.add(result);
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+            i++;
+        }
+        i=0;
         while(i < infixLocal.size()) {
             String s = infixLocal.get(i);
             if(((int)s.charAt(0) >=48 && (int)s.charAt(0) <= 57) || s.charAt(0) == '.'|| (s.charAt(0) == '-' && s.length() > 1)){

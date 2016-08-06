@@ -39,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
     StringBuffer screenText;
     Stack stackScreen;
     boolean numberInput, periodDone, numAfterPeriod;
+    boolean powerClicked, periodInPower, numInPower, numPeriodInPower;
     ArrayList<String> infix;
+    ArrayList<String> power;
+    StringBuffer powerText;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -138,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         numberInput = false;
         periodDone = false;
         numAfterPeriod = false;
+        powerClicked = false;
         infix = new ArrayList<>();
         infix.add(OperatorParameters.bracketopen);
 
@@ -276,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button2s:         op = OperatorParameters.cos;                break;
             case R.id.button3s:         op = OperatorParameters.tan;                break;
             case R.id.button4s:         op = OperatorParameters.log;                break;
+            case R.id.button5s:         op = OperatorParameters.exp;                break;
             case R.id.button6s:         op = OperatorParameters.ln;                 break;
             case R.id.button10s:        op = OperatorParameters.bracketopen;        break;
             case R.id.button11s:        op = OperatorParameters.bracketclose;       break;
@@ -312,22 +317,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // e
-    public void expClicked(View v){
-        if(numAfterPeriod || !periodDone){
-            if (numberInput){
-                periodDone = false;
-                numAfterPeriod = false;
-                stackScreen.push(screenText.toString());
-                numberInput = false;
-                screenText = new StringBuffer();
-            }
-            textView.setText(textView.getText() + OperatorParameters.exp);
-            stackScreen.push(OperatorParameters.exp);
-            infix.add(OperatorParameters.exp);
-        }
-    }
-
     // square root
     public void srClicked(View v){
         if(numAfterPeriod || !periodDone){
@@ -347,18 +336,57 @@ public class MainActivity extends AppCompatActivity {
     // power
     public void powerClicked(View v){
         numberInput = false;
-        /* TO DO
-        screenText = screenText.append('l');
-        textView.setText(textView.getText() + "");*/
+        if(!powerClicked){
+
+        }
+        powerClicked = !powerClicked;
     }
 
     // square
     public void squareClicked(View v){
         numberInput = false;
-        /* TO DO
-        screenText = screenText.append('l');
-        screenText = screenText.append('n');
-        textView.setText(textView.getText() + "ln");*/
+        int size = screenText.length();
+        if(size == 0 && infix.size() < 0){
+            Toast.makeText(MainActivity.this, "Empty input", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if(numberInput && (int) screenText.charAt(screenText.length()-1) >= 48 && (int) screenText.charAt(screenText.length()-1) <= 57){
+            double val = stringToDecimal(screenText.toString());
+            val = Math.pow(val, 2);
+            infix.add(val+"");
+            textView.setText(textView.getText() + OperatorParameters.twoPow);
+            stackScreen.push(val+"");
+        }
+        else if(infix.size() > 0 && infix.get(infix.size()-1).equals(OperatorParameters.bracketclose)){
+            int brackOpen = 0, brackClose = 1;
+            int j = infix.size() - 2;
+            ArrayList<String> expression = new ArrayList<>();
+            expression.add(OperatorParameters.bracketclose);
+            while(brackOpen < brackClose){
+                if(j < 0){
+                    Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(infix.get(j).equals(OperatorParameters.bracketclose))    brackClose++;
+                if(infix.get(j).equals(OperatorParameters.bracketopen))     brackOpen++;
+                expression.add(0, infix.get(j));
+                j--;
+            }
+            expression = infixToPostfix(expression);
+            String result = postfixEvaluation(expression);
+            double val = stringToDecimal(result);
+            val = Math.pow(val, 2);
+            for (int k = infix.size()-1; k > j; k--){
+                infix.remove(infix.size()-1);
+                stackScreen.pop();
+            }
+            textView.setText(textView.getText() + OperatorParameters.twoPow);
+            infix.add(val+"");
+            stackScreen.push(val+"");
+        }
+        else{
+            Toast.makeText(MainActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // factorial

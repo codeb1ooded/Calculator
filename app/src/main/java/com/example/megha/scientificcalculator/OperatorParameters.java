@@ -15,6 +15,17 @@ public class OperatorParameters {
     public static String eight = "8";
     public static String nine = "9";
 
+    public static String zeroPow = "\u2070";
+    public static String onePow = "\u2071";
+    public static String twoPow = "\u00b2";
+    public static String threePow = "\u00b3";
+    public static String fourPow = "\u2074";
+    public static String fivePow = "\u2075";
+    public static String sixPow = "\u2076";
+    public static String sevenPow = "\u2077";
+    public static String eightPow = "\u2078";
+    public static String ninePow = "\u2079";
+
     public static String period = ".";
     public static String plus = "+";
     public static String minus = "-";

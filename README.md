@@ -32,6 +32,10 @@ Got struck with a heavy calculation or can't just hang your mind with maths? Her
 * -3-2 = -5
 * 2*e = 5.43656365
 * 2*pi = 6.2856
+* 2^2 = 4
+* 16^2 = 256
+* 1.4^2 = 1.95999
+* (3+2)^2 = 25
 
 ####Future Feature Inclusions:
 * cursor controls to edit equations and view previous calculations

@@ -23,7 +23,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="oneClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -38,7 +38,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="twoClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -53,7 +53,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="threeClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -68,7 +68,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="plusClicked"/>
+            android:onClick="operatorClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -88,7 +88,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="fourClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -103,7 +103,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="fiveClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -118,7 +118,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="sixClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -133,7 +133,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="minusClicked"/>
+            android:onClick="operatorClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -153,7 +153,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="sevenClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -168,7 +168,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="eightClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -183,7 +183,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="nineClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -198,7 +198,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="multiplyClicked"/>
+            android:onClick="operatorClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -233,7 +233,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="zeroClicked"/>
+            android:onClick="digitClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -248,7 +248,7 @@
             android:textSize="@dimen/button_text_size"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="divideClicked"/>
+            android:onClick="operatorClicked"/>
 
         <Button
             android:layout_width="0dp"

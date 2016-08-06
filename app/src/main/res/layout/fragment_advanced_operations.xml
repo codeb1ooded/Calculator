@@ -24,7 +24,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="sinInvClicked"/>
+            android:onClick="operatorClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -40,7 +40,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="cosInvClicked"/>
+            android:onClick="operatorClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -56,7 +56,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="tanInvClicked"/>
+            android:onClick="operatorClicked"/>
     </LinearLayout>
 
     <LinearLayout
@@ -77,7 +77,7 @@
             android:textColor="@color/colorButtonText"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:onClick="floorClicked"/>
+            android:onClick="operatorClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -93,7 +93,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="ceilClicked"/>
+            android:onClick="operatorClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -130,7 +130,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="maxClicked"/>
+            android:onClick="operatorClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -146,7 +146,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="minClicked"/>
+            android:onClick="operatorClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -162,7 +162,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="commaClicked"/>
+            android:onClick="operatorClicked"/>
 
     </LinearLayout>
 
@@ -184,7 +184,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="toDegreesClicked"/>
+            android:onClick="operatorClicked"/>
 
         <Button
             android:layout_width="0dp"
@@ -200,7 +200,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="toRadiansClicked"/>
+            android:onClick="operatorClicked"/>
 
     </LinearLayout>
 

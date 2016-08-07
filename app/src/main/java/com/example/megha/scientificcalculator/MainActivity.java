@@ -504,11 +504,14 @@ public class MainActivity extends AppCompatActivity {
                         while( infixLocal.get(j).equals(OperatorParameters.comma) || infixLocal.get(j).equals(OperatorParameters.bracketopen) ) {
                             j++;
                             ArrayList<String> exp = new ArrayList<>();
+                            int brackOpen = 0, brackClose = 0;
                             exp.add(OperatorParameters.bracketopen);
-                            while (j < infixLocal.size() &&  !infixLocal.get(j).equals(OperatorParameters.bracketclose)) {
+                            while (j < infixLocal.size() &&  ((brackOpen != 0 && brackOpen > brackClose) || (brackOpen == 0 && !infixLocal.get(j).equals(OperatorParameters.bracketclose)))) {
                                 if( infixLocal.get(j).equals(OperatorParameters.comma) ) break;
-                                j++;
-                                exp.add(infixLocal.get(j));
+                                if( infixLocal.get(j).equals(OperatorParameters.bracketclose) ) brackClose++;
+                                if( infixLocal.get(j).equals(OperatorParameters.bracketopen) ) brackOpen++;
+                                String st = infixLocal.get(j++);
+                                exp.add(st);
                             }
                             exp.add(OperatorParameters.bracketclose);
                             exp = infixToPostfix(exp);

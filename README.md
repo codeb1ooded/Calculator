@@ -38,6 +38,9 @@ Got struck with a heavy calculation or can't just hang your mind with maths? Her
 * (3+2)^2 = 25
 * 3! = 6
 * (3+2)! = 120
+* max(3,(1+1)) = 3.0
+* min((1+1),3) = 2.0
+* max(3,(2*(1+1))) = 4.0
 
 ####Future Feature Inclusions:
 * cursor controls to edit equations and view previous calculations
@@ -45,7 +48,7 @@ Got struck with a heavy calculation or can't just hang your mind with maths? Her
 * complex numbers
 * fractions calculations
 * statistics and probability calculations
-* programmability — see Programmable calculator
+* programmability
 * equation solving
 * matrix calculations
 * calculus

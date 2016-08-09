@@ -132,7 +132,7 @@
             android:textAllCaps="false"
             android:background="@color/colorToolbar"
             android:textColor="@color/colorButtonText"
-            android:onClick="srClicked"/>
+            android:onClick="operatorClicked"/>
 
         <Button
             android:layout_width="0dp"

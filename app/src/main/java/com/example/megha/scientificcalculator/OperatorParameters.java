@@ -1,5 +1,7 @@
 package com.example.megha.scientificcalculator;
 
+import android.text.Html;
+
 /**
  * Created by megha on 24/7/16.
  */
@@ -25,6 +27,8 @@ public class OperatorParameters {
     public static String sevenPow = "\u2077";
     public static String eightPow = "\u2078";
     public static String ninePow = "\u2079";
+    public static String periodPow = "\u00b7";
+    public static String minusPow = "\u207b";
 
     public static String period = ".";
     public static String plus = "+";

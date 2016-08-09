@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
     Button bSin, bCos, bTan, bLog10, bNaturalLog, bExp, bSquareRoot, bPower, bSquare, bOpenBracket, bCloseBracket, bFactorial;
     Button bSinInv, bCosInv, bTanIv, bFloor, bCeil, bPi, bMax, bMin, bComma, bToDegrees, bToRadians;
     TextView textView;
-    StringBuffer screenText;
+    StringBuffer screenText, screenTextPow;
     Stack stackScreen;
-    boolean numberInput, periodDone, numAfterPeriod;
+    boolean numberInput, periodDone, numAfterPeriod,numberInputPower, numInPower, powPeriodDone, powNumAfterPeriod;
     ArrayList<String> infix;
     ArrayList<String> history;
 
@@ -134,11 +134,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void initialise(){
         screenText = new StringBuffer();
+        screenTextPow = new StringBuffer();
         textView = (TextView) findViewById(R.id.mainActivityTextView);
         stackScreen = new Stack();
-        numberInput = false;
-        periodDone = false;
-        numAfterPeriod = false;
+        numberInput = numAfterPeriod = periodDone = false;
+        numberInputPower = numInPower = powPeriodDone = powNumAfterPeriod = false;
         history = new ArrayList<>();
         infix = new ArrayList<>();
         infix.add(OperatorParameters.bracketopen);
@@ -191,9 +191,9 @@ public class MainActivity extends AppCompatActivity {
     // CLEAR ALL
     public void clearAllClicked(View v){
         screenText = new StringBuffer();
-        numAfterPeriod = false;
-        numberInput = false;
-        periodDone = false;
+        screenTextPow = new StringBuffer();
+        numberInput = numAfterPeriod = periodDone = false;
+        numInPower = powPeriodDone = powNumAfterPeriod = numberInputPower = false;
         stackScreen.emptyStack();
         textView.setText("");
         infix = new ArrayList<>();
@@ -202,7 +202,8 @@ public class MainActivity extends AppCompatActivity {
 
     // BACK
     public void backClicked(View v){
-        if(screenText.length() > 0) {
+        if(!numInPower && screenText.length() > 0) {
+            numInPower = false;
             if(screenText.length() == 1)
                 numberInput = false;
             else if(screenText.charAt(screenText.length()-1) == '.')
@@ -214,11 +215,28 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(newText);
             if(screenText.length() >= 1)
                 infix.set(infix.size()-1, screenText.toString());
-        }else if( !stackScreen.isEmpty() ){
+        } else if(numInPower && screenTextPow.length() > 0){
+            if(screenTextPow.length() == 1)
+                numberInputPower = false;
+            else if(screenTextPow.charAt(screenTextPow.length()-1) == '·')
+                powPeriodDone = false;
+            else if (screenTextPow.length() >= 2 && screenTextPow.charAt(screenTextPow.length()-2) == '·')
+                powNumAfterPeriod = false;
+            screenTextPow = screenTextPow.delete(screenTextPow.length() - 1, screenTextPow.length());
+            String newText = textView.getText().subSequence(0, textView.getText().length()-screenTextPow.length()-1).toString() + screenTextPow;
+            textView.setText(newText);
+            if(screenTextPow.length() >= 1)
+                infix.set(infix.size()-1, screenTextPow.toString());
+        } else if( !stackScreen.isEmpty() ){
             String fromStack = stackScreen.viewLast();
             char lastChar = fromStack.charAt(fromStack.length()-1);
             if(((int)lastChar >= 48 && (int)lastChar <= 57)){
                 screenText = new StringBuffer(stackScreen.pop());
+                backClicked(v);
+            } else if(lastChar == '⁰' || lastChar == 'ⁱ' || lastChar == '²' || lastChar == '³' || lastChar == '⁴' ||
+                    lastChar == '⁵' || lastChar == '⁶' || lastChar == '⁷' || lastChar == '⁸' || lastChar == '⁹'
+                    || lastChar == '·' || lastChar == '⁻'){
+                screenTextPow = new StringBuffer(stackScreen.pop());
                 backClicked(v);
             } else if(fromStack.equals(OperatorParameters.twoPow) || fromStack.equals(OperatorParameters.factorial)){
                 stackScreen.pop();
@@ -244,39 +262,77 @@ public class MainActivity extends AppCompatActivity {
     public void digitClicked(View v){
         String digit;
         char dig;
-        switch(v.getId()){
-            case R.id.button0:      digit = OperatorParameters.zero;    dig='0';    break;
-            case R.id.button1:      digit = OperatorParameters.one;     dig='1';    break;
-            case R.id.button2:      digit = OperatorParameters.two;     dig='2';    break;
-            case R.id.button3:      digit = OperatorParameters.three;   dig='3';    break;
-            case R.id.button4:      digit = OperatorParameters.four;    dig='4';    break;
-            case R.id.button5:      digit = OperatorParameters.five;    dig='5';    break;
-            case R.id.button6:      digit = OperatorParameters.six;     dig='6';    break;
-            case R.id.button7:      digit = OperatorParameters.seven;   dig='7';    break;
-            case R.id.button8:      digit = OperatorParameters.eight;   dig='8';    break;
-            case R.id.button9:      digit = OperatorParameters.nine;    dig='9';    break;
-            case R.id.buttonMinus:  digit = OperatorParameters.minus;   dig='-';    break;
-            default:    return;
+        if(!numInPower){
+            switch(v.getId()){
+                case R.id.button0:      digit = OperatorParameters.zero;    dig='0';    break;
+                case R.id.button1:      digit = OperatorParameters.one;     dig='1';    break;
+                case R.id.button2:      digit = OperatorParameters.two;     dig='2';    break;
+                case R.id.button3:      digit = OperatorParameters.three;   dig='3';    break;
+                case R.id.button4:      digit = OperatorParameters.four;    dig='4';    break;
+                case R.id.button5:      digit = OperatorParameters.five;    dig='5';    break;
+                case R.id.button6:      digit = OperatorParameters.six;     dig='6';    break;
+                case R.id.button7:      digit = OperatorParameters.seven;   dig='7';    break;
+                case R.id.button8:      digit = OperatorParameters.eight;   dig='8';    break;
+                case R.id.button9:      digit = OperatorParameters.nine;    dig='9';    break;
+                case R.id.buttonMinus:  digit = OperatorParameters.minus;   dig='-';    break;
+                default:    return;
+            }
+            if(numberInput)
+                infix.set(infix.size()-1, infix.get(infix.size()-1) + digit);
+            else
+                infix.add(digit);
+            numberInput = true;
+            if(periodDone) numAfterPeriod = true;
+            screenText = screenText.append(dig);
+            textView.setText(textView.getText() + digit);
         }
-        if(numberInput)
-            infix.set(infix.size()-1, infix.get(infix.size()-1) + digit);
-        else
-            infix.add(digit);
-        numberInput = true;
-        if(periodDone) numAfterPeriod = true;
-        screenText = screenText.append(dig);
-        textView.setText(textView.getText() + digit);
+        else {
+            switch(v.getId()){
+                case R.id.button0:      digit = OperatorParameters.zeroPow;        break;
+                case R.id.button1:      digit = OperatorParameters.onePow;         break;
+                case R.id.button2:      digit = OperatorParameters.twoPow;         break;
+                case R.id.button3:      digit = OperatorParameters.threePow;       break;
+                case R.id.button4:      digit = OperatorParameters.fourPow;        break;
+                case R.id.button5:      digit = OperatorParameters.fivePow;        break;
+                case R.id.button6:      digit = OperatorParameters.sixPow;         break;
+                case R.id.button7:      digit = OperatorParameters.sevenPow;       break;
+                case R.id.button8:      digit = OperatorParameters.eightPow;       break;
+                case R.id.button9:      digit = OperatorParameters.ninePow;        break;
+                case R.id.buttonMinus:  digit = OperatorParameters.minusPow;       break;
+                default:    return;
+            }
+            if(numberInputPower)
+                infix.set(infix.size()-1, infix.get(infix.size()-1) + digit);
+            else
+                infix.add(digit);
+            numberInputPower = true;
+            if(powPeriodDone) powNumAfterPeriod = true;
+            screenTextPow = new StringBuffer(screenTextPow + digit);
+            textView.setText(textView.getText() + digit);
+        }
     }
 
     // .
     public void periodClicked(View v){
-        if(!numberInput || periodDone)
-            Toast.makeText(MainActivity.this, "Enter a valid number", Toast.LENGTH_SHORT).show();
+        if(!numInPower){
+            if(!numberInput || periodDone)
+                Toast.makeText(MainActivity.this, "Enter a valid number", Toast.LENGTH_SHORT).show();
+            else{
+                periodDone = true;
+                screenText = screenText.append('.');
+                textView.setText(textView.getText() + OperatorParameters.period);
+                infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.period);
+            }
+        }
         else{
-            periodDone = true;
-            screenText = screenText.append('.');
-            textView.setText(textView.getText() + OperatorParameters.period);
-            infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.period);
+            if(!numberInputPower || powPeriodDone)
+                Toast.makeText(MainActivity.this, "Enter a valid number", Toast.LENGTH_SHORT).show();
+            else{
+                powPeriodDone = true;
+                textView.setText(textView.getText() + OperatorParameters.periodPow);
+                screenTextPow = screenTextPow.append('·');
+                infix.set(infix.size()-1, infix.get(infix.size()-1)+OperatorParameters.periodPow);
+            }
         }
     }
 
@@ -292,6 +348,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.button4s:         op = OperatorParameters.log;                break;
             case R.id.button5s:         op = OperatorParameters.exp;                break;
             case R.id.button6s:         op = OperatorParameters.ln;                 break;
+            case R.id.button7s:         op = OperatorParameters.squareroot;         break;
             case R.id.button9s:         op = OperatorParameters.twoPow;             break;
             case R.id.button10s:        op = OperatorParameters.bracketopen;        break;
             case R.id.button11s:        op = OperatorParameters.bracketclose;       break;
@@ -327,29 +384,25 @@ public class MainActivity extends AppCompatActivity {
             stackScreen.push(op);
             infix.add(op);
         }
-    }
-
-    // square root
-    public void srClicked(View v){
-        if(numAfterPeriod || !periodDone){
-            if (numberInput){
-                periodDone = false;
-                numAfterPeriod = false;
-                stackScreen.push(screenText.toString());
-                numberInput = false;
-                screenText = new StringBuffer();
+        else if(powNumAfterPeriod || !powPeriodDone){
+            if (numberInputPower){
+                powPeriodDone = false;
+                powNumAfterPeriod = false;
+                stackScreen.push(screenTextPow.toString());
+                numberInputPower = false;
+                numInPower = false;
+                screenTextPow = new StringBuffer();
             }
-            textView.setText(textView.getText() + OperatorParameters.squareroot);
-            stackScreen.push(OperatorParameters.squareroot);
-            infix.add(OperatorParameters.squareroot);
+            textView.setText(textView.getText() + op);
+            stackScreen.push(op);
+            infix.add(op);
         }
     }
 
     // power
     public void powerClicked(View v){
         numberInput = false;
-
-
+        numInPower = !numberInput;
     }
 
     // pi
@@ -382,6 +435,13 @@ public class MainActivity extends AppCompatActivity {
         infix = new ArrayList<>();
         infix.add(OperatorParameters.bracketopen);
         infix.add(result);
+        if(numInPower){
+            if(!powNumAfterPeriod && periodDone)
+                Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+            else{
+                numInPower = false;
+            }
+        }
     }
 
     public ArrayList<String> infixToPostfix(ArrayList<String> infixLocal){
@@ -670,7 +730,6 @@ public class MainActivity extends AppCompatActivity {
         if(!postfixStack.isSingleElement()){
             //definetely an error
         }
-
         return postfixStack.pop();
     }
 

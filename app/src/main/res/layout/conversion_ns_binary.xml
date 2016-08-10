@@ -46,6 +46,7 @@
                 android:textAlignment="center"
                 android:layout_margin="@dimen/margin"
                 android:id="@+id/binaryTitle"
+                android:textColor="@color/colorViewText"
                 android:paddingTop="20dp"/>
 
             <TextView
@@ -55,6 +56,7 @@
                 android:textAlignment="center"
                 android:id="@+id/binaryInputTextView"
                 android:layout_margin="@dimen/margin"
+                android:textColor="@color/colorViewText"
                 android:paddingTop="20dp"
                 android:layout_below="@+id/binaryTitle"/>
 
@@ -73,6 +75,8 @@
                     android:textSize="@dimen/button_text_size"
                     android:id="@+id/periodButtonBinary"
                     android:layout_margin="@dimen/margin"
+                    android:background="@color/colorToolbar"
+                    android:textColor="@color/colorButtonText"
                     android:textAllCaps="false"
                     android:onClick="periodClicked"/>
                 <Button
@@ -80,6 +84,8 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin"
+                    android:background="@color/colorToolbar"
+                    android:textColor="@color/colorButtonText"
                     android:text="@string/clear"
                     android:textSize="@dimen/button_text_size"
                     android:id="@+id/clearRightButtonBinary"
@@ -93,6 +99,8 @@
                     android:textSize="@dimen/button_text_size"
                     android:id="@+id/clearAllButtonBinary"
                     android:layout_margin="@dimen/margin"
+                    android:background="@color/colorToolbar"
+                    android:textColor="@color/colorButtonText"
                     android:textAllCaps="false"
                     android:onClick="clearAllClicked"/>
             </LinearLayout>
@@ -112,6 +120,8 @@
                     android:textSize="@dimen/button_text_size"
                     android:textAlignment="center"
                     android:layout_margin="@dimen/margin"
+                    android:background="@color/colorToolbar"
+                    android:textColor="@color/colorButtonText"
                     android:id="@+id/binary0"
                     android:onClick="zeroClicked"/>
                 <Button
@@ -122,6 +132,8 @@
                     android:textSize="@dimen/button_text_size"
                     android:textAlignment="center"
                     android:layout_margin="@dimen/margin"
+                    android:background="@color/colorToolbar"
+                    android:textColor="@color/colorButtonText"
                     android:id="@+id/binary1"
                     android:onClick="oneClicked"/>
             </LinearLayout>
@@ -130,6 +142,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_margin="@dimen/margin"
+                android:background="@color/colorToolbar"
+                android:textColor="@color/colorButtonText"
                 android:text="@string/convert_button"
                 android:id="@+id/binaryConvert"
                 android:textAlignment="center"

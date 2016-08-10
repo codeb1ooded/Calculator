@@ -44,7 +44,7 @@
                 android:textSize="@dimen/text_view_title_size"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center"
-                android:textColor="@color/colorButtonText"
+                android:textColor="@color/colorViewText"
                 android:text="@string/title_conversion_ns"/>
 
             <Button

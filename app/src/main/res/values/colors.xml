@@ -7,4 +7,5 @@
     <color name="colorScreen">#696969</color>
     <color name="colorButton">#000000</color>
     <color name="colorButtonText">#ffffff</color>
+    <color name="colorViewText">#ffffff</color>
 </resources>

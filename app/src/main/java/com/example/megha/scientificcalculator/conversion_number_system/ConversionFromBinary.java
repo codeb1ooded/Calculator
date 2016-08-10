@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.megha.scientificcalculator.Constants;
 import com.example.megha.scientificcalculator.R;
@@ -24,6 +25,8 @@ public class ConversionFromBinary extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.conversion_ns_binary);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setTitle("Binary");
         screenText = new StringBuffer();
         textView = (TextView) findViewById(R.id.binaryInputTextView);
     }

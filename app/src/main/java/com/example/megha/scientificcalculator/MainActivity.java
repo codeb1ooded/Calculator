@@ -488,6 +488,7 @@ public class MainActivity extends AppCompatActivity {
         int i = 0;
         while(i < infixLocal.size()) {
             String s = infixLocal.get(i);
+            char ch = s.charAt(0);
             if(s.equals(OperatorParameters.twoPow) || s.equals(OperatorParameters.factorial)){
                 if(i == 0)
                     Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
@@ -541,6 +542,48 @@ public class MainActivity extends AppCompatActivity {
                             infixLocal.add(result);
                     }
                     else{
+                        Toast.makeText(MainActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+            else  if(ch == '⁰' || ch == 'ⁱ' || ch == '²' || ch == '³' || ch == '⁴' ||  ch == '⁵' || ch == '⁶' || ch == '⁷' ||
+                    ch == '⁸' || ch == '⁹' || ch == '·' || ch == '⁻'){
+                if(i == 0)
+                    Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                else {
+                    String last = infixLocal.get(i - 1);
+                    if ((int) last.charAt(last.length() - 1) >= 48 && (int) last.charAt(last.length() - 1) <= 57) {
+                        double val = stringToDecimal(last.toString());
+                        infixLocal.set(i, Math.pow(val, calPower(s)) + "");
+                    } else if (last.equals(OperatorParameters.bracketclose)) {
+                        int brackOpen = 0, brackClose = 1;
+                        int j = i - 2;
+                        ArrayList<String> expression = new ArrayList<>();
+                        expression.add(OperatorParameters.bracketclose);
+                        while (brackOpen < brackClose) {
+                            if (j < 0) {
+                                Toast.makeText(MainActivity.this, "Invalid Input", Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                            if (infixLocal.get(j).equals(OperatorParameters.bracketclose))
+                                brackClose++;
+                            if (infixLocal.get(j).equals(OperatorParameters.bracketopen))
+                                brackOpen++;
+                            expression.add(0, infixLocal.get(j));
+                            j--;
+                        }
+                        expression = infixToPostfix(expression);
+                        String result = postfixEvaluation(expression);
+                        double val = stringToDecimal(result);
+                        val = Math.pow(val, calPower(s));
+                        result = val + "";
+                        for (int k = i; k > j; k--) infixLocal.remove(j + 1);
+                        i = j;
+                        if (i + 1 < infixLocal.size())
+                            infixLocal.add(i + 1, result);
+                        else
+                            infixLocal.add(result);
+                    } else {
                         Toast.makeText(MainActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -704,6 +747,38 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return postfix;
+    }
+
+    private double calPower(String expression){
+        double pow = 0;
+        int m = 1;
+        int dig = 0;
+        int p = -1;
+        boolean period = false;
+        for(int i=0; i<expression.length(); i++){
+            char ch = expression.charAt(i);
+            switch (ch){
+                case '⁰':   dig = 0;        break;
+                case 'ⁱ':   dig = 1;        break;
+                case '²':   dig = 2;        break;
+                case '³':   dig = 3;        break;
+                case '⁴':   dig = 4;        break;
+                case '⁵':   dig = 5;        break;
+                case '⁶':   dig = 6;        break;
+                case '⁷':   dig = 7;        break;
+                case '⁸':   dig = 8;        break;
+                case '⁹':   dig = 9;        break;
+                case '·':   period = true;  break;
+                case '⁻':   m = -1;         break;
+            }
+            if(ch != '·' && ch != '⁻'){
+                if(period)
+                    pow += dig * Math.pow(10, p--);
+                else
+                    pow = pow * 10 + dig;
+            }
+        }
+        return pow * m;
     }
 
     private double calculate(String expression, double val){

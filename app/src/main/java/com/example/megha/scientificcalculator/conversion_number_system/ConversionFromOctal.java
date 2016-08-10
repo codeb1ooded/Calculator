@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
 
 import com.example.megha.scientificcalculator.Constants;
 import com.example.megha.scientificcalculator.R;
@@ -26,7 +26,7 @@ public class ConversionFromOctal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.conversion_ns_octal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setTitle("Octal");
+        toolbar.setTitle("Octal");
         screenText = new StringBuffer();
         textView = (TextView) findViewById(R.id.octalInputTextView);
     }

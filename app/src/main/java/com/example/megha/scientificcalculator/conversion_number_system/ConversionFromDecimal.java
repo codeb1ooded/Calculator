@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.megha.scientificcalculator.Constants;
 import com.example.megha.scientificcalculator.R;
@@ -25,7 +25,7 @@ public class ConversionFromDecimal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.conversion_ns_decimal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setTitle("Decimal");
+        toolbar.setTitle("Decimal");
         screenText = new StringBuffer();
         textView = (TextView) findViewById(R.id.decimalInputTextView);
     }

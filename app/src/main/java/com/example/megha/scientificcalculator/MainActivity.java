@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
     // BACK
     public void backClicked(View v){
-        if(!numInPower && screenText.length() > 0) {
+        if(screenText.length() > 0) {
             numInPower = false;
             if(screenText.length() == 1)
                 numberInput = false;
@@ -215,6 +215,8 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(newText);
             if(screenText.length() >= 1)
                 infix.set(infix.size()-1, screenText.toString());
+            if(screenText.length() == 0 )
+                infix.remove(infix.size()-1);
         } else if(numInPower && screenTextPow.length() > 0){
             if(screenTextPow.length() == 1)
                 numberInputPower = false;
@@ -227,6 +229,8 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(newText);
             if(screenTextPow.length() >= 1)
                 infix.set(infix.size()-1, screenTextPow.toString());
+            if(screenTextPow.length() == 0)
+                infix.remove(infix.size()-1);
         } else if( !stackScreen.isEmpty() ){
             String fromStack = stackScreen.viewLast();
             char lastChar = fromStack.charAt(fromStack.length()-1);
@@ -401,8 +405,22 @@ public class MainActivity extends AppCompatActivity {
 
     // power
     public void powerClicked(View v){
-        numberInput = false;
-        numInPower = !numberInput;
+        numInPower = !numInPower;
+        if(numInPower){
+            if((numAfterPeriod || !periodDone) && numberInput){
+                periodDone = false;
+                numAfterPeriod = false;
+                stackScreen.push(screenText.toString());
+                numberInput = false;
+                screenText = new StringBuffer();
+            }
+        }
+        else{
+            powPeriodDone = false;
+            powNumAfterPeriod = false;
+            screenTextPow = new StringBuffer();
+            numberInputPower = false;
+        }
     }
 
     // pi

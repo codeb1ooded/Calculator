@@ -240,6 +240,7 @@ public class MainActivity extends AppCompatActivity {
             } else if(lastChar == '⁰' || lastChar == 'ⁱ' || lastChar == '²' || lastChar == '³' || lastChar == '⁴' ||
                     lastChar == '⁵' || lastChar == '⁶' || lastChar == '⁷' || lastChar == '⁸' || lastChar == '⁹'
                     || lastChar == '·' || lastChar == '⁻'){
+                numInPower = true;
                 screenTextPow = new StringBuffer(stackScreen.pop());
                 backClicked(v);
             } else if(fromStack.equals(OperatorParameters.twoPow) || fromStack.equals(OperatorParameters.factorial)){
@@ -414,12 +415,31 @@ public class MainActivity extends AppCompatActivity {
                 numberInput = false;
                 screenText = new StringBuffer();
             }
+            if(infix.size() > 0){
+                String last = infix.get(infix.size()-1);
+                char lastChar = last.charAt(last.length()-1);
+                if(lastChar == '⁰' || lastChar == 'ⁱ' || lastChar == '²' || lastChar == '³' || lastChar == '⁴' ||
+                        lastChar == '⁵' || lastChar == '⁶' || lastChar == '⁷' || lastChar == '⁸' || lastChar == '⁹'
+                        || lastChar == '·' || lastChar == '⁻'){
+                    screenTextPow = new StringBuffer(infix.get(infix.size()-1));
+                    for(int i=0; i<screenTextPow.length(); i++){
+                        char Char = screenTextPow.charAt(i);
+                        if(Char == '·') powPeriodDone = true;
+                        if(powPeriodDone && Char != '·')    powNumAfterPeriod = true;
+                        numberInputPower = true;
+                    }
+                    stackScreen.pop();
+                }
+            }
         }
         else{
-            powPeriodDone = false;
-            powNumAfterPeriod = false;
-            screenTextPow = new StringBuffer();
-            numberInputPower = false;
+            if((powNumAfterPeriod || !powPeriodDone) && numberInputPower){
+                powPeriodDone = false;
+                powNumAfterPeriod = false;
+                stackScreen.push(screenTextPow.toString());
+                numberInputPower = false;
+                screenTextPow = new StringBuffer();
+            }
         }
     }
 

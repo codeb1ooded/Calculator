@@ -11,7 +11,24 @@ Got struck with a heavy calculation or can't just hang your mind with maths? Her
 <li><h4> quick access to constants such as pi and e</h4></li>
 <li><h4> Number conversion system</h4></li>
 </ul>
-
+<br>
+<br>
+###Screenshots:
+<p align="center">
+  <img src="images/calc1.png" width="250"/>
+  <img src="images/calc2.png" width="250"/>
+  <img src="images/calc3.png" width="250"/>
+</p>
+<p align="center">
+  <img src="images/calc4.png" width="250"/>
+  <img src="images/calc5.png" width="250"/>
+  <img src="images/calc6.png" width="250"/>
+</p>
+<p align="center">
+  <img src="images/calc7.png" width="250"/>
+  <img src="images/calc8.png" width="250"/>
+  <img src="images/calc9.png" width="250"/>
+</p>
 ### Passed Testcases:
 * 1 + 2 = 3
 * 1.1 + 2.2 = 3.3

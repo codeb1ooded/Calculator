@@ -15,19 +15,19 @@ Got struck with a heavy calculation or can't just hang your mind with maths? Her
 <br>
 ###Screenshots:
 <p align="center">
-  <img src="images/calc1.png" width="250"/>
-  <img src="images/calc2.png" width="250"/>
-  <img src="images/calc3.png" width="250"/>
+  <img src="images/calc1.jpg" width="250"/>
+  <img src="images/calc2.jpg" width="250"/>
+  <img src="images/calc3.jpg" width="250"/>
 </p>
 <p align="center">
-  <img src="images/calc4.png" width="250"/>
-  <img src="images/calc5.png" width="250"/>
-  <img src="images/calc6.png" width="250"/>
+  <img src="images/calc4.jpg" width="250"/>
+  <img src="images/calc5.jpg" width="250"/>
+  <img src="images/calc6.jpg" width="250"/>
 </p>
 <p align="center">
-  <img src="images/calc7.png" width="250"/>
-  <img src="images/calc8.png" width="250"/>
-  <img src="images/calc9.png" width="250"/>
+  <img src="images/calc7.jpg" width="250"/>
+  <img src="images/calc8.jpg" width="250"/>
+  <img src="images/calc9.jpg" width="250"/>
 </p>
 ### Passed Testcases:
 * 1 + 2 = 3

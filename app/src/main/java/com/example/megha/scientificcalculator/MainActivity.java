@@ -386,8 +386,14 @@ public class MainActivity extends AppCompatActivity {
                 screenText = new StringBuffer();
             }
             textView.setText(textView.getText() + op);
-            stackScreen.push(op);
-            infix.add(op);
+            if(op.equals(OperatorParameters.exp)) {
+                stackScreen.push((2.71828182846) + "");
+                infix.add((2.71828182846) + "");
+            }
+            else {
+                stackScreen.push(op);
+                infix.add(op);
+            }
         }
         else if(powNumAfterPeriod || !powPeriodDone){
             if (numberInputPower){
@@ -454,8 +460,8 @@ public class MainActivity extends AppCompatActivity {
                 screenText = new StringBuffer();
             }
             textView.setText(textView.getText() + OperatorParameters.pi);
-            stackScreen.push(OperatorParameters.pi);
-            infix.add(OperatorParameters.pi);
+            stackScreen.push((22.0/7.0)+"");
+            infix.add((22.0/7.0)+"");
         }
     }
 
@@ -466,9 +472,21 @@ public class MainActivity extends AppCompatActivity {
         String result = postfixEvaluation(postfix);
         screenText = new StringBuffer();
         numAfterPeriod = false;
-        numberInput = false;
+        numberInput = true;
         periodDone = false;
         stackScreen.emptyStack();
+        for(int i=0; i<result.length(); i++){
+            char c = result.charAt(i);
+            if(c == '.'){
+                periodDone = true;
+            }
+            else if(periodDone){
+                numAfterPeriod = true;
+                break;
+            }
+        }
+        stackScreen.push(OperatorParameters.bracketopen);
+        stackScreen.push(result);
         textView.setText(result);
         infix = new ArrayList<>();
         infix.add(OperatorParameters.bracketopen);

@@ -80,11 +80,11 @@
                     android:id="@+id/periodButtonHexadecimal"
                     android:layout_marginRight="@dimen/margin"
                     android:textAllCaps="false"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="periodClicked"/>
                     <!--
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:layout_marginBottom="@dimen/margin"
                     android:layout_marginRight="@dimen/margin"
@@ -100,7 +100,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:textAllCaps="false"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="clearClicked"/>
                 <Button
@@ -112,7 +112,7 @@
                     android:id="@+id/clearAllButtonHexadecimal"
                     android:layout_marginLeft="@dimen/margin"
                     android:textAllCaps="false"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="clearAllClicked"/>
             </LinearLayout>
@@ -135,7 +135,7 @@
                     android:textAlignment="center"
                     android:layout_marginRight="@dimen/margin"
                     android:id="@+id/hexadecimal0"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="zeroClicked"/>
                 <Button
@@ -147,7 +147,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:textAlignment="center"
                     android:id="@+id/hexadecima1"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="oneClicked"/>
                 <Button
@@ -159,7 +159,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal2"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="twoClicked"/>
                 <Button
@@ -170,7 +170,7 @@
                     android:textSize="@dimen/button_text_size"
                     android:textAlignment="center"
                     android:id="@+id/hexadecima3"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="threeClicked"/>
             </LinearLayout>
@@ -194,7 +194,7 @@
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal4"
                     android:layout_marginRight="@dimen/margin"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="fourClicked"/>
                 <Button
@@ -206,7 +206,7 @@
                     android:textSize="@dimen/button_text_size"
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal5"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="fiveClicked"/>
                 <Button
@@ -218,7 +218,7 @@
                     android:textSize="@dimen/button_text_size"
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal6"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="sixClicked"/>
 
@@ -230,7 +230,7 @@
                     android:textSize="@dimen/button_text_size"
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal7"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="sevenClicked"/>
 
@@ -255,7 +255,7 @@
                     android:textAlignment="center"
                     android:layout_marginRight="@dimen/margin"
                     android:id="@+id/hexadecimal8"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="eightClicked"/>
                 <Button
@@ -267,7 +267,7 @@
                     android:textSize="@dimen/button_text_size"
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal9"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="nineClicked"/>
                 <Button
@@ -279,7 +279,7 @@
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal10"
                     android:layout_marginRight="@dimen/margin"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="aClicked"/>
                 <Button
@@ -290,7 +290,7 @@
                     android:textSize="@dimen/button_text_size"
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal11"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="bClicked"/>
             </LinearLayout>
@@ -314,7 +314,7 @@
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal12"
                     android:layout_marginRight="@dimen/margin"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="cClicked"/>
                 <Button
@@ -326,7 +326,7 @@
                     android:textAlignment="center"
                     android:layout_marginRight="@dimen/margin"
                     android:id="@+id/hexadecimal13"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="dClicked"/>
                 <Button
@@ -338,7 +338,7 @@
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal14"
                     android:layout_marginRight="@dimen/margin"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="eClicked"/>
                 <Button
@@ -349,7 +349,7 @@
                     android:textSize="@dimen/button_text_size"
                     android:textAlignment="center"
                     android:id="@+id/hexadecimal15"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="fClicked"/>
             </LinearLayout>
@@ -365,7 +365,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:textAllCaps="false"
-                android:background="@color/colorToolbar"
+                android:background="@color/colorButton"
                 android:textColor="@color/colorButtonText"
                 android:onClick="convertClicked"/>
 

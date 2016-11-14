@@ -45,6 +45,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_margin="7dp">
+
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -55,9 +56,10 @@
                 android:textSize="@dimen/button_text_size"
                 android:id="@+id/clearRightButton"
                 android:textAllCaps="false"
-                android:background="@color/colorToolbar"
+                android:background="@color/colorButton"
                 android:textColor="@color/colorButtonText"
                 android:onClick="backClicked"/>
+
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -68,7 +70,7 @@
                 android:layout_marginLeft="@dimen/margin"
                 android:layout_marginRight="@dimen/margin"
                 android:textAllCaps="false"
-                android:background="@color/colorToolbar"
+                android:background="@color/colorButton"
                 android:textColor="@color/colorButtonText"
                 android:onClick="clearAllClicked"/>
         </LinearLayout>

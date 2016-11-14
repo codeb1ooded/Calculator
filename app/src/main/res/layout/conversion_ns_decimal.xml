@@ -78,7 +78,7 @@
                     android:textSize="@dimen/button_text_size"
                     android:id="@+id/periodButtonDecimal"
                     android:textAllCaps="false"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:layout_marginBottom="@dimen/margin"
                     android:layout_marginRight="@dimen/margin"
@@ -95,7 +95,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:textAllCaps="false"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="clearClicked"/>
                 <Button
@@ -109,7 +109,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:textAllCaps="false"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="clearAllClicked"/>
             </LinearLayout>
@@ -134,7 +134,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/decimal1"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="oneClicked"/>
                 <Button
@@ -148,7 +148,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/decimal2"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="twoClicked"/>
                 <Button
@@ -162,7 +162,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/decimal3"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="threeClicked"/>
             </LinearLayout>
@@ -187,7 +187,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/decimal4"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="fourClicked"/>
                 <Button
@@ -201,7 +201,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/decimal5"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="fiveClicked"/>
                 <Button
@@ -215,7 +215,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/decimal6"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="sixClicked"/>
 
@@ -242,7 +242,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/decimal7"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="sevenClicked"/>
                 <Button
@@ -256,7 +256,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/decimal8"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="eightClicked"/>
                 <Button
@@ -270,7 +270,7 @@
                     android:layout_marginRight="@dimen/margin"
                     android:layout_marginLeft="@dimen/margin"
                     android:id="@+id/decimal9"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="nineClicked"/>
             </LinearLayout>
@@ -295,7 +295,7 @@
                     android:textAlignment="center"
                     android:id="@+id/decimal0"
                     android:layout_below="@+id/decimalButtons3"
-                    android:background="@color/colorToolbar"
+                    android:background="@color/colorButton"
                     android:textColor="@color/colorButtonText"
                     android:onClick="zeroClicked"/>
             </LinearLayout>
@@ -311,7 +311,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:textAllCaps="false"
-                android:background="@color/colorToolbar"
+                android:background="@color/colorButton"
                 android:textColor="@color/colorButtonText"
                 android:onClick="convertClicked" />
 

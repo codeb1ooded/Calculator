@@ -3,9 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="colorToolbar">#545454</color>
-    <color name="colorScreen">#696969</color>
-    <color name="colorButton">#000000</color>
-    <color name="colorButtonText">#ffffff</color>
-    <color name="colorViewText">#ffffff</color>
+    <color name="colorToolbar">#4C4B63</color>
+    <color name="colorScreen">#DEDBD2</color>
+    <color name="colorButton">#666A86</color>
+    <color name="colorButtonText">#E3E7D3</color>
+    <color name="colorViewText">#58355E</color>
 </resources>

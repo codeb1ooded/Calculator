@@ -22,7 +22,7 @@
             android:id="@+id/button1a"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="operatorClicked"/>
 
@@ -38,7 +38,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="operatorClicked"/>
 
@@ -54,7 +54,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="operatorClicked"/>
     </LinearLayout>
@@ -73,7 +73,7 @@
             android:layout_below="@+id/button1a"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
@@ -91,7 +91,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="operatorClicked"/>
 
@@ -107,7 +107,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="piClicked"/>
     </LinearLayout>
@@ -128,7 +128,7 @@
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="operatorClicked"/>
 
@@ -144,7 +144,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="operatorClicked"/>
 
@@ -160,7 +160,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="operatorClicked"/>
 
@@ -182,7 +182,7 @@
             android:layout_alignParentStart="true"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="operatorClicked"/>
 
@@ -198,7 +198,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="@dimen/button_text_size"
             android:textAllCaps="false"
-            android:background="@color/colorToolbar"
+            android:background="@color/colorButton"
             android:textColor="@color/colorButtonText"
             android:onClick="operatorClicked"/>
 

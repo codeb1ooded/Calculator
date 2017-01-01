@@ -1,33 +1,33 @@
-package com.example.megha.scientificcalculator.conversion_number_system;
+package com.codeb1ooded.megha.scientificcalculator.conversion_number_system;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
-import com.example.megha.scientificcalculator.Constants;
-import com.example.megha.scientificcalculator.R;
+import com.codeb1ooded.megha.scientificcalculator.Constants;
+import com.codeb1ooded.megha.scientificcalculator.R;
 
 import java.io.Serializable;
 
 /**
  * Created by megha on 24/6/16.
  */
-public class ConversionFromBinary extends AppCompatActivity {
+public class ConversionFromDecimal extends AppCompatActivity {
     TextView textView;
     StringBuffer screenText;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.conversion_ns_binary);
+        setContentView(R.layout.conversion_ns_decimal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Binary");
+        toolbar.setTitle("Decimal");
         screenText = new StringBuffer();
-        textView = (TextView) findViewById(R.id.binaryInputTextView);
+        textView = (TextView) findViewById(R.id.decimalInputTextView);
     }
 
     boolean isValid(){
@@ -46,15 +46,15 @@ public class ConversionFromBinary extends AppCompatActivity {
 
     public void convertClicked(View v){
         if(screenText.length() == 0){
-            Toast.makeText(ConversionFromBinary.this, "Please enter valid binary number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConversionFromDecimal.this, "Please enter valid decimal number to proceed", Toast.LENGTH_SHORT).show();
         } else if(isValid()){
             Intent intent = new Intent();
-            intent.setClass(ConversionFromBinary.this, ConvertTo.class);
+            intent.setClass(ConversionFromDecimal.this, ConvertTo.class);
             intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
-            intent.putExtra(Constants.conversionNumberSystem, Constants.convertBinary);
+            intent.putExtra(Constants.conversionNumberSystem, Constants.convertDecimal);
             startActivity(intent);
         } else {
-            Toast.makeText(ConversionFromBinary.this, "Please enter valid binary number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConversionFromDecimal.this, "Please enter valid decimal number to proceed", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -84,9 +84,57 @@ public class ConversionFromBinary extends AppCompatActivity {
         textView.setText(textView.getText() + "1");
     }
 
+    // 2
+    public void twoClicked(View v){
+        screenText = screenText.append('2');
+        textView.setText(textView.getText() + "2");
+    }
+
+    // 3
+    public void threeClicked(View v){
+        screenText = screenText.append('3');
+        textView.setText(textView.getText() + "3");
+    }
+
+    // 4
+    public void fourClicked(View v){
+        screenText = screenText.append('4');
+        textView.setText(textView.getText() + "4");
+    }
+
+    // 5
+    public void fiveClicked(View v){
+        screenText = screenText.append('5');
+        textView.setText(textView.getText() + "5");
+    }
+
+    // 6
+    public void sixClicked(View v){
+        screenText = screenText.append('6');
+        textView.setText(textView.getText() + "6");
+    }
+
+    // 7
+    public void sevenClicked(View v){
+        screenText = screenText.append('7');
+        textView.setText(textView.getText() + "7");
+    }
+
     // .
     public void periodClicked(View v){
         screenText = screenText.append('.');
         textView.setText(textView.getText() + ".");
+    }
+
+    // 8
+    public void eightClicked(View v){
+        screenText = screenText.append('8');
+        textView.setText(textView.getText() + "8");
+    }
+
+    // 9
+    public void nineClicked(View v){
+        screenText = screenText.append('9');
+        textView.setText(textView.getText() + "9");
     }
 }

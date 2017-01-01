@@ -1,4 +1,4 @@
-package com.example.megha.scientificcalculator.conversion_number_system;
+package com.codeb1ooded.megha.scientificcalculator.conversion_number_system;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.megha.scientificcalculator.Constants;
-import com.example.megha.scientificcalculator.R;
+import com.codeb1ooded.megha.scientificcalculator.Constants;
+import com.codeb1ooded.megha.scientificcalculator.R;
 
 /**
  * Created by megha on 10/7/16.

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.example.megha.scientificcalculator"
+        applicationId "com.codeb1ooded.megha.scientificcalculator"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

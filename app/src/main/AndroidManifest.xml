@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.megha.scientificcalculator">
+    package="com.codeb1ooded.megha.scientificcalculator">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name="com.codeb1ooded.megha.scientificcalculator.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,17 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".conversion_number_system.ConversionActivityNS" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConversionActivityNS" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConversionFromBinary" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConversionFromBinary" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConversionFromOctal" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConversionFromOctal" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConversionFromDecimal" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConversionFromDecimal" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConversionFromHexadecimal" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConversionFromHexadecimal" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".conversion_number_system.ConvertTo" android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConvertTo" android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

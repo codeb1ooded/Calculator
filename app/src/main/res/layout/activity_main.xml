@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.megha.scientificcalculator.MainActivity"
+    tools:context="com.codeb1ooded.megha.scientificcalculator.MainActivity"
     android:background="@color/colorScreen">
 
     <android.support.design.widget.AppBarLayout

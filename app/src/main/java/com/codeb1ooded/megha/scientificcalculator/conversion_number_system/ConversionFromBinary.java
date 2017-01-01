@@ -1,4 +1,4 @@
-package com.example.megha.scientificcalculator.conversion_number_system;
+package com.codeb1ooded.megha.scientificcalculator.conversion_number_system;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,26 +9,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
-import com.example.megha.scientificcalculator.Constants;
-import com.example.megha.scientificcalculator.R;
+import com.codeb1ooded.megha.scientificcalculator.Constants;
+import com.codeb1ooded.megha.scientificcalculator.R;
 
 import java.io.Serializable;
 
 /**
  * Created by megha on 24/6/16.
  */
-public class ConversionFromOctal extends AppCompatActivity {
+public class ConversionFromBinary extends AppCompatActivity {
     TextView textView;
     StringBuffer screenText;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.conversion_ns_octal);
+        setContentView(R.layout.conversion_ns_binary);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Octal");
+        toolbar.setTitle("Binary");
         screenText = new StringBuffer();
-        textView = (TextView) findViewById(R.id.octalInputTextView);
+        textView = (TextView) findViewById(R.id.binaryInputTextView);
     }
 
     boolean isValid(){
@@ -47,15 +46,15 @@ public class ConversionFromOctal extends AppCompatActivity {
 
     public void convertClicked(View v){
         if(screenText.length() == 0){
-            Toast.makeText(ConversionFromOctal.this, "Please enter valid octal number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConversionFromBinary.this, "Please enter valid binary number to proceed", Toast.LENGTH_SHORT).show();
         } else if(isValid()){
             Intent intent = new Intent();
-            intent.setClass(ConversionFromOctal.this, ConvertTo.class);
+            intent.setClass(ConversionFromBinary.this, ConvertTo.class);
             intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
-            intent.putExtra(Constants.conversionNumberSystem, Constants.convertOctal);
+            intent.putExtra(Constants.conversionNumberSystem, Constants.convertBinary);
             startActivity(intent);
         } else {
-            Toast.makeText(ConversionFromOctal.this, "Please enter valid octal number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConversionFromBinary.this, "Please enter valid binary number to proceed", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -83,42 +82,6 @@ public class ConversionFromOctal extends AppCompatActivity {
     public void oneClicked(View v){
         screenText = screenText.append('1');
         textView.setText(textView.getText() + "1");
-    }
-
-    // 2
-    public void twoClicked(View v){
-        screenText = screenText.append('2');
-        textView.setText(textView.getText() + "2");
-    }
-
-    // 3
-    public void threeClicked(View v){
-        screenText = screenText.append('3');
-        textView.setText(textView.getText() + "3");
-    }
-
-    // 4
-    public void fourClicked(View v){
-        screenText = screenText.append('4');
-        textView.setText(textView.getText() + "4");
-    }
-
-    // 5
-    public void fiveClicked(View v){
-        screenText = screenText.append('5');
-        textView.setText(textView.getText() + "5");
-    }
-
-    // 6
-    public void sixClicked(View v){
-        screenText = screenText.append('6');
-        textView.setText(textView.getText() + "6");
-    }
-
-    // 7
-    public void sevenClicked(View v){
-        screenText = screenText.append('7');
-        textView.setText(textView.getText() + "7");
     }
 
     // .

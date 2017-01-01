@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/colorScreen"
-    tools:context="com.example.megha.scientificcalculator.conversion_number_system.ConversionActivityNS">
+    tools:context="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConversionActivityNS">
 
     <LinearLayout
         android:layout_width="match_parent"

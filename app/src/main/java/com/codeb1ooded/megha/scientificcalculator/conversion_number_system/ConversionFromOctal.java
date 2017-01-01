@@ -1,4 +1,4 @@
-package com.example.megha.scientificcalculator.conversion_number_system;
+package com.codeb1ooded.megha.scientificcalculator.conversion_number_system;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,25 +9,26 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
-import com.example.megha.scientificcalculator.Constants;
-import com.example.megha.scientificcalculator.R;
+import com.codeb1ooded.megha.scientificcalculator.Constants;
+import com.codeb1ooded.megha.scientificcalculator.R;
 
 import java.io.Serializable;
 
 /**
  * Created by megha on 24/6/16.
  */
-public class ConversionFromHexadecimal extends AppCompatActivity {
+public class ConversionFromOctal extends AppCompatActivity {
     TextView textView;
     StringBuffer screenText;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.conversion_ns_hexadecimal);
+        setContentView(R.layout.conversion_ns_octal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Hexadecimal");
+        toolbar.setTitle("Octal");
         screenText = new StringBuffer();
-        textView = (TextView) findViewById(R.id.hexadecimalInputTextView);
+        textView = (TextView) findViewById(R.id.octalInputTextView);
     }
 
     boolean isValid(){
@@ -46,15 +47,15 @@ public class ConversionFromHexadecimal extends AppCompatActivity {
 
     public void convertClicked(View v){
         if(screenText.length() == 0){
-            Toast.makeText(ConversionFromHexadecimal.this, "Please enter valid hexadecimal number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConversionFromOctal.this, "Please enter valid octal number to proceed", Toast.LENGTH_SHORT).show();
         } else if(isValid()){
             Intent intent = new Intent();
-            intent.setClass(ConversionFromHexadecimal.this, ConvertTo.class);
+            intent.setClass(ConversionFromOctal.this, ConvertTo.class);
             intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
-            intent.putExtra(Constants.conversionNumberSystem, Constants.convertHexadecimal);
+            intent.putExtra(Constants.conversionNumberSystem, Constants.convertOctal);
             startActivity(intent);
         } else {
-            Toast.makeText(ConversionFromHexadecimal.this, "Please enter valid hexadecimal number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ConversionFromOctal.this, "Please enter valid octal number to proceed", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -70,12 +71,6 @@ public class ConversionFromHexadecimal extends AppCompatActivity {
             screenText = screenText.delete(screenText.length() - 1, screenText.length());
             textView.setText(screenText);
         }
-    }
-
-    // .
-    public void periodClicked(View v){
-        screenText = screenText.append('.');
-        textView.setText(textView.getText() + ".");
     }
 
     // 0
@@ -126,51 +121,9 @@ public class ConversionFromHexadecimal extends AppCompatActivity {
         textView.setText(textView.getText() + "7");
     }
 
-    // 8
-    public void eightClicked(View v){
-        screenText = screenText.append('8');
-        textView.setText(textView.getText() + "8");
-    }
-
-    // 9
-    public void nineClicked(View v){
-        screenText = screenText.append('9');
-        textView.setText(textView.getText() + "9");
-    }
-
-    // A
-    public void aClicked(View v){
-        screenText = screenText.append('A');
-        textView.setText(textView.getText() + "A");
-    }
-
-    // B
-    public void bClicked(View v){
-        screenText = screenText.append('B');
-        textView.setText(textView.getText() + "B");
-    }
-
-    // C
-    public void cClicked(View v){
-        screenText = screenText.append('C');
-        textView.setText(textView.getText() + "C");
-    }
-
-    // D
-    public void dClicked(View v){
-        screenText = screenText.append('D');
-        textView.setText(textView.getText() + "D");
-    }
-
-    // E
-    public void eClicked(View v){
-        screenText = screenText.append('E');
-        textView.setText(textView.getText() + "E");
-    }
-
-    // F
-    public void fClicked(View v){
-        screenText = screenText.append('F');
-        textView.setText(textView.getText() + "F");
+    // .
+    public void periodClicked(View v){
+        screenText = screenText.append('.');
+        textView.setText(textView.getText() + ".");
     }
 }

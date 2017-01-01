@@ -1,4 +1,4 @@
-package com.example.megha.scientificcalculator;
+package com.codeb1ooded.megha.scientificcalculator;
 
 import java.util.ArrayList;
 

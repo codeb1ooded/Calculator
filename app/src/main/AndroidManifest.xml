@@ -26,8 +26,6 @@
         </activity>
         <activity android:name="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConversionFromHexadecimal" android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConvertTo" android:theme="@style/AppTheme.NoActionBar">
-        </activity>
     </application>
 
 </manifest>

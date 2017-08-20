@@ -1,6 +1,8 @@
 package com.codeb1ooded.megha.scientificcalculator;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -24,7 +26,7 @@ import com.codeb1ooded.megha.scientificcalculator.conversion_number_system.Conve
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0;
     Button bPlus, bMinus, bMultiply, bDivide, bEqual, bPeriod;
@@ -38,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> history;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
+    private BottomNavigationView bottomNavigationView;
 
     private ViewPager mViewPager;
+    private MenuItem prevMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         setSupportActionBar(toolbar);
         setTitle("Calculator");
         // Create the adapter that will return a fragment for each of the three
@@ -57,7 +62,30 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
         initialise();
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+                if (prevMenuItem != null) {
+                    prevMenuItem.setChecked(false);
+                }
+                else {
+                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
+                }
+
+                bottomNavigationView.getMenu().getItem(position).setChecked(true);
+                prevMenuItem = bottomNavigationView.getMenu().getItem(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
 
     }
 
@@ -77,6 +105,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_operations_basic:
+                mViewPager.setCurrentItem(0);
+                break;
+            case R.id.action_operations_scientific:
+                mViewPager.setCurrentItem(1);
+                break;
+            case R.id.action_operations_advanced:
+                mViewPager.setCurrentItem(2);
+                break;
+            default:
+                mViewPager.setCurrentItem(0);
+                break;
+        }
+        return false;
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {

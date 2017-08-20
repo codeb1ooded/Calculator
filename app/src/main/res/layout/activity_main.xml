@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
@@ -28,60 +28,57 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <TextView
+        android:id="@+id/mainActivityTextView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_view_height"
+        android:layout_marginLeft="@dimen/text_view_left_margin"
+        android:layout_marginRight="@dimen/text_view_right_margin"
+        android:textSize="@dimen/text_view_title_size"
+        android:layout_below="@id/appbar"/>
+
     <LinearLayout
+        android:id="@+id/action_buttons_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/text_view_height"
-            android:layout_marginTop="@dimen/text_view_top_margin"
-            android:layout_marginLeft="@dimen/text_view_left_margin"
-            android:layout_marginRight="@dimen/text_view_right_margin"
-            android:textSize="@dimen/text_view_title_size"
-            android:id="@+id/mainActivityTextView"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="7dp">
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_below="@id/mainActivityTextView">
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin"
-                android:layout_marginRight="@dimen/margin"
-                android:text="@string/clear"
-                android:textSize="@dimen/button_text_size"
-                android:id="@+id/clearRightButton"
-                android:textAllCaps="false"
-                android:background="@color/colorButton"
-                android:textColor="@color/colorButtonText"
-                android:onClick="backClicked"/>
+        <Button
+            android:id="@+id/clearRightButton"
+            android:text="@string/clear"
+            style="@style/rounded_button"
+            android:onClick="backClicked"/>
 
-            <Button
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/clearAll"
-                android:textSize="@dimen/button_text_size"
-                android:id="@+id/clearAllButton"
-                android:layout_marginLeft="@dimen/margin"
-                android:layout_marginRight="@dimen/margin"
-                android:textAllCaps="false"
-                android:background="@color/colorButton"
-                android:textColor="@color/colorButtonText"
-                android:onClick="clearAllClicked"/>
-        </LinearLayout>
+        <Button
+            android:id="@+id/clearAllButton"
+            android:text="@string/clearAll"
+            style="@style/rounded_button"
+            android:onClick="clearAllClicked"/>
+
     </LinearLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/colorPrimary"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_navigation_main" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/container"
-        android:layout_marginTop="@dimen/view_pager_top_margin"
+        android:layout_below="@id/action_buttons_linearlayout"
+        android:layout_above="@id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:layout_marginBottom="20dp"/>
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

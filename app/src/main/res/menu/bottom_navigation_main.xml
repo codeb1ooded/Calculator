@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_operations_basic"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_basic"
+        android:title="@string/basic_operations"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_operations_scientific"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_scientific"
+        android:title="@string/scientific_operations"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_operations_advanced"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_advanced"
+        android:title="@string/advanced_operations"
+        app:showAsAction="ifRoom" />
+</menu>

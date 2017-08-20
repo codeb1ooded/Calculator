@@ -2,60 +2,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_height="wrap_content"
     tools:context="com.codeb1ooded.megha.scientificcalculator.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/margin">
+        android:layout_weight="1">
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/sine"
             android:id="@+id/button1s"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/sine"
             android:onClick="operatorClicked"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/cosine"
             android:id="@+id/button2s"
-            android:layout_alignTop="@+id/button1s"
-            android:layout_alignBottom="@+id/button1s"
-            android:layout_toRightOf="@+id/button1s"
-            android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/cosine"
             android:onClick="operatorClicked"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/tansane"
             android:id="@+id/button3s"
-            android:layout_alignTop="@+id/button1s"
-            android:layout_alignBottom="@+id/button1s"
-            android:layout_toRightOf="@+id/button2s"
-            android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/tansane"
             android:onClick="operatorClicked"/>
 
     </LinearLayout>
@@ -66,50 +35,21 @@
         android:layout_weight="1">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/logarithm_base10"
             android:id="@+id/button4s"
-            android:layout_below="@+id/button1s"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/logarithm_base10"
             android:onClick="operatorClicked"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/exponential"
             android:id="@+id/button5s"
-            android:layout_alignTop="@+id/button4s"
-            android:layout_alignBottom="@+id/button4s"
-            android:layout_toRightOf="@+id/button4s"
-            android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/exponential"
             android:onClick="operatorClicked"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/natural_logarithm"
             android:id="@+id/button6s"
-            android:layout_alignTop="@+id/button4s"
-            android:layout_alignBottom="@+id/button4s"
-            android:layout_toRightOf="@+id/button5s"
-            android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/natural_logarithm"
             android:onClick="operatorClicked"/>
 
     </LinearLayout>
@@ -120,50 +60,21 @@
         android:layout_weight="1">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/square_root"
             android:id="@+id/button7s"
-            android:layout_below="@+id/button4s"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/square_root"
             android:onClick="operatorClicked"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/power"
             android:id="@+id/button8s"
-            android:layout_alignTop="@+id/button7s"
-            android:layout_alignBottom="@+id/button7s"
-            android:layout_toRightOf="@+id/button7s"
-            android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
-            android:textAllCaps="false"
+            style="@style/rounded_button"
+            android:text="@string/power"
             android:onClick="powerClicked"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/square"
             android:id="@+id/button9s"
-            android:layout_alignTop="@+id/button7s"
-            android:layout_alignBottom="@+id/button7s"
-            android:layout_toRightOf="@+id/button8s"
-            android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/square"
             android:onClick="operatorClicked" />
     </LinearLayout>
 
@@ -174,50 +85,21 @@
         android:layout_weight="1">
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/bracket_open"
             android:id="@+id/button10s"
-            android:layout_below="@+id/button7s"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/bracket_open"
             android:onClick="operatorClicked"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/bracket_close"
             android:id="@+id/button11s"
-            android:layout_alignTop="@+id/button10s"
-            android:layout_alignBottom="@+id/button10s"
-            android:layout_toRightOf="@+id/button10s"
-            android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/bracket_close"
             android:onClick="operatorClicked"/>
 
         <Button
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/factorial"
             android:id="@+id/button12s"
-            android:layout_alignTop="@+id/button10s"
-            android:layout_alignBottom="@+id/button10s"
-            android:layout_toRightOf="@+id/button11s"
-            android:layout_marginLeft="10dp"
-            android:textSize="@dimen/button_text_size"
-            android:textAllCaps="false"
-            android:background="@color/colorButton"
-            android:textColor="@color/colorButtonText"
+            style="@style/rounded_button"
+            android:text="@string/factorial"
             android:onClick="operatorClicked"/>
 
     </LinearLayout>

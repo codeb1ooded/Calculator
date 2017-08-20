@@ -14,7 +14,11 @@
     <string name="binary_text">Enter Binary Number</string>
     <string name="octal_text">Enter Octal Number</string>
     <string name="decimal_text">Enter Decimal Number</string>
-    <string name="hexadecimal_text">Enter Hexadecimal Number</string>
+    <string name="hexadecimal_text">Hexadecimal Number</string>
+
+    <string name="basic_operations">Basic</string>
+    <string name="scientific_operations">Scientific</string>
+    <string name="advanced_operations">Advanced</string>
 
     <string name="clear">&lt;-</string>
     <string name="one">1</string>
@@ -40,7 +44,7 @@
     <string name="divide">/</string>
     <string name="equal">=</string>
     <string name="period">.</string>
-    <string name="clearAll">Clear</string>
+    <string name="clearAll">clear all</string>
 
     <string name="sine">sin</string>
     <string name="cosine">cos</string>

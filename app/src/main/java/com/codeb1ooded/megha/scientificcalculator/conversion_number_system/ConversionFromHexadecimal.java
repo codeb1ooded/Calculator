@@ -1,6 +1,5 @@
 package com.codeb1ooded.megha.scientificcalculator.conversion_number_system;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,9 +16,11 @@ import java.io.Serializable;
 /**
  * Created by megha on 24/6/16.
  */
-public class ConversionFromHexadecimal extends AppCompatActivity {
-    TextView textView;
+public class ConversionFromHexadecimal extends AppCompatActivity implements Constants{
+
+    TextView inputTextView, outputTextView;
     StringBuffer screenText;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,8 @@ public class ConversionFromHexadecimal extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Hexadecimal");
         screenText = new StringBuffer();
-        textView = (TextView) findViewById(R.id.hexadecimalInputTextView);
+        inputTextView = (TextView) findViewById(R.id.hexadecimal_input);
+        outputTextView = (TextView) findViewById(R.id.output_for_hexadecimal);
     }
 
     boolean isValid(){
@@ -46,131 +48,137 @@ public class ConversionFromHexadecimal extends AppCompatActivity {
 
     public void convertClicked(View v){
         if(screenText.length() == 0){
-            Toast.makeText(ConversionFromHexadecimal.this, "Please enter valid hexadecimal number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Can't convert invalid hexadecimal number", Toast.LENGTH_SHORT).show();
         } else if(isValid()){
-            Intent intent = new Intent();
-            intent.setClass(ConversionFromHexadecimal.this, ConvertTo.class);
-            intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
-            intent.putExtra(Constants.conversionNumberSystem, Constants.convertHexadecimal);
-            startActivity(intent);
+            ConversionFunctions con = new ConversionFunctions(convertHexadecimal, new StringBuffer(screenText));
+            switch (v.getId()){
+                case R.id.to_binary: outputTextView.setText(con.getBinary());
+                    break;
+                case R.id.to_octal: outputTextView.setText(con.getOctal());
+                    break;
+                case R.id.to_decimal: outputTextView.setText(con.getDecimal());
+                    break;
+                case R.id.to_hexadecimal: outputTextView.setText(con.getHexadecimal());
+                    break;
+            }
         } else {
-            Toast.makeText(ConversionFromHexadecimal.this, "Please enter valid hexadecimal number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Can't convert invalid hexadecimal number", Toast.LENGTH_SHORT).show();
         }
     }
 
     // CLEAR ALL
     public void clearAllClicked(View v){
         screenText = new StringBuffer();
-        textView.setText("");
+        inputTextView.setText("");
     }
 
     // CLEAR LAST
     public void clearClicked(View v){
         if(screenText.length() > 1) {
             screenText = screenText.delete(screenText.length() - 1, screenText.length());
-            textView.setText(screenText);
+            inputTextView.setText(screenText);
         }
     }
 
     // .
     public void periodClicked(View v){
         screenText = screenText.append('.');
-        textView.setText(textView.getText() + ".");
+        inputTextView.setText(inputTextView.getText() + ".");
     }
 
     // 0
     public void zeroClicked(View v){
         screenText = screenText.append('0');
-        textView.setText(textView.getText() + "0");
+        inputTextView.setText(inputTextView.getText() + "0");
     }
 
     // 1
     public void oneClicked(View v){
         screenText = screenText.append('1');
-        textView.setText(textView.getText() + "1");
+        inputTextView.setText(inputTextView.getText() + "1");
     }
 
     // 2
     public void twoClicked(View v){
         screenText = screenText.append('2');
-        textView.setText(textView.getText() + "2");
+        inputTextView.setText(inputTextView.getText() + "2");
     }
 
     // 3
     public void threeClicked(View v){
         screenText = screenText.append('3');
-        textView.setText(textView.getText() + "3");
+        inputTextView.setText(inputTextView.getText() + "3");
     }
 
     // 4
     public void fourClicked(View v){
         screenText = screenText.append('4');
-        textView.setText(textView.getText() + "4");
+        inputTextView.setText(inputTextView.getText() + "4");
     }
 
     // 5
     public void fiveClicked(View v){
         screenText = screenText.append('5');
-        textView.setText(textView.getText() + "5");
+        inputTextView.setText(inputTextView.getText() + "5");
     }
 
     // 6
     public void sixClicked(View v){
         screenText = screenText.append('6');
-        textView.setText(textView.getText() + "6");
+        inputTextView.setText(inputTextView.getText() + "6");
     }
 
     // 7
     public void sevenClicked(View v){
         screenText = screenText.append('7');
-        textView.setText(textView.getText() + "7");
+        inputTextView.setText(inputTextView.getText() + "7");
     }
 
     // 8
     public void eightClicked(View v){
         screenText = screenText.append('8');
-        textView.setText(textView.getText() + "8");
+        inputTextView.setText(inputTextView.getText() + "8");
     }
 
     // 9
     public void nineClicked(View v){
         screenText = screenText.append('9');
-        textView.setText(textView.getText() + "9");
+        inputTextView.setText(inputTextView.getText() + "9");
     }
 
     // A
     public void aClicked(View v){
         screenText = screenText.append('A');
-        textView.setText(textView.getText() + "A");
+        inputTextView.setText(inputTextView.getText() + "A");
     }
 
     // B
     public void bClicked(View v){
         screenText = screenText.append('B');
-        textView.setText(textView.getText() + "B");
+        inputTextView.setText(inputTextView.getText() + "B");
     }
 
     // C
     public void cClicked(View v){
         screenText = screenText.append('C');
-        textView.setText(textView.getText() + "C");
+        inputTextView.setText(inputTextView.getText() + "C");
     }
 
     // D
     public void dClicked(View v){
         screenText = screenText.append('D');
-        textView.setText(textView.getText() + "D");
+        inputTextView.setText(inputTextView.getText() + "D");
     }
 
     // E
     public void eClicked(View v){
         screenText = screenText.append('E');
-        textView.setText(textView.getText() + "E");
+        inputTextView.setText(inputTextView.getText() + "E");
     }
 
     // F
     public void fClicked(View v){
         screenText = screenText.append('F');
-        textView.setText(textView.getText() + "F");
+        inputTextView.setText(inputTextView.getText() + "F");
     }
 }

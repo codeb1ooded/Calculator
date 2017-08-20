@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
@@ -9,97 +9,53 @@
     android:background="@color/colorScreen"
     tools:context="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConversionActivityNS">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:layout_alignParentTop="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/appbar_padding_top"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
+        </android.support.v7.widget.Toolbar>
 
-            </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
-        </android.support.design.widget.AppBarLayout>
+    <Button
+        android:id="@+id/buttonBinary1"
+        style="@style/circular_button"
+        android:layout_below="@id/appbar"
+        android:text="@string/binary"
+        android:onClick="fromBinary"/>
 
-        <LinearLayout
-            android:orientation="vertical" android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/margin">
+    <Button
+        android:id="@+id/buttonOctal1"
+        style="@style/circular_button"
+        android:layout_below="@id/appbar"
+        android:layout_alignParentRight="true"
+        android:text="@string/octal"
+        android:onClick="fromOctal"/>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3"
-                android:textSize="@dimen/text_view_title_size"
-                android:layout_gravity="center_horizontal"
-                android:textAlignment="center"
-                android:textColor="@color/colorViewText"
-                android:text="@string/title_conversion_ns"/>
+    <Button
+        android:id="@+id/buttonDecimal1"
+        style="@style/circular_button"
+        android:layout_alignParentBottom="true"
+        android:text="@string/decimal"
+        android:onClick="fromDecimal"/>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:text="@string/binary"
-                android:textSize="@dimen/button_text_size"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/buttonBinary1"
-                android:layout_margin="@dimen/margin"
-                android:background="@color/colorButton"
-                android:textColor="@color/colorButtonText"
-                android:onClick="fromBinary"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:text="@string/octal"
-                android:textSize="@dimen/button_text_size"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/buttonOctal1"
-                android:background="@color/colorButton"
-                android:textColor="@color/colorButtonText"
-                android:layout_margin="@dimen/margin"
-                android:onClick="fromOctal"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:background="@color/colorButton"
-                android:textColor="@color/colorButtonText"
-                android:text="@string/decimal"
-                android:textSize="@dimen/button_text_size"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/buttonDecimal1"
-                android:layout_margin="@dimen/margin"
-                android:onClick="fromDecimal"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="2"
-                android:text="@string/hexadecimal"
-                android:textSize="@dimen/button_text_size"
-                android:layout_margin="@dimen/margin"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/buttonHexadecimal1"
-                android:background="@color/colorButton"
-                android:textColor="@color/colorButtonText"
-                android:onClick="fromHexadecimal"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-</android.support.design.widget.CoordinatorLayout>
+    <Button
+        android:id="@+id/buttonHexadecimal1"
+        style="@style/circular_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/hexadecimal"
+        android:onClick="fromHexadecimal"/>
+</RelativeLayout>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
@@ -9,151 +9,105 @@
     android:background="@color/colorScreen"
     tools:context="com.codeb1ooded.megha.scientificcalculator.conversion_number_system.ConversionFromBinary">
 
-    <LinearLayout
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/appbar_padding_top"
-            android:theme="@style/AppTheme.AppBarOverlay">
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
+        </android.support.v7.widget.Toolbar>
 
-            </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
 
-        </android.support.design.widget.AppBarLayout>
+    <TextView
+        android:id="@+id/binary_input"
+        android:hint="@string/binary_text"
+        android:layout_below="@id/appbar"
+        style="@style/input_text_view"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/margin"
-            android:id="@+id/binaryActivity">
+    <TextView
+        android:id="@+id/output_for_binary"
+        android:layout_below="@+id/binary_input"
+        style="@style/input_text_view" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/text_view_height"
-                android:text="@string/binary_text"
-                android:textSize="@dimen/text_view_title_size"
-                android:textAlignment="center"
-                android:layout_margin="@dimen/margin"
-                android:id="@+id/binaryTitle"
-                android:textColor="@color/colorViewText"
-                android:paddingTop="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/text_view_big_height"
-                android:textSize="@dimen/text_view_title_size"
-                android:textAlignment="center"
-                android:id="@+id/binaryInputTextView"
-                android:layout_margin="@dimen/margin"
-                android:textColor="@color/colorViewText"
-                android:paddingTop="20dp"
-                android:layout_below="@+id/binaryTitle"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/margin"
-                android:id="@+id/binaryClearButton"
-                android:layout_below="@id/binaryInputTextView">
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="@string/period"
-                    android:textSize="@dimen/button_text_size"
-                    android:id="@+id/periodButtonBinary"
-                    android:layout_margin="@dimen/margin"
-                    android:background="@color/colorButton"
-                    android:textColor="@color/colorButtonText"
-                    android:textAllCaps="false"
-                    android:onClick="periodClicked"/>
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin"
-                    android:background="@color/colorButton"
-                    android:textColor="@color/colorButtonText"
-                    android:text="@string/clear"
-                    android:textSize="@dimen/button_text_size"
-                    android:id="@+id/clearRightButtonBinary"
-                    android:textAllCaps="false"
-                    android:onClick="clearClicked"/>
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="@string/clearAll"
-                    android:textSize="@dimen/button_text_size"
-                    android:id="@+id/clearAllButtonBinary"
-                    android:layout_margin="@dimen/margin"
-                    android:background="@color/colorButton"
-                    android:textColor="@color/colorButtonText"
-                    android:textAllCaps="false"
-                    android:onClick="clearAllClicked"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="@dimen/margin"
-                android:id="@+id/binaryButtons"
-                android:layout_below="@+id/binaryClearButton">
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="50dp"
-                    android:text="@string/zero"
-                    android:textSize="@dimen/button_text_size"
-                    android:textAlignment="center"
-                    android:layout_margin="@dimen/margin"
-                    android:background="@color/colorButton"
-                    android:textColor="@color/colorButtonText"
-                    android:id="@+id/binary0"
-                    android:onClick="zeroClicked"/>
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="50dp"
-                    android:text="@string/one"
-                    android:textSize="@dimen/button_text_size"
-                    android:textAlignment="center"
-                    android:layout_margin="@dimen/margin"
-                    android:background="@color/colorButton"
-                    android:textColor="@color/colorButtonText"
-                    android:id="@+id/binary1"
-                    android:onClick="oneClicked"/>
-            </LinearLayout>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
-                android:layout_margin="@dimen/margin"
-                android:background="@color/colorButton"
-                android:textColor="@color/colorButtonText"
-                android:text="@string/convert_button"
-                android:id="@+id/binaryConvert"
-                android:textAlignment="center"
-                android:textSize="@dimen/button_text_size"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:textAllCaps="false"
-                android:onClick="convertClicked"/>
-
-        </RelativeLayout>
-
+    <LinearLayout
+        android:id="@+id/convert_to_linear_layout"
+        android:layout_below="@id/output_for_binary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin">
+        <Button
+            android:id="@+id/to_binary"
+            style="@style/rectangular_button"
+            android:text="@string/binary"
+            android:onClick="convertClicked"/>
+        <Button
+            android:id="@+id/to_octal"
+            style="@style/rectangular_button"
+            android:text="@string/octal"
+            android:onClick="convertClicked"/>
+        <Button
+            android:id="@+id/to_decimal"
+            style="@style/rectangular_button"
+            android:text="@string/decimal"
+            android:onClick="convertClicked"/>
+        <Button
+            android:id="@+id/to_hexadecimal"
+            style="@style/rectangular_button"
+            android:text="HEXA"
+            android:onClick="convertClicked"/>
     </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:id="@+id/binaryClearButton"
+        android:layout_below="@id/convert_to_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/margin">
+        <Button
+            android:id="@+id/periodButtonBinary"
+            style="@style/rounded_button"
+            android:text="@string/period"
+            android:onClick="periodClicked"/>
+        <Button
+            android:id="@+id/clearRightButtonBinary"
+            style="@style/rounded_button"
+            android:text="@string/clear"
+            android:onClick="clearClicked"/>
+        <Button
+            android:id="@+id/clearAllButtonBinary"
+            style="@style/rounded_button"
+            android:text="@string/clearAll"
+            android:onClick="clearAllClicked"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/binaryButtons"
+        android:layout_below="@+id/binaryClearButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/margin">
+        <Button
+            android:id="@+id/binary0"
+            style="@style/rounded_button"
+            android:text="@string/zero"
+            android:onClick="zeroClicked"/>
+        <Button
+            android:id="@+id/binary1"
+            style="@style/rounded_button"
+            android:text="@string/one"
+            android:onClick="oneClicked"/>
+    </LinearLayout>
+
+</RelativeLayout>

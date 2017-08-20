@@ -5,7 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorToolbar">#4C4B63</color>
     <color name="colorScreen">#DEDBD2</color>
-    <color name="colorButton">#666A86</color>
+    <color name="color_button">#666A86</color>
     <color name="colorButtonText">#E3E7D3</color>
     <color name="colorViewText">#58355E</color>
+    <color name="white">#ffffff</color>
 </resources>

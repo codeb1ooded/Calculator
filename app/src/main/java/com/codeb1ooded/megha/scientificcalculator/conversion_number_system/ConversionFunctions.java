@@ -1,68 +1,48 @@
 package com.codeb1ooded.megha.scientificcalculator.conversion_number_system;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.TextView;
 
 import com.codeb1ooded.megha.scientificcalculator.Constants;
-import com.codeb1ooded.megha.scientificcalculator.R;
 
 /**
- * Created by megha on 10/7/16.
+ * Created by megha on 20/08/17.
  */
-public class ConvertTo extends AppCompatActivity {
 
-    // 0:binary, 1:octal, 2:decimal 3:hexadecimal
-    int numberSystem;
-    StringBuffer number;
-    String number1;
-    String convertFrom;
-    TextView textView;
-    StringBuffer binary, octal, decimal, hexadecimal;
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.convert_to_activity);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Convert to");
-        Intent intent = getIntent();
-        convertFrom = intent.getStringExtra(Constants.conversionNumberSystem);
-        number1 = intent.getStringExtra(Constants.digitToConvert);
-        textView = (TextView) findViewById(R.id.convertedTextView);
-        if(convertFrom.equals(Constants.convertBinary))
+public class ConversionFunctions implements Constants{
+    
+    private int numberSystem;
+    private StringBuffer number;
+    private StringBuffer binary, octal, decimal, hexadecimal;
+
+    public ConversionFunctions(String convertFrom, StringBuffer input){
+        number = input;
+        if(convertFrom.equals(convertBinary))
             numberSystem = 0;
-        if(convertFrom.equals(Constants.convertOctal))
+        if(convertFrom.equals(convertOctal))
             numberSystem = 1;
-        if(convertFrom.equals(Constants.convertDecimal))
+        if(convertFrom.equals(convertDecimal))
             numberSystem = 2;
-        if(convertFrom.equals(Constants.convertHexadecimal))
+        if(convertFrom.equals(convertHexadecimal))
             numberSystem = 3;
-        number = new StringBuffer(number1);
-        binary = new StringBuffer();
-        octal = new StringBuffer();
-        decimal = new StringBuffer();
-        hexadecimal = new StringBuffer();
         toBinary();
         toOctal();
         toDecimal();
         toHexadecimal();
     }
 
-    public void binaryClicked(View v){
-        textView.setText(binary);
+    public StringBuffer getBinary() {
+        return binary;
     }
-    public void octalClicked(View v){
-        textView.setText(octal);
+
+    public StringBuffer getOctal() {
+        return octal;
     }
-    public void decimalClicked(View v){
-        textView.setText(decimal);
+
+    public StringBuffer getDecimal() {
+        return decimal;
     }
-    public void hexadecimalClicked(View v){
-        textView.setText(hexadecimal);
+
+    public StringBuffer getHexadecimal() {
+        return hexadecimal;
     }
 
     private void toBinary(){
@@ -533,4 +513,5 @@ public class ConvertTo extends AppCompatActivity {
         else
             return "1111";
     }
+    
 }

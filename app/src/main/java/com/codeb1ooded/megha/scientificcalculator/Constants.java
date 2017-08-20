@@ -1,16 +1,16 @@
 package com.codeb1ooded.megha.scientificcalculator;
 
 /**
- * Created by megha on 12/7/16.
+ * Created by megha on 20/08/17.
  */
-public class Constants {
 
-    public static String digitToConvert = "DIGIT_CONVERT";
-    public static String conversionNumberSystem = "CONVERT_NUMBER_SYSTEM";
-    public static String convertBinary = "CONVERT_BINARY_NUMBER";
-    public static String convertOctal = "CONVERT_OCTAL_NUMBER";
-    public static String convertDecimal = "CONVERT_DECIMAL_NUMBER";
-    public static String convertHexadecimal = "CONVERT_HEXADECIMAL_NUMBER";
+public interface Constants {
+    String digitToConvert = "DIGIT_CONVERT";
+    String conversionNumberSystem = "CONVERT_NUMBER_SYSTEM";
+    String convertBinary = "CONVERT_BINARY_NUMBER";
+    String convertOctal = "CONVERT_OCTAL_NUMBER";
+    String convertDecimal = "CONVERT_DECIMAL_NUMBER";
+    String convertHexadecimal = "CONVERT_HEXADECIMAL_NUMBER";
 
-    public static String nothing = "NOTHING";
+    String nothing = "NOTHING";
 }

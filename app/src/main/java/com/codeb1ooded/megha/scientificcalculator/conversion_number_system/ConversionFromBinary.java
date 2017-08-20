@@ -1,6 +1,5 @@
 package com.codeb1ooded.megha.scientificcalculator.conversion_number_system;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -12,14 +11,14 @@ import android.support.v7.widget.Toolbar;
 import com.codeb1ooded.megha.scientificcalculator.Constants;
 import com.codeb1ooded.megha.scientificcalculator.R;
 
-import java.io.Serializable;
-
 /**
  * Created by megha on 24/6/16.
  */
-public class ConversionFromBinary extends AppCompatActivity {
-    TextView textView;
+public class ConversionFromBinary extends AppCompatActivity implements Constants{
+
+    TextView inputTextView, outputTextView;
     StringBuffer screenText;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +26,8 @@ public class ConversionFromBinary extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Binary");
         screenText = new StringBuffer();
-        textView = (TextView) findViewById(R.id.binaryInputTextView);
+        inputTextView = (TextView) findViewById(R.id.binary_input);
+        outputTextView = (TextView) findViewById(R.id.output_for_binary);
     }
 
     boolean isValid(){
@@ -46,47 +46,53 @@ public class ConversionFromBinary extends AppCompatActivity {
 
     public void convertClicked(View v){
         if(screenText.length() == 0){
-            Toast.makeText(ConversionFromBinary.this, "Please enter valid binary number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Can't convert invalid binary number", Toast.LENGTH_SHORT).show();
         } else if(isValid()){
-            Intent intent = new Intent();
-            intent.setClass(ConversionFromBinary.this, ConvertTo.class);
-            intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
-            intent.putExtra(Constants.conversionNumberSystem, Constants.convertBinary);
-            startActivity(intent);
+            ConversionFunctions con = new ConversionFunctions(convertBinary, new StringBuffer(screenText));
+            switch (v.getId()){
+                case R.id.to_binary: outputTextView.setText(con.getBinary());
+                    break;
+                case R.id.to_octal: outputTextView.setText(con.getOctal());
+                    break;
+                case R.id.to_decimal: outputTextView.setText(con.getDecimal());
+                    break;
+                case R.id.to_hexadecimal: outputTextView.setText(con.getHexadecimal());
+                    break;
+            }
         } else {
-            Toast.makeText(ConversionFromBinary.this, "Please enter valid binary number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Can't convert invalid binary number", Toast.LENGTH_SHORT).show();
         }
     }
 
     // CLEAR ALL
     public void clearAllClicked(View v){
         screenText = new StringBuffer();
-        textView.setText("");
+        inputTextView.setText("");
     }
 
     // CLEAR LAST
     public void clearClicked(View v){
         if(screenText.length() > 1) {
             screenText = screenText.delete(screenText.length() - 1, screenText.length());
-            textView.setText(screenText);
+            inputTextView.setText(screenText);
         }
     }
 
     // 0
     public void zeroClicked(View v){
         screenText = screenText.append('0');
-        textView.setText(textView.getText() + "0");
+        inputTextView.setText(inputTextView.getText() + "0");
     }
 
     // 1
     public void oneClicked(View v){
         screenText = screenText.append('1');
-        textView.setText(textView.getText() + "1");
+        inputTextView.setText(inputTextView.getText() + "1");
     }
 
     // .
     public void periodClicked(View v){
         screenText = screenText.append('.');
-        textView.setText(textView.getText() + ".");
+        inputTextView.setText(inputTextView.getText() + ".");
     }
 }

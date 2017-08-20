@@ -17,9 +17,11 @@ import java.io.Serializable;
 /**
  * Created by megha on 24/6/16.
  */
-public class ConversionFromDecimal extends AppCompatActivity {
-    TextView textView;
+public class ConversionFromDecimal extends AppCompatActivity implements Constants{
+
+    TextView inputTextView, outputTextView;
     StringBuffer screenText;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,8 @@ public class ConversionFromDecimal extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("Decimal");
         screenText = new StringBuffer();
-        textView = (TextView) findViewById(R.id.decimalInputTextView);
+        inputTextView = (TextView) findViewById(R.id.decimal_input);
+        outputTextView = (TextView) findViewById(R.id.output_for_decimal);
     }
 
     boolean isValid(){
@@ -46,95 +49,101 @@ public class ConversionFromDecimal extends AppCompatActivity {
 
     public void convertClicked(View v){
         if(screenText.length() == 0){
-            Toast.makeText(ConversionFromDecimal.this, "Please enter valid decimal number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Can't convert invalid decimal number", Toast.LENGTH_SHORT).show();
         } else if(isValid()){
-            Intent intent = new Intent();
-            intent.setClass(ConversionFromDecimal.this, ConvertTo.class);
-            intent.putExtra(Constants.digitToConvert, (Serializable) screenText);
-            intent.putExtra(Constants.conversionNumberSystem, Constants.convertDecimal);
-            startActivity(intent);
+            ConversionFunctions con = new ConversionFunctions(convertDecimal, new StringBuffer(screenText));
+            switch (v.getId()){
+                case R.id.to_binary: outputTextView.setText(con.getBinary());
+                    break;
+                case R.id.to_octal: outputTextView.setText(con.getOctal());
+                    break;
+                case R.id.to_decimal: outputTextView.setText(con.getDecimal());
+                    break;
+                case R.id.to_hexadecimal: outputTextView.setText(con.getHexadecimal());
+                    break;
+            }
         } else {
-            Toast.makeText(ConversionFromDecimal.this, "Please enter valid decimal number to proceed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Can't convert invalid decimal number", Toast.LENGTH_SHORT).show();
         }
     }
 
     // CLEAR ALL
     public void clearAllClicked(View v){
         screenText = new StringBuffer();
-        textView.setText("");
+        inputTextView.setText("");
     }
 
     // CLEAR LAST
     public void clearClicked(View v){
         if(screenText.length() > 1) {
             screenText = screenText.delete(screenText.length() - 1, screenText.length());
-            textView.setText(screenText);
+            inputTextView.setText(screenText);
         }
     }
 
     // 0
     public void zeroClicked(View v){
         screenText = screenText.append('0');
-        textView.setText(textView.getText() + "0");
+        inputTextView.setText(inputTextView.getText() + "0");
     }
 
     // 1
     public void oneClicked(View v){
         screenText = screenText.append('1');
-        textView.setText(textView.getText() + "1");
+        inputTextView.setText(inputTextView.getText() + "1");
     }
 
     // 2
     public void twoClicked(View v){
         screenText = screenText.append('2');
-        textView.setText(textView.getText() + "2");
+        inputTextView.setText(inputTextView.getText() + "2");
     }
 
     // 3
     public void threeClicked(View v){
         screenText = screenText.append('3');
-        textView.setText(textView.getText() + "3");
+        inputTextView.setText(inputTextView.getText() + "3");
     }
 
     // 4
     public void fourClicked(View v){
         screenText = screenText.append('4');
-        textView.setText(textView.getText() + "4");
+        inputTextView.setText(inputTextView.getText() + "4");
     }
 
     // 5
     public void fiveClicked(View v){
         screenText = screenText.append('5');
-        textView.setText(textView.getText() + "5");
+        inputTextView.setText(inputTextView.getText() + "5");
     }
 
     // 6
     public void sixClicked(View v){
         screenText = screenText.append('6');
-        textView.setText(textView.getText() + "6");
+        inputTextView.setText(inputTextView.getText() + "6");
     }
 
     // 7
     public void sevenClicked(View v){
         screenText = screenText.append('7');
-        textView.setText(textView.getText() + "7");
+        inputTextView.setText(inputTextView.getText() + "7");
     }
 
     // .
     public void periodClicked(View v){
         screenText = screenText.append('.');
-        textView.setText(textView.getText() + ".");
+        inputTextView.setText(inputTextView.getText() + ".");
     }
 
     // 8
     public void eightClicked(View v){
         screenText = screenText.append('8');
-        textView.setText(textView.getText() + "8");
+        inputTextView.setText(inputTextView.getText() + "8");
     }
 
     // 9
     public void nineClicked(View v){
         screenText = screenText.append('9');
-        textView.setText(textView.getText() + "9");
+        inputTextView.setText(inputTextView.getText() + "9");
     }
 }
